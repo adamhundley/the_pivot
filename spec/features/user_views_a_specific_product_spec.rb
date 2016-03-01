@@ -13,8 +13,7 @@ RSpec.feature "UserViewsASpecificProduct", type: :feature do
 
     within "div#product" do
       expect(page).to have_content(product.name)
-      expect(page).to have_link "#{product.id}-product-image"
-      expect(page).to have_link "#{product.id}-product"
+      expect(page).to have_content(product.description)
     end
   end
 end
