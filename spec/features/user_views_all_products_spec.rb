@@ -7,11 +7,12 @@ RSpec.feature "UserViewsAllProducts", type: :feature do
 
     visit root_path
 
-    click_on "Shop all"
+    click_on "Shop"
 
     within "div#products" do
       expect(page).to have_content(product.name)
-      expect(page).to have_link(product_path(product.id))
+      expect(page).to have_link "#{product.id}-product-image"
+      expect(page).to have_link "#{product.id}-product"
     end
   end
 end
