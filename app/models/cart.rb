@@ -1,5 +1,4 @@
 class Cart
-
   attr_reader :contents
 
   def initialize(initial_contents)
@@ -8,6 +7,6 @@ class Cart
 
   def add_product(product_id)
     contents[product_id.to_s] ||= 0
-    contents[product_id.to_s] += 1 
+    contents[product_id.to_s] += 1
   end
 end

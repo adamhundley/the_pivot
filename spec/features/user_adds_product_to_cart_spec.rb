@@ -7,7 +7,7 @@ RSpec.feature "UserAddsProductToCart", type: :feature do
 
     visit "/products/#{product.id}"
 
-    click_on "Add to Cart"
+    click_on "Add to cart"
 
     expect(page).to have_content("Ethiopian added to cart")
     expect(current_path).to eq("/products")
