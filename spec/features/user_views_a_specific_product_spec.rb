@@ -1,17 +1,20 @@
 require "rails_helper"
 
-RSpec.feature "UserViewsAllProducts", type: :feature do
-  scenario "user views all products" do
+RSpec.feature "UserViewsASpecificProduct", type: :feature do
+  scenario "user views a specific product" do
     category = Category.create(name:"coffee")
     product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good", image_url:"http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg")
 
-    visit root_path
+    visit "/coffee"
 
-    click_on "shop all"
+    click_on "Ethiopian"
 
-    within "div#products" do
+    expect(current_path).to eq("/products/#{product.id}")
+
+    within "div#product" do
       expect(page).to have_content(product.name)
-      expect(page).to have_css("img[src*='#{product.image_url}']")
+      expect(page).to have_link "#{product.id}-product-image"
+      expect(page).to have_link "#{product.id}-product"
     end
   end
 end
