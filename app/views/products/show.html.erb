@@ -1,7 +1,22 @@
-<div id="product">
-  <div class="col-xs-6 col-sm-2", >
-    <%= link_to image_tag(@product.image_url, class: "product_images", width: "250", height: "200"), product_path(@product.id), id: "#{@product.id}-product-image" %>
-    <h3><%= link_to @product.name, product_path(@product.id), id: "#{@product.id}-product" %></h3>
+<div id="product" class="container">
+  <div class="product-header">
+    <h2><%= @product.name %></h2>
     <p><%= @product.description %></p>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="product-image">
+          <%= image_tag(@product.image_url, class: "product_image img-responsive img-rounded") %>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="cart text-center">
+        <h3><%= @product.name %></h3>
+        <h2 class="text-center"><small>$</small><%= @product.display_price(@product.price) %></h2><br>
+        <%= button_to "Add to cart", cart_index_path(product_id: @product.id), class:"form-control btn btn-little-owl" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
   </div>
 </div>

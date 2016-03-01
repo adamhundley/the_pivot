@@ -1,3 +1,29 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-little-owl {
+  color: white;
+  background-color: #e74c3c;
+}
+.cart {
+  padding: 15px;
+  border-radius: 5px;
+  border:1px solid #DADFE1;
+}
+
+@media (max-width:767px) {
+  .cart {
+    margin-top: 10px;
+  }
+}
+
+.product-header {
+  margin-bottom: 20px;
+}
+.product-header p {
+  color: #BDC3C7;
+}
+.alert_info {
+  margin-top: -6px;
+  border-radius: 0px;
+  text-align: center;
+  color: white;
+  background-color: #1abc9c;
+}
