@@ -7,7 +7,7 @@ RSpec.feature "UserViewsAllProducts", type: :feature do
 
     visit root_path
 
-    click_on "Shop"
+    click_on "shop all"
 
     within "div#products" do
       expect(page).to have_content(product.name)
