@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.feature "UserViewsProductsByCategory", type: :feature do
   scenario "user views products by category" do
     category = Category.create(name:"coffee")
+
     product = category.products.create(name: "Ethiopian", price: 1500, description: "Ethiopian coffee is super good", image_url: "http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg")
 
     visit root_path
