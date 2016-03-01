@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "UserViewsAllProducts", type: :feature do
   scenario "user views all products" do
