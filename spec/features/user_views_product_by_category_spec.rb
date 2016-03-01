@@ -8,9 +8,8 @@ RSpec.feature "UserViewsProductsByCategory", type: :feature do
 
     visit root_path
 
-    click_on "Shop"
-
     click_on "coffee"
+    
     within "div#category-products" do
       expect(page).to have_content(product.name)
       expect(page).to have_link "#{product.id}-product-image"
