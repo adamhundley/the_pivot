@@ -8,4 +8,11 @@ class CartController < ApplicationController
     flash[:info] = "#{product.name} added to cart"
     redirect_to products_path
   end
+
+  def index
+    ids = session[:cart]
+    @products = ids.map do |id, quantity|
+      [Product.find(id.to_i), quantity]
+    end
+  end
 end

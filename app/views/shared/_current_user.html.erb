@@ -13,12 +13,7 @@
       </li>
     </ul>
   </li>
-  <li class="dropdown pull-right">
-    <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle"><i class="fa fa-shopping-cart fa-lg"></i></a>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="/">items</a>
-      </li>
-    </ul>
+  <li class="pull-right">
+    <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
   </li>
 </ul>

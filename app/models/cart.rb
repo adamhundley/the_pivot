@@ -9,4 +9,8 @@ class Cart
     contents[product_id.to_s] ||= 0
     contents[product_id.to_s] += 1
   end
+
+  def count
+    contents.values.sum
+  end
 end

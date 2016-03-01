@@ -1,0 +1,11 @@
+<ul>
+<% @products.each do |product| %>
+  <li><%= product.first.name %></li>
+  <li><%= product.first.description %></li>
+  <li><%= product.first.image_url %></li>
+  <li><%= product.first.display_price(product.first.price) %></li>
+  <li>Quantity: <%= product.last %></li>
+  <li>Total: <%= product_total(product) %></li>
+<% end %>
+  <h3>Cart Total: $<%= cart_total(@products) %></h3>
+</ul>
