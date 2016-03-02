@@ -5,9 +5,9 @@ class Cart
     @contents = initial_contents || {}
   end
 
-  def add_product(product_id)
+  def add_product(product_id, quantity)
     contents[product_id.to_s] ||= 0
-    contents[product_id.to_s] += 1
+    contents[product_id.to_s] += quantity.to_i
   end
 
   def count

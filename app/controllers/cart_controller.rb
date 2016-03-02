@@ -3,7 +3,7 @@ class CartController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    @cart.add_product(product.id)
+    @cart.add_product(product.id, params[:quantity])
     session[:cart] = @cart.contents
     flash[:info] = "#{product.name} added to cart"
     redirect_to products_path
@@ -14,6 +14,11 @@ class CartController < ApplicationController
     @products = ids.map do |id, quantity|
       [Product.find(id.to_i), quantity]
     end
+  end
+
+  def update
+    @cart.contents[params[:id]] = params[:quantity].to_i
+    redirect_to cart_index_path
   end
 
   def destroy
