@@ -1,12 +1,69 @@
 coffee = Category.create(name:"coffee")
 tools = Category.create(name:"tools")
 gifts = Category.create(name:"gifts")
-coffee.products.create(name:"Ethiopia", price:1500, description:"Ethiopian coffee is super good", image_url:"https://lh3.googleusercontent.com/qi7THVboCbSZT8QK9uj2vLOPRF4beBNy6jJw1n5zJi2pfk_qHG68RXiOnFQG9zYNHCDBJgtV_GjW09Mt7SKQuOIW0Qlqhufd5Un6rBmwpfuxxlwaeYPSCKJPiKOEBdm6pr1m290LMgmDmyxlOoVXo2uE_uPMHb7J0p2mmYYQQ2qrHmFBNTqbDNTZLSeJWYzhFxEJKiYK8i-izsKfkqVVAiEIkm3fzCz_sTeJpc2ix6TEK1z3bMmng7oHN3zalGI2tp0z7KkG8dRrY4TcdmrNvb1SihBrUXEaKURWWK9nS0D0zoAG20TqBI7PS8Efk7iannh320Ed_pO8Blq6-uhlgHFXqlhgoNcIeNixGO8yyfm2zs2N7y4yU-CVeLUZGe4x2HjYpk8bZiYEjeC7Ovxw2_IhaMROrj9vCCoz-xP5ZCm8St16WZT3PKbAYX8K85vYqYL90YgX3fl6p9Cwq6Rj6gjMCXm46Oq_WMCctu2N6ENue_5oR87cx5LhOOc8YiBj5M1y_o-B2Wnns31gLuwefYDRzW66JFfqbyuku-JhEQVfh-EiKl_6SRI1OjreiJMKKc1Y=w1088-h836-no")
-coffee.products.create(name:"Kenya", price:2500, description:"Grape candy, sparkling acidity, balance.", image_url:"https://lh3.googleusercontent.com/PAXBt_CdSAwV_q13V_o6K_x_FKhoy_p9zgAK89R4fbjYvZhoc0javKPUo1MHJNBaav3iObmaO-gknTA2H7gGkzXLOtQhwfJvwhm3iSvMl_sJx6l2CzyY2kRoMtUghuSUEwWxGWXYhW-IYt3w5wdpfxYw8pE4gH76u8YfAB58N2sr-gbwamtArQs6q_7w7-Tbw3BYh0DsoXAPasGrjDeTUyUdvvYEZS3A7owf4Sb2Ok3O0bnxvo9e3GcbfKfLeZ0CD9Ovu0W6aEGnCYod7vxCai2Ts_1OklOiYu-xHaqpFRNKacb0pD8etBm--xILCOG75AjqdoCV1lq2SrXx14_tAikSpdeDRtX1AMfYfTZS-jQ-uXc-fVh3c87YtEaN5xZpf5DtDL3XxBEFkJFood1mEsgDVnZtM857Lwnuakn2pzoYFHr9k8CNbw9n_0xlIxjCz4ytxfdHyityTAY2AvdYLvEvoWJQ2tfGTakQg3PtGkKjqLY6c8XYJmj41vqaB7pXbSF9sXvvVrX1_IxJqml1arbq2esuoGz66uCBkQ-FKOEWYjOD7nuHSMRDZejeneb68OPn=w1100-h836-no", category_id: 1)
-coffee.products.create(name:"Tanzania", price:1900, description:"Never forget Tanzania.", image_url:"https://lh3.googleusercontent.com/Lk6IMqP6cQaIP2xMFpfXMLZBlYGYv1sZewvJmnUi64bS0MtnV2-Z8MVoeTsN0E3vcs0sG94YreA1knPzgELk-lJYZtTXKcWiITBpK1JHQgFxKNLGeyv5SH66LpMBWyXXnxIgOnH4sJaZvTBHC6kusWhBjoDmeunO7Kt2lJBRvBSFQEotbE5wvwFG5lcDIlWNtNGzt0JPYvjvzZmc2IQD1K03NNpPurThEU5VchmfHHEwkv30yo-W_h-sv8TsTd_ddvAc1FkMIQqwzsXRRFPYuMt9_ZSlj2pRDX8aX02SsWPUcJOsRGT5ybWrLwJ6fCXo-MFhLIszsHay1fwlCxi83RurJ0hkWvXLtsWPHAw36JuY9rgZLGJRwvKJNmfJaXCspRcbS_Bx2aZ_v0hygDWrio_LeIKouYXhA4PPpiBufwry-FpSnknDuOL69K2oCrwxW0Kv9advhOvxz_Hedash63G_c-iski1pu9nqWYKXWqyvwxHybfMWDi5oNRqxy6qgeHE4rENN4E90qJiT1psuzChBBGfd4JpkiNHhFWKyDW70zOu30dGHpnod_8gkDYLZl2KO=w1054-h878-no", category_id: 1)
-coffee.products.create(name:"Gatchatha Kenya", price:1300, description:"Unicorn tears.", image_url:"https://lh3.googleusercontent.com/wwiveE31ADd_fLpNCXhShnm29P7F7xjzlDzqS8piMgmjg6u-M3l1YEyPBVk-uPjuy_GN3Of_KTrcZAkiixMzcG2naJIKbcLA0B42BvQOkIkcApqPzlIikdtEKowQkHhTyT6mWoOQv-Iju7JHF8bAS1GQBp0sEqFrzFExmsI0nbOj4nRzvsG8tmQjraFf0MCVX-G0NfYdJUUl5oo61Eqwh0uydRodrwXyTwuXA1f53lYxmPjhHPjMJM4wWSfjFnPBjOb96LT-fgObBJ3xOMB_S7Ewx22QuCJ6b4X1UIYrckBEC8b3GJCBDXhorh1r3t68QHpRtQMkq06oZGOiKPtgAkH8BeuKfJdEEjNvV23Mq0JiyOEzLqnseE06RO6B1jvupMEDG23_NDOu1WihgFa5eai49zogizcVjF_at9rkUtXE6XOpk3BYYnMMMd8_grGCOgqJ1omiHnsbILfHYaGO7juvn8IlIh7Ix8IFpzp3HrTpwyZytNSvAMP-bfbTjo24rA7WGdvhBL3U2Ol-xtENySn20Rn9aHSv-L8e-d7dN-y6CHldiEHgaN3xw1q6Owntfw3J=w1008-h828-no", category_id: 1)
-coffee.products.create(name:"Santa Clara Panama", price:2000, description:"Not from Silicon Valley.", image_url:"https://lh3.googleusercontent.com/738YwL75SJbbJAbLUVurhLF9dsIZ4XE-7feiNB-C3VrcH35_BOoqx3XKNzjv_pHJbTYeJyP1iL6g6uDEzB_WKs0PuFcBYPW9ZMcdfheu4HOdy1IEDFpshPnlHWko_lI1QrG4zL6HuEkWuDgodXGhMagvod_98iK6o2ZCo-eMFYHZUDd-QfFHW2-toUl9Y8unxgM7nCYrq3pbH3ybAThxOQgIK7uSvXNhWzA9IU8n-zy9KAJR8JrwV9p_-hAVO6z5xWcL-gq1vR822Vg5ImdKfKR1MZxQ5uDyvuqoNaU743qHEesEinYLcM00IDV7fRfm0z2RxdooXgxactw3WNz0h6JO_iqSyByWiX29LPOw80WFDCPJ8R4JAlySf_q0vCUSIILZcKlxlYjXKRe6FTErKjKM0qlJi-33d_e_-DPuoGYEHHqnwCQT5yUh8K-xa2gUf0ejDrW6myqSxfzTkRhckKPCvIsrN2YYWKofNrRUg_AwlZVjvastg19YdhpzGktR1PZm9fFTLSKCsryN0PWO_u-C-cDINIZn0V0j8jlOd4GodnaZ4GQ2hVpwZZgxYqz4GiJa=w1082-h944-no", category_id: 1)
-coffee.products.create(name:"Study Abroad Pack", price:5000, description:"Mind blowing.", image_url:"https://lh3.googleusercontent.com/r1IRMwdm01PKkFoCIWa5MoHYwcVNSNKmZ3lThrP-vQ7a-w4nOpYqV83Eg4EIDvN42YgjHHbrQvMN6JtrjL12gYevaPCinEf10aWav0cPv6hOcbfHMxcfHzhyj4vfr7ivDHTZVsTx6o7FGAREAJCrgwm6n5bdg361hjFIsGdn3pe8YTwvbqfJJoCOVZFk_v00_rDYFaT4-0hiysWuytDiaAS1gY2fzSkdDZI-lW4dB0bgwzaxT8ZfV053dJXIQiwwKM0rNgi_KpDEgDmXAXmitIt01LLP8vZyK5xYQSDT0hkkPbobdncHvjLDL6fDA_RR0PeLbRCgf-pZgGuYSGgwelRTOJYjYM9OlnkhAHabGDtNifC2huZYCcsWfp9Kd2_1eAba_xCCV4l7WIL-ySCiPwT1uksIa5D4MDIrH58mTMNjTLrboXBxKrADwv8kg1nLih0RWTgLmpysYOtH8iC0GguSXfb3i6LsfmShMAC4r6ASXoS36dJ_ylC_C-gJABkEyPHRiAJkuKEW_zKEuw-WxZ1yyss08qepYHm3govYYFHgoFG1OxWGBdy4qQtvPHXHStcx=w1084-h788-no", category_id: 1)
-tools.products.create(name:"Chemex", price:8000, description:"Best evva.", image_url:"https://lh3.googleusercontent.com/6hczFOhYuq7ofuYkmiRx1SYjSQew5qyVH1_0HXGAbk669ARPJViIqiup5IbXcSA13C9zoJJV3NcEtLZuUpGzAB4li9UP8V7M2U7OEbyU7erp9liClOvAI8rR3Oh3SsiOETQp9zthjQLpfVgAhMW7tPGHnsYZvlr4gNnzpKJcM57lisNR7JoI0ecKclV0Ou3sJYZ-lrWALCHYoPRtfdHFNApDwaGzn1ovmPgcBpa2vPPOKXL9mpIhO520FjcetcPAzkff8PQdH63Uy6gfbvDZyAWvCORnwjas4aR0Uxk5E222rfj0JThs8z6MhFSOX4fFElZcOsoIiD9D7PZK3Odi-Fm-fLts9nx8UdOnkbczHq1Z2G1MXtXVKl9pIa2PAk2ICoMuZxip8m4S9aAmvZZ4C4C8H4jcf4h6fBQv5ENJgXbn2RQC_lImMF2zxnVoH-kPLMwrPoJ-pwVL-sbUOvG3rah-8KIN0UckcIU8nWflNdpi2OIo6VLQ0LHnJUZWzcZTYL8MB0ulpaYlouI0TPCXXup3PtIT7xkYMWNzMfcf5qRnzXMNU2FlB6WKQERM7faa6Xud=w778-h762-no", category_id: 2)
-gifts.products.create(name:"Espresso Set", price:4500, description:"Get fancy.", image_url:"https://lh3.googleusercontent.com/9cmc3wI9KcLipERQz4T1AxKKYT_qlSIu9oxtWaPf4o8elDrbDf2yTHhslQUJnET6GNk7FbWF6Vhd8fQluWN0DBFCMFNJhejBc9ZJxjvedX0Vv5x-4FAw_1D1t7g5MDAr7Bpbr-gwWtq9Wz5j40TmEkGXJOV43j0h6R9fhfocTrdfG01k2tfUNMhay1sYmyatsz1ILiyJLtQr2_4dCOSrZPuz6qk8LPpIlJhhWFsAJNqH3SerrDyB_Q30TnpIUYG9AyvaF8Bll5yL5BZEMDlkvvsbk-0w1Pmf65liAMyN7ImqCisbbv7rAOtG_Ph4xyfonO-mH0n1qFSOvcoZ4GkV4dWD0_2yAtEBswsgAYdokvJ4ZH8Id_1KHHQZ9mnFVFe5beYhweRnpfbuEPyCEMoV-m7TpCtIPD_R98pirhs-gQKkQh_ks_Zcn6n7VH3LAkQOrRcRr5CAFAc0u6kZkSaaQTiCGnNAUGenMlPKL006l85SDsAimOdvfxmKOFyp0s4v_Q5TPUpSRky_rwSglNECYA6xfr0JAQBsJDF197S63lIyx7npNpdVzRmrXfpdvlUojNs3=w1090-h864-no", category_id: 3)
-tools.products.create(name:"Micro Grinder", price:4500, description:"Grind on the go.", image_url:"https://lh3.googleusercontent.com/pUKAqWrIVXBYrV0PfPasEdO5C4bIdSPVlMHRUa0XEN_cuJC_5GBcefcCxg_opChib3Y_QtyuNO0iMFTa8HKP2uX3M7OVYQmwuw9KTH8BOtgBe6VNlcfejY-jBetLI8c00fNoC-Zl27nNfppKYvteZ1jyJvqXPV1SGSxMPnxDb3HRbcbg79e74Ft5wR4HYcugITcN6sYEY1e_Xz8OQBLyzmn0fNO_4K4zO-vNUsCSKqjAKWa2CQxhTVngYx43G7i04zOFBFc0dJSv_l2eWOg7-yxYHSzOQz3A1ZFgLRq5acnj7Uae_98lcyYgNkHkOjud2LAuawhr4621z7tmodkgVpPH3ld0_8zZcET3-34fbucvjrgCfEhoVDIxljqpVsYc7cEj7_T1LLpqzKZTKzs1K7zKuWMZKBtU76MiVA2yY3hW2LkFd-xNBPrQW0-5X6HRPwyMeH1AcMCPFlOPuSxeCLoEpoM2YvrdyW5qHPhk9Wu0zJ5nMnYBtL_JBR3JdHlp2WS3ueIH0nq7Zoppn33n_chUIjhnYRVE7rd6qr9GFCPe6oB8x8GUJZ82IziyaMQCKdIy=w1192-h746-no", category_id: 2)
+
+tools.products.create(name: "Aeropress", price: 5000, description: "Single cup of awesome.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Aeropress.png")
+
+tools.products.create(name: "Baratza Esatto Accessory", price: 13000, description: "Weight-Based Grinding. Jib up.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Baratza+Esatto+Accessory.png")
+
+tools.products.create(name:"Bonavita Brewer", price: 15000, description: "Quality as fuh.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Bonavita+1900TS+Brewer.png")
+
+tools.products.create(name: "Dteaming Pitcher", price: 2000, description: "Tapered spout makes these pitchers ideal for pouring latte art.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Dteaming+Pitcher%2C+12oz.png")
+
+tools.products.create(name: "Hario Buono Kettle", price: 4000, description: "Hario took the classic pour over kettle and gave it a modern twist. Incred.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Hario+Buono+Kettle.png")
+
+tools.products.create(name: "Takahiro Kettle", price: 10000, description: "Ever-elusive Takahiro.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Takahiro+Kettle.png")
+
+tools.products.create(name: "The Automated", price: 5000, description: "Bye-bye 1970s coffeemaker, hello precision engineering.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/The+Automated.png")
+
+tools.products.create(name: "The Durable Basic", price: 8900, description:"Suited up and ready for travel.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/The+Durable+Basic.png")
+
+tools.products.create(name: "Tsuki Usagi Jirushi Slim Pot", price: 6000, description: "Pour in style.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Tsuki+Usagi+Jirushi+Slim+Pot.png")
+
+coffee.products.create(name:"Banko Gutiti Ethiopa", price: 2000, description:"Money in the Banko.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/banko_gutiti_ethiopia.jpg")
+
+coffee.products.create(name:"Bola de Oro", price: 2500, description:"Coffee gold.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/bola_de_oro.jpg")
+
+coffee.products.create(name:"Cheri Ethiopia", price: 1500, description:"Coffee sundae", image_url:"https://s3.amazonaws.com/littleowl-turing/products/cheri_ethiopia.jpg")
+
+coffee.products.create(name:"Dera Ela Ethiopa", price: 2000, description:"Dera Dera. So good.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/derar_ela_ethiopia.jpg")
+
+coffee.products.create(name:"Espresso Neat Blend", price: 2000, description:"Black tie event.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/espresso_neat_blend.jpg")
+
+coffee.products.create(name:"Finca San Matias", price: 2500, description:"Es todo que necessita.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/finca_san_matias.jpg")
+
+coffee.products.create(name:"Gatchatha AA Kenya", price: 2000, description:"Gatchatha have it.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gatchatha_aa_kenya.jpg")
+
+coffee.products.create(name:"Inter Continental Pack", price: 4000, description:"Study abroad.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/inter_continental_pack.jpg")
+
+coffee.products.create(name:"Kiamabara", price: 2000, description:"Unicorn tears.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/kiamabara.jpg")
+
+coffee.products.create(name:"Kiangoi Kenya", price: 2000, description:"Hemingway drinks the shit.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/kiangoi_kenya.jpg")
+
+coffee.products.create(name:"Kii Kenya", price: 2000, description:"Aliteration is always good.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/kii_kenya.jpg")
+
+coffee.products.create(name:"Los Carillos Guatemala", price: 2000, description:"Silky. Bold. Close to home.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/los_carillos_guatemala.jpg")
+
+coffee.products.create(name:"Nitsu Ruz Ethiopia", price: 2000, description:"Not your typical Ethiopian blend.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/nitsu_ruz_ethiopia.jpg")
+
+coffee.products.create(name:"Santa Clara Panama", price: 2000, description:"Not from Silicon Valley.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/santa_clara_panama.jpg")
+
+coffee.products.create(name:"Tanzania", price: 2000, description:"Fortune favors the brave.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/tanzania.jpg")
+
+coffee.products.create(name:"Terra Bella", price: 2000, description:"Gorgeous.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/terra_bella.jpg")
+
+gifts.products.create(name:"Espresso Set", price: 4000, description:"Get fancy.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/espresso+set.jpg")
+
+gifts.products.create(name:"Modern Art Desserts", price: 2000, description:"I heart dessert.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/Modern_Art_Desserts.jpg")
+
+gifts.products.create(name:"Blue Mug", price: 1000, description:"Go classic.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/blue+mug.jpg")
+
+gifts.products.create(name:"Chocolat", price: 2500, description:"Perfection.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/chocolat.jpg")
+
+gifts.products.create(name:"Fancy Pourover", price: 2500, description:"For the special occasion, everyday.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/fancy+pourover.jpg")
+
+gifts.products.create(name:"$20 Gift Card", price: 2000, description:"Share the Owl.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/gift+card+-+holiday.jpg")
+
+gifts.products.create(name:"LO Ornaments", price: 1000, description:"Never too early.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/ornaments.jpg")
+
+gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/pitcher.jpg")
