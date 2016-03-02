@@ -11,12 +11,26 @@
   color: white;
 }
 .cart-product {
+  border-top: 1px solid #DADFE1;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .product-title {
-  font-size: 200%;
+  font-size: 1.5em;
 }
 
-.product-info {
+.checkout-con {
+  padding-top: 30px;
+}
 
+.cart-total {
+  margin-top: 0px;
+  font-weight: bold;
+}
+
+.btn-checkout {
+  background-color: #27ae60;
+  color: white;
 }

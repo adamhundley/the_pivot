@@ -1,37 +1,67 @@
 <div id="product" class="container">
-  <div class="product-header">
-    <h2>Shopping Cart</h2>
+  <div class="cart">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        <div class="product-header">
+          <h2>Shopping Cart</h2>
+        </div>
+        <p>Order Total</p>
+        <h1 class="cart-total">$<%= cart_total(@products) %></h1>
+      </div>
+      <div class="col-xs-6 text-center checkout-con">
+        <div class="checkout">
+          <%= link_to "Checkout", root_path, class:"btn btn-checkout form-control" %>
+        </div>
+        <h6>or</h6>
+        <div class="continue-shopping">
+          <%= link_to "Continue Shopping", products_path, class:"btn btn-primary form-control" %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row cart-product">
-    <div class="col-xs-7">
-      <% @products.each do |product| %>
-        <div id="<%= product.first.id %>-product">
-          <div class="row">
-            <div class="col-xs-10 col-sm-6">
-              <div class="cart-image">
-                <%= image_tag(product.first.image_url, class: "product_image img-responsive img-rounded") %>
-              </div>
+    <% @products.each do |product| %>
+    <div class="row cart-product container">
+      <div id="<%= product.first.id %>-product">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="cart-image">
+              <%= image_tag(product.first.image_url, class: "product_image img-responsive img-rounded") %>
             </div>
-            <div class="col-xs-10 col-sm-6">
-              <div class="row">
-                <div class="product-info container">
-                  <p class="product-title"><%= product.first.name %></p>
+          </div>
+          <div class="col-xs-8">
+              <div class="product-info container">
+                <p class="product-title"><%= product.first.name %></p>
 
-                  <p>$<%= product.first.display_price(product.first.price) %></p>
+                <p>$<%= product.first.display_price(product.first.price) %></p>
 
-                  <h5><%= link_to "remove from cart", cart_path(product.first.id), method: :delete %></h5>
+                <div class="row text-left">
+                  <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>
+                    <input type="hidden" name="_method" value="patch">
+                    <div class="col-xs-4 col-sm-2 col-md-1">
+                    <select class="form-control" name="quantity">
+                      <option><%= product.last %></option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option id="option3">3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                  <div class="text-left">
+                    <%= submit_tag "Change quantity", class:"btn btn-little-owl"%>
+                  <% end %>
+                  </div>
                 </div>
-              </div>
+              <h5><%= link_to "remove from cart", cart_path(product.first.id), method: :delete %></h5>
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
-    <div class="col-xs-10 col-sm-5">
-      <div class="cart text-center">
-        <p>Order Total</p>
-        <h1>$<%= cart_total(@products) %></h1>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
