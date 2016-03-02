@@ -8,13 +8,13 @@ tools.products.create(name: "Baratza Esatto Accessory", price: 13000, descriptio
 
 tools.products.create(name:"Bonavita Brewer", price: 15000, description: "Quality as fuh.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Bonavita+1900TS+Brewer.png")
 
-tools.products.create(name: "Dteaming Pitcher", price: 2000, description: "Tapered spout makes these pitchers ideal for pouring latte art.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Dteaming+Pitcher%2C+12oz.png")
+tools.products.create(name: "Dteaming Pitcher", price: 2000, description: "Tapered. Latte art.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Dteaming+Pitcher%2C+12oz.png")
 
-tools.products.create(name: "Hario Buono Kettle", price: 4000, description: "Hario took the classic pour over kettle and gave it a modern twist. Incred.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Hario+Buono+Kettle.png")
+tools.products.create(name: "Hario Buono Kettle", price: 4000, description: "Classic pour over, modern twist.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Hario+Buono+Kettle.png")
 
 tools.products.create(name: "Takahiro Kettle", price: 10000, description: "Ever-elusive Takahiro.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Takahiro+Kettle.png")
 
-tools.products.create(name: "The Automated", price: 5000, description: "Bye-bye 1970s coffeemaker, hello precision engineering.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/The+Automated.png")
+tools.products.create(name: "The Automated", price: 5000, description: "Bye-bye 1970s coffeemaker.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/The+Automated.png")
 
 tools.products.create(name: "The Durable Basic", price: 8900, description:"Suited up and ready for travel.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/The+Durable+Basic.png")
 
