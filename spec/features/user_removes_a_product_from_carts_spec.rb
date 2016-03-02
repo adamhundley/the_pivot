@@ -16,7 +16,7 @@ RSpec.feature "UserRemovesAProductFromCarts", type: :feature do
     visit cart_index_path
 
     within("div##{product.id}-product") do
-      click_on "Remove"
+      click_on "remove from cart"
     end
 
     expect(current_path).to eq(cart_index_path)
@@ -29,7 +29,7 @@ RSpec.feature "UserRemovesAProductFromCarts", type: :feature do
     expect(page).to_not have_content(product.price/100)
 
     expect(page).to have_link "#{product.name}"
-    expect(page).to have_content("Cart Total: $18")
+    expect(page).to have_content("Order Total $18")
   end
 end
 

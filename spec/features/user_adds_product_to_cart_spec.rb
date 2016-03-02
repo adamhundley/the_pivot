@@ -26,9 +26,8 @@ RSpec.feature "UserAddsProductToCart", type: :feature do
     expect(current_path).to eq("/cart")
 
     expect(page).to have_content(product.name)
-    expect(page).to have_content(product.description)
-    expect(page).to have_content(product.image_url)
+    expect(page).to have_css("img[src*='#{product.image_url}']")
     expect(page).to have_content(product.price/100)
-    expect(page).to have_content("Cart Total: $33")
+    expect(page).to have_content("Order Total $33")
   end
 end

@@ -34,7 +34,7 @@
 
                 <p>$<%= product.first.display_price(product.first.price) %></p>
 
-                <div class="row text-left">
+                <div id="quantity-dropdown" class="row text-left">
                   <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>
                     <input type="hidden" name="_method" value="patch">
                     <div class="col-xs-5 col-sm-2 col-md-1">
