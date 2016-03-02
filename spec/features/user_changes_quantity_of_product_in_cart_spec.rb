@@ -16,7 +16,7 @@ RSpec.feature "UserChangesQunatityOfProductInCart", type: :feature do
       select "3",from: "quantity"
     end
 
-    click_on "Change quantity"
+    click_on "Update"
 
     expect(current_path).to eq(cart_index_path)
 
