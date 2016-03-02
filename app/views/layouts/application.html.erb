@@ -19,7 +19,7 @@
 <%= render partial: "shared/nav" %>
 
   <% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: "alert alert_#{type}" %>
+    <%= content_tag :div, sanitize(message), class: "alert alert_#{type}" %>
   <% end %>
 
 <div class="container">

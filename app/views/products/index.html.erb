@@ -1,19 +1,18 @@
-<div class="jumbotron">
-  <p>
-  <% @categories.each do |category| %>
-    <%= link_to category.name, "/#{category.name.downcase}" %>
-  <% end %>
-  </p>
-</div>
 <div id="products" class="row products">
   <% @categories.each do |category| %>
+  <div class="row">
     <h2><%= category.name %></h2>
+  </div>
+  <div class="row products-rows">
     <% category.products.each do |product| %>
-      <div class="col-xs-6 col-sm-2", >
-        <%= link_to image_tag(product.image_url, class: "product_images img-rounded", width: "250", height: "200"), product_path(product.id), id: "#{product.id}-product-image" %>
+      <div class="col-xs-6 col-sm-4 product-div">
+        <div class="product-img">
+          <%= link_to image_tag(product.image_url, class: "product-images img-rounded img-responsive"), product_path(product.id), id: "#{product.id}-product-image" %>
+        </div>
         <h3><%= link_to product.name, product_path(product.id), id: "#{product.id}-product" %></h3>
         <p><%= product.description %></p>
       </div>
     <% end %>
+  </div>
   <% end %>
 </div>

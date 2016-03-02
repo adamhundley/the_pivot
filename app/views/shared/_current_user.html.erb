@@ -13,7 +13,9 @@
       </li>
     </ul>
   </li>
-  <li class="pull-right">
-    <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
-  </li>
+  <% if !@cart.contents.empty? %>
+    <li class="pull-right">
+      <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
+    </li>
+  <% end %>
 </ul>
