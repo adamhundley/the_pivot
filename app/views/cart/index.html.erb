@@ -37,12 +37,12 @@
                 <div class="row text-left">
                   <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>
                     <input type="hidden" name="_method" value="patch">
-                    <div class="col-xs-4 col-sm-2 col-md-1">
+                    <div class="col-xs-5 col-sm-2 col-md-1">
                     <select class="form-control" name="quantity">
                       <option><%= product.last %></option>
                       <option>1</option>
                       <option>2</option>
-                      <option id="option3">3</option>
+                      <option>3</option>
                       <option>4</option>
                       <option>5</option>
                       <option>6</option>
