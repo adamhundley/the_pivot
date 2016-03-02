@@ -8,7 +8,7 @@
         <div class="product-img">
           <%= link_to image_tag(product.image_url, class: "product-images img-rounded img-responsive"), product_path(product.id), id: "#{product.id}-product-image" %>
         </div>
-        <h3><%= link_to product.name, product_path(product.id), id: "#{product.id}-product" %></h3>
+        <h4><%= link_to product.name, product_path(product.id), id: "#{product.id}-product" %></h4>
         <p><%= product.description %></p>
       </div>
     <% end %>

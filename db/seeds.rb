@@ -18,7 +18,7 @@ tools.products.create(name: "The Automated", price: 5000, description: "Bye-bye 
 
 tools.products.create(name: "The Durable Basic", price: 8900, description:"Suited up and ready for travel.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/The+Durable+Basic.png")
 
-tools.products.create(name: "Tsuki Usagi Jirushi Slim Pot", price: 6000, description: "Pour in style.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Tsuki+Usagi+Jirushi+Slim+Pot.png")
+tools.products.create(name: "Tsuki Usagi Jirushi Pot", price: 6000, description: "Pour in style.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/Tsuki+Usagi+Jirushi+Slim+Pot.png")
 
 coffee.products.create(name:"Banko Gutiti Ethiopa", price: 2000, description:"Money in the Banko.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/banko_gutiti_ethiopia.jpg")
 
