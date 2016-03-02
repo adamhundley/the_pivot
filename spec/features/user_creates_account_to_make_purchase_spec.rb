@@ -13,20 +13,21 @@ RSpec.feature "UserCreatesAccount", type: :feature do
     click_on "login"
     click_on "signup"
 
-    expect(current_path).to eq("/dashboard")
-    fill_in "full name", with: "John Adams"
+    expect(current_path).to eq("/users/new")
+    fill_in "first name", with: "John"
+    fill_in "last name", with: "Adams"
     fill_in "email", with: "test@test.com"
     fill_in "password", with: "password"
 
     click_on "signup"
 
-    expect(page).to have_content("Welcome to Little Owl, John.")
+    expect(page).to have_content("Hey John, welcome to Little Owl.")
 
     expect(current_path).to eq("/")
 
     #within whatever
     expect(page).to_not have_link("login")
-    expect(page).to have_content("John Adams")
+    expect(page).to have_content("John")
     expect(page).to have_link("logout")
     expect(page).to have_link("order history")
     expect(page).to have_link("settings")
