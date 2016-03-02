@@ -1,5 +1,11 @@
 <ul class="nav pull-left user-cart">
-  <% if current_user  %>
+  <% if current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
+    <% if !@cart.contents.empty? %>
+      <li class="pull-right">
+        <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
+      </li>
+    <% end %>
+  <% elsif current_user  %>
     <li class="dropdown pull-right">
       <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle"><i class="fa fa-user fa-lg"></i></a>
       <ul class="dropdown-menu">
