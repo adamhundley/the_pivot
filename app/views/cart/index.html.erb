@@ -1,13 +1,33 @@
 <ul>
 <% @products.each do |product| %>
   <div id="<%= product.first.id %>-product">
-    <li><%= product.first.name %></li>
-    <li><%= product.first.description %></li>
-    <li><%= product.first.image_url %></li>
-    <li><%= product.first.display_price(product.first.price) %></li>
-    <li>Quantity: <%= product.last %></li>
-    <li>Total: <%= product_total(product) %></li>
-    <%= button_to "Remove", cart_path(product.first.id), method: :delete %>
+    <div class="">
+      <li><%= product.first.name %></li>
+      <li><%= product.first.description %></li>
+      <li><%= product.first.image_url %></li>
+      <li><%= product.first.display_price(product.first.price) %></li>
+      <li>Total: <%= product_total(product) %></li>
+    </div>
+    <br>
+    <div class="">
+      <%= button_to "Remove", cart_path(product.first.id), method: :delete %>
+    </div>
+    <br>
+    <div  id="quantity-dropdown" class="">
+      <%= form_tag(cart_path(id: product.first.id)) do %>
+        <input type="hidden" name="_method" value="patch">
+        <select class="form-control" name="quantity">
+          <option><%= product.last %></option>
+          <option>1</option>
+          <option>2</option>
+          <option id="option3">3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select><br>
+        <%= submit_tag "Change quantity", class:"form-control btn btn-little-owl"%>
+      <% end %>
+    </div>
   </div>
 <% end %>
   <h3>Cart Total: $<%= cart_total(@products) %></h3>
