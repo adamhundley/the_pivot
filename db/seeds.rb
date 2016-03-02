@@ -44,7 +44,7 @@ coffee.products.create(name:"Kii Kenya", price: 2000, description:"Aliteration i
 
 coffee.products.create(name:"Los Carillos Guatemala", price: 2000, description:"Silky. Bold. Close to home.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/los_carillos_guatemala.jpg")
 
-coffee.products.create(name:"Nitsu Ruz Ethiopia", price: 2000, description:"Not your typical Ethiopian blend.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/nitsu_ruz_ethiopia.jpg")
+coffee.products.create(name:"Nitsu Ruz Ethiopia", price: 2000, description:"Not your typical blend.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/nitsu_ruz_ethiopia.jpg")
 
 coffee.products.create(name:"Santa Clara Panama", price: 2000, description:"Not from Silicon Valley.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/santa_clara_panama.jpg")
 
