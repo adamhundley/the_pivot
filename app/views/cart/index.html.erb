@@ -1,11 +1,14 @@
 <ul>
 <% @products.each do |product| %>
-  <li><%= product.first.name %></li>
-  <li><%= product.first.description %></li>
-  <li><%= product.first.image_url %></li>
-  <li><%= product.first.display_price(product.first.price) %></li>
-  <li>Quantity: <%= product.last %></li>
-  <li>Total: <%= product_total(product) %></li>
+  <div id="<%= product.first.id %>-product">
+    <li><%= product.first.name %></li>
+    <li><%= product.first.description %></li>
+    <li><%= product.first.image_url %></li>
+    <li><%= product.first.display_price(product.first.price) %></li>
+    <li>Quantity: <%= product.last %></li>
+    <li>Total: <%= product_total(product) %></li>
+    <%= button_to "Remove", cart_path(product.first.id), method: :delete %>
+  </div>
 <% end %>
   <h3>Cart Total: $<%= cart_total(@products) %></h3>
 </ul>

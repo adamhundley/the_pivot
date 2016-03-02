@@ -7,13 +7,11 @@
   border-radius: 5px;
   border:1px solid #DADFE1;
 }
-
 @media (max-width:767px) {
   .cart {
     margin-top: 10px;
   }
 }
-
 .product-header {
   margin-bottom: 20px;
 }
@@ -26,4 +24,18 @@
   text-align: center;
   color: white;
   background-color: #1abc9c;
+}
+.product-images {
+  width: 200px;
+  height:200px;
+  overflow:hidden;
+}
+.products {
+  margin-left: 15px;
+}
+.products-rows {
+  margin-top: 10px;
+}
+.product-div {
+  margin-top: 15px;
 }

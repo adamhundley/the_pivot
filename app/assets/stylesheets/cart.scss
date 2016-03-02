@@ -1,3 +1,15 @@
 // Place all the styles related to the Cart controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.alert_alert {
+  margin-top: -6px;
+  border-radius: 0px;
+  text-align: center;
+  color: white;
+  background-color: #e74c3c;
+}
+.alert_alert a{
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+}
