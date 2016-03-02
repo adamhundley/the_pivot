@@ -21,6 +21,6 @@ RSpec.feature "UserChangesQunatityOfProductInCart", type: :feature do
     expect(current_path).to eq(cart_index_path)
 
     expect(page).to have_content("3")
-    expect(page).to have_content("Cart Total: $45")
+    expect(page).to have_content("Order Total $45")
   end
 end
