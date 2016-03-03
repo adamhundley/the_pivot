@@ -28,7 +28,9 @@
       </li>
     <% end %>
   <% else %>
-    <li><%= link_to "login", login_path %></li>
+    <li class="dropdown pull-right">
+      <%= link_to "login", login_path %>
+    </li>
     <% if !@cart.contents.empty? %>
       <li class="pull-right">
         <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
