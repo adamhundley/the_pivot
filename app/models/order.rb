@@ -16,4 +16,11 @@ class Order < ActiveRecord::Base
       order_product.quantity * order_product.product.price
     end.inject(:+) / 100
   end
+
+
+  def process(products)
+    products.each do |product, quantity|
+      order_products.create(product_id: product.id, quantity: quantity)
+    end
+  end
 end

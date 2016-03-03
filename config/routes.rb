@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get "/orders/:order/thanks", to: "orders#thanks"
   end
 
+  resources :orders, only: [:new, :create]
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

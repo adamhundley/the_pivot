@@ -48,31 +48,11 @@
     <% end %>
     <br>
     <div class="container">
-      <div class="form-group text-center form-div">
-        <%= form_for(:order, url: user_orders_path) do |f| %>
-          <%= f.label :first_name, class:"sr-only"  %>
-          <%= f.text_field :first_name, required:true, value: current_user.first_name, placeholder: "first name", class:"form-control text-input" %><br>
-          <%= f.label :last_name, class:"sr-only"  %>
-          <%= f.text_field :last_name, required:true, value: current_user.last_name, placeholder: "last name", class:"form-control text-input" %><br>
-          <%= f.label :email, class:"sr-only"  %>
-          <%= f.text_field :email, required:true, value: current_user.email, placeholder: "email", class:"form-control text-input" %><br>
-          <%= f.label :street, class:"sr-only"  %>
-          <%= f.text_field :street, required:true, placeholder: "street", class:"form-control text-input" %><br>
-          <%= f.label :unit, class:"sr-only"  %>
-          <%= f.text_field :unit, placeholder: "Apt, Floor, Unit", class:"form-control text-input" %><br>
-          <%= f.label :city, class:"sr-only"  %>
-          <%= f.text_field :city, required:true, placeholder: "city", class:"form-control text-input" %><br>
-
-          <div id="state-dropdown" class="row text-left">
-          <%= f.select(:state, options_for_select(states_array), {prompt:"state"}, {id:"order-state", class:"form-control", required:true}) %>
-          </div>
-          <br>
-
-          <%= f.label :zip, class:"sr-only"  %>
-          <%= f.text_field :zip, required:true, placeholder: "zip", class:"form-control text-input" %><br>
-          <%= f.submit "Submit Order", class:"btn btn-checkout" %>
-        <% end %>
-      </div>
+      <% if current_user %>
+        <%= render partial: "checkout_form" %>
+      <% else %>
+        <%= render partial: "checkout_new_user_form" %>
+      <% end %>
     </div>
   </div>
 </div>
