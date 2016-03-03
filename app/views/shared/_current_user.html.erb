@@ -1,12 +1,12 @@
 <ul class="nav pull-left user-cart">
   <% if current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
     <% if !@cart.contents.empty? %>
-      <li class="pull-right">
+      <li class="pull-right nav-icon">
         <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
       </li>
     <% end %>
   <% elsif current_user  %>
-    <li class="dropdown pull-right">
+    <li class="dropdown pull-right nav-icon">
       <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle"><i class="fa fa-user fa-lg"></i></a>
       <ul class="dropdown-menu">
         <li>
@@ -23,16 +23,16 @@
       </ul>
     </li>
     <% if !@cart.contents.empty? %>
-      <li class="pull-right">
+      <li class="pull-right nav-icon">
         <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
       </li>
     <% end %>
   <% else %>
-    <li class="dropdown pull-right">
-      <%= link_to "login", login_path %>
+    <li class="pull-right nav-icon">
+      <a id="login" href="/login" style="color:#777; margin-top: 5px;"><i class="fa fa-sign-in fa-lg"></i></a>
     </li>
     <% if !@cart.contents.empty? %>
-      <li class="pull-right">
+      <li class="pull-right nav-icon">
         <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
       </li>
     <% end %>
