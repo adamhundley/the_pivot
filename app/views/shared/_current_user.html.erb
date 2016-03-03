@@ -13,9 +13,7 @@
           <a href="/">
 <%= current_user.first_name %></a>
         </li>
-        <li>
-          <a href="/">order history</a>
-        </li>
+        <li><%= link_to "order history", user_orders_path(current_user) %></li>
         <li>
           <a href="/">settings</a>
         </li>

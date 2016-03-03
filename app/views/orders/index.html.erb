@@ -1,0 +1,34 @@
+<div id="orders" class="container">
+  <div class="cart">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        <div class="product-header">
+          <h2>Orders</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+    <% @orders.each do |order| %>
+    <div class="row order container">
+      <div id="<%= order.id %>-order">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="order-info">
+              <p>Order id: <%= order.id %></p><br>
+              <p>Order total: $<%= order.total %></p><br>
+              <p><%= order.total %></p><br>
+              <% order.products.each do |product| %>
+                <p><%= product.name %></p>
+              <% end %>
+              <p><%= link_to "details", user_order_path(current_user, order) %></p><br>
+            </div>
+          </div>
+          <div class="col-xs-8">
+              <div class="order-info container">
+              </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

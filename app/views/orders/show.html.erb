@@ -1,0 +1,32 @@
+<div id="order" class="container">
+  <div class="cart">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        <p>Order Total</p>
+        <h1 class="cart-total">$<%= @order.total %></h1>
+      </div>
+    </div>
+  </div>
+    <% @order.order_products.each do |order_product| %>
+    <div class="row cart-order container">
+      <div id="<%= order_product.id %>-order-product">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="cart-image">
+              <%= image_tag(order_product.product.image_url, class: "order_image img-responsive img-rounded") %>
+            </div>
+          </div>
+          <div class="col-xs-8">
+              <div class="order-info container">
+                <p class="order-title"><%= order_product.product.name %></p>
+
+                <p>Quant: <%= order_product.quantity %></p>
+
+                <p>$<%= order_product.product.display_price(order_product.product.price) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
