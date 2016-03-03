@@ -1,0 +1,78 @@
+<div id="order" class="container">
+  <div class="cart">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        <div class="product-header">
+          <h2>Order</h2>
+        </div>
+        <p>Order Total</p>
+        <h1 class="cart-total">$<%= cart_total(@products) %></h1>
+      </div>
+    </div>
+  </div>
+    <% @products.each do |product| %>
+    <div class="row cart-product container">
+      <div id="<%= product.first.id %>-product">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="cart-image">
+
+              <%= image_tag(product.first.image_url, class: "product_image img-responsive img-rounded") %>
+            </div>
+          </div>
+          <div class="col-xs-8">
+              <div class="product-info container">
+                <p class="product-title"><%= product.first.name %></p>
+
+                <p>$<%= product.first.display_price(product.first.price) %></p>
+
+                <div id="quantity-dropdown" class="row text-left">
+                  <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>
+                    <input type="hidden" name="_method" value="patch">
+                    <div class="col-xs-5 col-sm-2 col-md-1">
+                    <select class="form-control" name="quantity">
+                      <option><%= product.last %></option>
+                      <%= render partial: "shared/options"  %>
+                    </select>
+                  </div>
+                  <div class="text-left">
+                    <%= submit_tag "Update", class:"btn btn-little-owl"%>
+                  <% end %>
+                  </div>
+                </div>
+              <h5><%= link_to "remove from cart", cart_path(product.first.id), method: :delete %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <br>
+    <div class="container">
+      <div class="form-group text-center form-div">
+        <%= form_for(:order, url: user_orders_path) do |f| %>
+          <%= f.label :first_name, class:"sr-only"  %>
+          <%= f.text_field :first_name, required:true, value: current_user.first_name, placeholder: "first name", class:"form-control text-input" %><br>
+          <%= f.label :last_name, class:"sr-only"  %>
+          <%= f.text_field :last_name, required:true, value: current_user.last_name, placeholder: "last name", class:"form-control text-input" %><br>
+          <%= f.label :email, class:"sr-only"  %>
+          <%= f.text_field :email, required:true, value: current_user.email, placeholder: "email", class:"form-control text-input" %><br>
+          <%= f.label :street, class:"sr-only"  %>
+          <%= f.text_field :street, required:true, placeholder: "street", class:"form-control text-input" %><br>
+          <%= f.label :unit, class:"sr-only"  %>
+          <%= f.text_field :unit, placeholder: "Apt, Floor, Unit", class:"form-control text-input" %><br>
+          <%= f.label :city, class:"sr-only"  %>
+          <%= f.text_field :city, required:true, placeholder: "city", class:"form-control text-input" %><br>
+
+          <div id="state-dropdown" class="row text-left">
+          <%= f.select(:state, options_for_select(states_array), {prompt:"state"}, {id:"order-state", class:"form-control", required:true}) %>
+          </div>
+          <br>
+
+          <%= f.label :zip, class:"sr-only"  %>
+          <%= f.text_field :zip, required:true, placeholder: "zip", class:"form-control text-input" %><br>
+          <%= f.submit "Submit Order", class:"btn btn-checkout" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

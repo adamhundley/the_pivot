@@ -1,0 +1,5 @@
+<% year = Time.now.year %>
+<% 15.times do %>
+  <option value=<%= year %>><%= year %></option>
+  <% year += 1 %>
+<% end %>

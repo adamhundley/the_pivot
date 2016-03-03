@@ -15,16 +15,7 @@
         <h2 class="text-center"><small>$</small><%= @product.display_price(@product.price) %></h2><br>
         <%= form_tag(cart_index_path(product_id: @product.id), method: "post") do %>
           <select class="form-control" name="quantity">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
+            <%= render partial: "shared/options"  %>
           </select><br>
           <%= submit_tag "Add to cart", class:"form-control btn btn-little-owl"%>
         <% end %>

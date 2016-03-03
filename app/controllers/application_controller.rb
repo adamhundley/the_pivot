@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :all_categories, :set_cart
   helper_method :current_user
 
+
   def all_categories
     @categories = Category.all
   end
