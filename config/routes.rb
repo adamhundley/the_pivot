@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :cart, only: [:create, :index, :destroy, :update]
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :orders, only: [:new, :index, :create]
+  end
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

@@ -1,25 +1,12 @@
-<div id="product" class="container">
+<div id="order" class="container">
   <div class="cart">
     <div class="row">
       <div class="col-xs-6 text-center">
         <div class="product-header">
-          <h2>Shopping Cart</h2>
+          <h2>Order</h2>
         </div>
         <p>Order Total</p>
         <h1 class="cart-total">$<%= cart_total(@products) %></h1>
-      </div>
-      <div class="col-xs-6 text-center checkout-con">
-        <div class="checkout">
-          <% if current_user %>
-            <%= link_to "Checkout", new_user_order_path(current_user), class:"btn btn-checkout form-control" %>
-          <% else %>
-            <%= link_to "Checkout", root_path, class:"btn btn-checkout form-control" %>
-          <% end %>
-        </div>
-        <h6>or</h6>
-        <div class="continue-shopping">
-          <%= link_to "Continue Shopping", products_path, class:"btn btn-primary form-control" %>
-        </div>
       </div>
     </div>
   </div>
@@ -67,5 +54,20 @@
         </div>
       </div>
     <% end %>
+    <div class="container">
+      <div class="form-group text-center form-div">
+        <%= form_for(:order, url: user_orders_path) do |f| %>
+          <%= f.label :street, class:"sr-only"  %>
+          <%= f.text_field :street, placeholder: "street", class:"form-control text-input" %><br>
+          <%= f.label :unit, class:"sr-only"  %>
+          <%= f.text_field :unit, placeholder: "unit", class:"form-control text-input" %><br>
+          <%= f.label :city, class:"sr-only"  %>
+          <%= f.text_field :city, placeholder: "city", class:"form-control text-input" %><br>
+          <%= f.label :state, class:"sr-only"  %>
+          <%= f.text_field :state, placeholder: "state", class:"form-control text-input" %><br>
+          <%= f.submit "signup", class:"btn btn-signup" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
