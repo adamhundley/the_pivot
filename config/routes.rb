@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :products, only: [:index, :show]
-  resources :cart, only: [:create, :index, :destroy, :update]
+  resource :cart, only: [:show]
+  resources :cart_products, only: [:create, :destroy, :update]
 
   resources :users, only: [:new, :create] do
     resources :orders, only: [:new, :index, :create, :show]
     get "/orders/:order/thanks", to: "orders#thanks"
   end
+
+  resources :orders, only: [:new, :create]
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

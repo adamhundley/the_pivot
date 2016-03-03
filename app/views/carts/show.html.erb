@@ -6,14 +6,14 @@
           <h2>Shopping Cart</h2>
         </div>
         <p>Order Total</p>
-        <h1 class="cart-total">$<%= cart_total(@products) %></h1>
+        <h1 class="cart-total">$<%= cart_total(@cart.products) %></h1>
       </div>
       <div class="col-xs-6 text-center checkout-con">
         <div class="checkout">
           <% if current_user %>
             <%= link_to "Checkout", new_user_order_path(current_user), class:"btn btn-checkout form-control" %>
           <% else %>
-            <%= link_to "Checkout", root_path, class:"btn btn-checkout form-control" %>
+            <%= link_to "Checkout", new_order_path, class:"btn btn-checkout form-control" %>
           <% end %>
         </div>
         <h6>or</h6>
@@ -23,27 +23,27 @@
       </div>
     </div>
   </div>
-    <% @products.each do |product| %>
+    <% @cart.products.each do |product| %>
     <div class="row cart-product container">
-      <div id="<%= product.first.id %>-product">
+      <div id="<%= product.id %>-product">
         <div class="row">
           <div class="col-xs-4">
             <div class="cart-image">
-              <%= image_tag(product.first.image_url, class: "product_image img-responsive img-rounded") %>
+              <%= image_tag(product.image_url, class: "product_image img-responsive img-rounded") %>
             </div>
           </div>
           <div class="col-xs-8">
               <div class="product-info container">
-                <p class="product-title"><%= product.first.name %></p>
+                <p class="product-title"><%= product.name %></p>
 
-                <p>$<%= product.first.display_price(product.first.price) %></p>
+                <p>$<%= product.display_price %></p>
 
                 <div id="quantity-dropdown" class="row text-left">
-                  <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>
+                  <%= form_tag(cart_product_path(id: product.id), class:"form-inline") do %>
                     <input type="hidden" name="_method" value="patch">
                     <div class="col-xs-5 col-sm-2 col-md-1">
                     <select class="form-control" name="quantity">
-                      <option><%= product.last %></option>
+                      <option><%= product.quantity %></option>
                       <%= render partial: "shared/options" %>
                     </select>
                   </div>
@@ -52,7 +52,7 @@
                   <% end %>
                   </div>
                 </div>
-              <h5><%= link_to "remove from cart", cart_path(product.first.id), method: :delete %></h5>
+              <h5><%= link_to "remove from cart", cart_product_path(product.id), method: :delete %></h5>
             </div>
           </div>
         </div>
