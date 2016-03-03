@@ -13,14 +13,12 @@ RSpec.feature "UserRemovesAProductFromCarts", type: :feature do
     visit "/products/#{product2.id}"
     click_on "Add to cart"
 
-    visit cart_index_path
-
+    visit cart_path
     within("div##{product.id}-product") do
       click_on "remove from cart"
     end
 
-    expect(current_path).to eq(cart_index_path)
-
+    expect(current_path).to eq(cart_path)
 
     expect(page).to have_content("You have removed #{product.name} from your cart.")
 
