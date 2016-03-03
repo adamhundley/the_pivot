@@ -6,7 +6,7 @@
           <h2>Order</h2>
         </div>
         <p>Order Total</p>
-        <h1 class="cart-total">$<%= cart_total(@products) %></h1>
+        <h1 class="cart-total">$<%= cart_total(@cart.products) %></h1>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
               <div class="product-info container">
                 <p class="product-title"><%= product.first.name %></p>
 
-                <p>$<%= product.first.display_price(product.first.price) %></p>
+                <p>$<%= product.first.display_price %></p>
 
                 <div id="quantity-dropdown" class="row text-left">
                   <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>

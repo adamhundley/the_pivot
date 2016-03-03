@@ -13,4 +13,22 @@ class Cart
   def count
     contents.values.sum
   end
+
+  def products
+    contents.map do |product_id, quantity|
+      CartProduct.new(product_id, quantity)
+    end
+  end
+
+  def empty?
+    contents.empty?
+  end
+
+  def remove_product_from_cart(id)
+    contents.reject! {|k| k == id}
+  end
+
+  def update(params)
+    contents[params[:id]] = params[:quantity].to_i
+  end
 end
