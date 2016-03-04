@@ -1,5 +1,7 @@
 <ul class="nav pull-left user-cart">
-  <% if current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
+  <% if current_user && current_user.admin? %>
+
+  <% elsif current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
     <% if !@cart.contents.empty? %>
       <li class="pull-right nav-icon">
         <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
