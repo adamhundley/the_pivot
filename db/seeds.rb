@@ -67,3 +67,24 @@ gifts.products.create(name:"$20 Gift Card", price: 2000, description:"Share the 
 gifts.products.create(name:"LO Ornaments", price: 1000, description:"Never too early.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/ornaments.jpg")
 
 gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/pitcher.jpg")
+
+1000.times do
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  email = Faker::Internet.free_email(first_name)
+  user = User.new(first_name: first_name, last_name: last_name, email: email, password: "password")
+
+  if user.save
+    user.created_at = Faker::Time.between(DateTime.now - 2000, DateTime.now - 1000)
+    
+    rand(10).times do
+      order = user.orders.create(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, first_name: first_name, last_name: last_name, email: email)
+
+      order.created_at = Faker::Time.between(DateTime.now - 1000, DateTime.now)
+
+      rand(20).times do
+        order.order_products.create(product_id: Product.order("RANDOM()").first.id, quantity: rand(10))
+      end
+    end
+  end
+end
