@@ -16,11 +16,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render partial: "shared/nav" %>
+  <% if current_user && current_user.admin? %>
+    <%= render partial: "shared/admin_nav" %>
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, sanitize(message), class: "alert alert_#{type} admin-flash" %>
+    <% end %>
+  <% else %>
+  <%= render partial: "shared/nav" %>
 
   <% flash.each do |type, message| %>
     <%= content_tag :div, sanitize(message), class: "alert alert_#{type}" %>
   <% end %>
+<% end %>
 
 <div class="container">
 

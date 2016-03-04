@@ -1,24 +1,5 @@
 <ul class="nav pull-left user-cart">
-  <% if current_user && current_user.admin? %>
-    <li class="dropdown pull-right nav-icon">
-      <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle"><i class="fa fa-user fa-lg"></i></a>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#">
-            <%= current_user.first_name.capitalize %></a>
-        </li>
-        <li>
-          <a href="/">settings</a>
-        </li>
-        <li>
-          <%= link_to "logout", logout_path, method: :delete %>
-        </li>
-      </ul>
-    </li>
-    <li class="pull-right nav-icon">
-      <a id="menu-toggle" href="#menu-toggle" style="color:#777; margin-top: 5px;", class"admin-menu-toggle"><i class="fa fa-compass fa-lg"></i></a>
-    </li>
-  <% elsif current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
+  <% if current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
     <% if !@cart.contents.empty? %>
       <li class="pull-right nav-icon">
         <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>

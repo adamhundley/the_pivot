@@ -1,0 +1,30 @@
+<nav role="navigation" class="navbar navbar-default custom-navbar">
+  <div class="nav-container">
+    <%= render partial: "shared/navbar_brand" %>
+    <div class="navbar-nav pull-right">
+      <ul class="nav pull-left user-cart">
+        <li class="dropdown pull-right nav-icon">
+          <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle">
+            <i class="fa fa-user fa-lg"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+                <%= link_to current_user.first_name.capitalize, admin_dashboard_path %>
+            </li>
+            <li>
+              <a href="/">settings</a>
+            </li>
+            <li>
+              <%= link_to "logout", logout_path, method: :delete %>
+            </li>
+          </ul>
+        </li>
+        <li class="pull-right nav-icon">
+          <a id="menu-toggle" href="#menu-toggle" style="color:#777; margin-top: 5px;", class"admin-menu-toggle">
+            <i class="fa fa-compass fa-lg"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

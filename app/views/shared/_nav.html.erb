@@ -1,53 +1,15 @@
 <nav role="navigation" class="navbar navbar-default custom-navbar">
   <div class="nav-container">
-    <div class="navbar-header pull-left">
-        <a class="logo-link" href="/"><%= image_tag("nav-logo.png", id:"nav-logo_img", class:"logo-img") %>
-        <span class="little co-name">LITTLE </span><span class="owl co-name"> OWL</span></a><br>
-    </div>
+    <%= render partial: "shared/navbar_brand" %>
     <div class="navbar-nav pull-right">
       <%= render partial: "shared/current_user" %>
-
-      <!-- Required bootstrap placeholder for the collapsed menu -->
-      <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+      <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span><span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
 
-    <!-- The Collapsing items            navbar-left or navbar-right -->
-    <div class="collapse navbar-collapse navbar-left">
-      <ul class="nav navbar-nav pull-right menus">
-        <li class="dropdown pull-right">
-          <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle">craft</i></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="/">items</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown pull-right">
-          <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle">shop</i></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="/coffee">coffee</a>
-            </li>
-            <li>
-              <a href="/tools">tools</a>
-            </li>
-            <li>
-              <a href="/gifts">gifts</a>
-            </li>
-            <li>
-              <a href="/products">shop all</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown pull-right">
-          <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle">about</i></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="/">items</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+    <%= render partial: "shared/navbar_collapse" %>
   </div>
 </nav>
