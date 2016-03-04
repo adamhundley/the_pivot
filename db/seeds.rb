@@ -93,4 +93,4 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
   end
 end
 
-User.create(first_name: "admin", last_name: "admin", email: "admin@littleowl.com", password: "password")
+User.create(first_name: "admin", last_name: "admin", email: "admin@littleowl.com", password: "password", role: 1)
