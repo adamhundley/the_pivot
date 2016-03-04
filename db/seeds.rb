@@ -75,19 +75,19 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
   user = User.new(first_name: first_name, last_name: last_name, email: email, password: "password")
 
   if user.save
-    date = Faker::Time.between(DateTime.now - 2000, DateTime.now - 1000)
+    date = Faker::Time.between(DateTime.now - 700, DateTime.now - 1)
     user.update(created_at: date, updated_at: date)
 
     rand(1..4).times do
       order = user.orders.create(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, first_name: first_name, last_name: last_name, email: email)
 
-      date = Faker::Time.between(DateTime.now - 1000, DateTime.now)
-      order.update(created_at: date, updated_at: date)
+      order_date = Faker::Time.between(date, DateTime.now)
+      order.update(created_at: order_date, updated_at: order_date)
 
       rand(1..7).times do
         order_product = order.order_products.create(product_id: Product.order("RANDOM()").first.id, quantity: rand(10))
 
-        order_product.update(created_at: date, updated_at: date)
+        order_product.update(created_at: order_date, updated_at: order_date)
       end
     end
   end
