@@ -68,7 +68,7 @@ gifts.products.create(name:"LO Ornaments", price: 1000, description:"Never too e
 
 gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", image_url:"https://s3.amazonaws.com/littleowl-turing/products/gifts/pitcher.jpg")
 
-1000.times do
+300.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = Faker::Internet.free_email(first_name)
@@ -78,13 +78,13 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
     date = Faker::Time.between(DateTime.now - 2000, DateTime.now - 1000)
     user.update(created_at: date, updated_at: date)
 
-    rand(1..10).times do
+    rand(1..4).times do
       order = user.orders.create(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, first_name: first_name, last_name: last_name, email: email)
 
       date = Faker::Time.between(DateTime.now - 1000, DateTime.now)
       order.update(created_at: date, updated_at: date)
 
-      rand(1..20).times do
+      rand(1..7).times do
         order_product = order.order_products.create(product_id: Product.order("RANDOM()").first.id, quantity: rand(10))
 
         order_product.update(created_at: date, updated_at: date)

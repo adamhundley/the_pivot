@@ -1,0 +1,29 @@
+<div id="wrapper">
+       <!-- Sidebar -->
+       <div id="sidebar-wrapper">
+           <ul class="sidebar-nav">
+               <li class="sidebar-brand">
+                   <a href="#">
+                       Hey <%= current_user.first_name.capitalize %>
+                   </a>
+               </li>
+               <li>
+                  <%= link_to "dashboard", admin_dashboard_path %>
+               </li>
+               <li>
+                   <a href="#">edit products</a>
+               </li>
+               <li>
+                   <a href="#">add products</a>
+               </li>
+               <li>
+                   <a href="#">customer data</a>
+               </li>
+               <li>
+                   <a href="#">sales data</a>
+               </li>
+               <li>
+                   <a href="#">remove user</a>
+               </li>
+           </ul>
+       </div>
