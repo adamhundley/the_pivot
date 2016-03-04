@@ -17,5 +17,4 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   get "/:name", to: "categories#show"
-
 end
