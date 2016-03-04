@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create] do
     resources :orders, only: [:new, :index, :create, :show]
-    get "/orders/:order/thanks", to: "orders#thanks"
+    get "/orders/:order_id/thanks", to: "orders#thanks", as: "thanks"
   end
 
   resources :orders, only: [:new, :create]

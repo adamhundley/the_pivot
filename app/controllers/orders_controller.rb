@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       @order.process(order_processor.products)
       flash[:info] = "Thanks for your order! :)"
       session[:cart] = nil
-      redirect_to "/users/#{current_user.id}/orders/#{@order.id}/thanks"
+      redirect_to user_thanks_path(current_user, @order.id)
     else
       flash.now[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."
       render :new
@@ -30,11 +30,11 @@ class OrdersController < ApplicationController
   end
 
   def thanks
-    @order = Order.find(params[:order])
+    @order = Order.find(params[:order_id])
   end
 
   def index
-    @orders = User.find(params[:user_id]).orders
+    @orders = current_user.orders
   end
 
 private
