@@ -5,7 +5,7 @@
     <%= f.label :last_name, class:"sr-only"  %>
     <%= f.text_field :last_name, required:true, value: current_user.last_name, placeholder: "last name", class:"form-control text-input" %><br>
     <%= f.label :email, class:"sr-only"  %>
-    <%= f.text_field :email, required:true, value: current_user.email, placeholder: "email", class:"form-control text-input" %><br>
+    <%= f.email_field :email, required:true, value: current_user.email, placeholder: "email", class:"form-control text-input" %><br>
     <%= f.label :street, class:"sr-only"  %>
     <%= f.text_field :street, required:true, placeholder: "street", class:"form-control text-input" %><br>
     <%= f.label :unit, class:"sr-only"  %>

@@ -2,7 +2,7 @@
   <div class="form-group text-center form-div">
     <%= form_for(:session, url: login_path, autocomplete: :off) do |f| %>
       <%= f.label :email, class:"sr-only"  %>
-      <%= f.text_field :email, placeholder: "email", class:"form-control text-input" %><br>
+      <%= f.email_field :email, placeholder: "email", class:"form-control text-input" %><br>
       <%= f.label :password, class:"sr-only"  %>
       <%= f.password_field :password, placeholder: "password", class:"form-control text-input" %><br>
       <%= f.submit "login", class:"btn btn-little-owl" %>
