@@ -25,10 +25,4 @@ RSpec.feature "AuthenticatedUserSecurity", type: :feature do
 
     expect(page).to have_content("Hey person, stop trying to hack our shit.")
   end
-
 end
-# Background: An authenticated user and the ability to add an admin user
-#       As an Authenticated User
-#       I cannot view another user's private data (current or past orders, etc)
-#       I cannot view the administrator screens or use admin functionality
-#       I cannot make myself an admin

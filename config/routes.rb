@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
+    resources :products, only: [:new, :create]
   end
+
   resources :orders, only: [:new, :create]
 
   get "/login", to: "sessions#new"

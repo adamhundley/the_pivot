@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   enum role: %w(default admin super_admin)
 
   def admin_message
-    ["Life is good."]
+    ["Life is good, #{self.first_name}."]
   end
 end

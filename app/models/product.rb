@@ -5,9 +5,15 @@ class Product < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true
   validates :description, presence: true
-  validates :image_url, presence: true
   validates :category_id, presence: true
 
+  has_attached_file :image,
+      styles: { index: '275x175>', show: '550x350<' },
+      storage: :s3,
+      bucket: 'xxxxxxxxx',
+      s3_credentials: {access_key_id: 'xxxxxxxxxxx', secret_access_key: 'xxxxxxxxxxx'}
+
+ validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def display_price
     price.to_i / 100
