@@ -15,9 +15,11 @@
       <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
       <div class="form-inline">
         <div class="form-group">
-        <input id="imageFormCover" class="form-control" type="text">
+          <label class="file">
+        <input id="imageFormCover" class="form-control" type="text" readonly>
+        </label>
+        <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">browse for image</a>
       </div>
-      <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">browse for image</a>
       <br>
       </div>
       <br>
