@@ -27,7 +27,7 @@ RSpec.describe Category, :type => :model do
 
   it "has many products" do
     category = Category.create(valid_attribute)
-    product  = Product.create(name: "ethiopian", price: 100, description: "is guud", image_url:"some picture", category_id: category.id)
+    product  = Product.create(name: "ethiopian", price: 100, description: "is guud", image: open("https://s3.amazonaws.com/littleowl-turing/products/Bonavita+1900TS+Brewer.png"), category_id: category.id)
     category.products << product
 
     expect(category.products.count).to eq(1)
