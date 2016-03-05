@@ -9,9 +9,7 @@ class Product < ActiveRecord::Base
 
   has_attached_file :image,
       styles: { index: '275x175>', show: '550x350<' },
-      storage: :s3,
-      bucket: 'xxxxxxxxx',
-      s3_credentials: {access_key_id: 'xxxxxxxxxxx', secret_access_key: 'xxxxxxxxxxx'}
+      image_path: '/images/:attachment/missing_:style.png'
 
  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 

@@ -14,6 +14,7 @@ gem 'rails_12factor', group: :production
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'paperclip'
+gem 'figaro'
 gem 'aws-sdk', '< 2.0'
 
 
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
-  gem 'dotenv-rails'
 end
 
 group :development do

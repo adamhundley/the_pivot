@@ -8,7 +8,7 @@ RSpec.feature "AdminCanAddItems", type: :feature do
                           password: 'password',
                           role: 1
                           )
-    category = Category.create(name: "coffee")
+    Category.create(name: "coffee")
     visit '/'
 
     click_on "login"
@@ -30,6 +30,7 @@ RSpec.feature "AdminCanAddItems", type: :feature do
     within "div#category-dropdown" do
       select "coffee", from: "product-category"
     end
-    
+
+    expect(page).to have_content("browse for image")
   end
 end

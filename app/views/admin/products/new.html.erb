@@ -10,8 +10,17 @@
       <div id="category-dropdown" class="row text-left">
       <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt:"category"}, {id:"product-category", class:"form-control", required:true}) %>
       </div>
-      <%= f.label :image, class:""  %>
-      <%= f.file_field :image, placeholder: "product image", class:"form-control text-input" %><br>
+      <br>
+      <%= f.label :image, class:"sr-only"  %>
+      <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
+      <div class="form-inline">
+        <div class="form-group">
+        <input id="imageFormCover" class="form-control" type="text">
+      </div>
+      <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">browse for image</a>
+      <br>
+      </div>
+      <br>
       <%= f.submit "create product", class:"btn btn-little-owl" %>
     <% end %>
   </div>

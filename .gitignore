@@ -11,6 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
-# Ignore environment confguration files.
-config/database.yml
-.env
+
+# Ignore application configuration
+/config/application.yml

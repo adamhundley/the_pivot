@@ -4,7 +4,7 @@ RSpec.feature "NonUserCanPlaceOrder", type: :feature do
   scenario "non-user places order and views previous orders" do
     category = Category.create(name: "coffee")
     product = category.products.create(name:"Ethiopian", price:1500,
-    description:"Ethiopian coffee is super good", image_url:"http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg")
+    description:"Ethiopian coffee is super good", image: open("http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg"))
     user = User.create(first_name: "John",
                        last_name: "Adams",
                        email: "email@example.com",
