@@ -11,7 +11,7 @@
                    <a href="#">edit products</a>
                </li>
                <li>
-                   <a href="#">add products</a>
+                  <%= link_to "add product", new_admin_product_path %>
                </li>
                <li>
                    <a href="#">customer data</a>
@@ -21,5 +21,17 @@
                </li>
                <li>
                    <a href="#">remove user</a>
+               </li>
+               <li class="sidebar-brand">
+                  <a href="#">user interface</a>
+               </li>
+               <li>
+                   <a href="#">about</a>
+               </li>
+               <li>
+                   <%= link_to "shop all", products_path %>
+               </li>
+               <li>
+                   <a href="#">craft</a>
                </li>
            </ul>

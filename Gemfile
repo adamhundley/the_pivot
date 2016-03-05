@@ -13,6 +13,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk', '< 2.0'
+
 
 group :development, :test do
   gem 'rspec'

@@ -28,4 +28,5 @@ def create_and_stub_admin
                         role: 1
                         )
   ApplicationController.any_instance.stub(:current_user) {admin}
+  admin
 end
