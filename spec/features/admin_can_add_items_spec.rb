@@ -24,10 +24,10 @@ RSpec.feature "AdminCanAddItems", type: :feature do
 
     expect(current_path).to eq(new_admin_product_path)
 
+    within "div#new-product" do
     fill_in "name", with: "Ethiopian"
     fill_in "price", with: 100
     fill_in "description", with: "is guud"
-    within "div#category-dropdown" do
       select "coffee", from: "product-category"
     end
 

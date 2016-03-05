@@ -1,24 +1,22 @@
 <div class="container">
-  <div class="form-group text-center form-div">
+  <div id="new-product" class="form-group has success text-center form-div col-xs-7">
     <%= form_for [:admin, @product] do |f| %>
       <%= f.label :name, class:"sr-only"  %>
-      <%= f.text_field :name, placeholder: "name", class:"form-control text-input" %><br>
+      <%= f.text_field :name, placeholder: "name", class:"form-control form-control-success" %><br>
       <%= f.label :price, class:"sr-only"  %>
       <%= f.text_field :price, placeholder: "price", class:"form-control text-input" %><br>
       <%= f.label :description, class:"sr-only"  %>
       <%= f.text_field :description, placeholder: "description", class:"form-control text-input" %><br>
-      <div id="category-dropdown" class="row text-left">
       <%= f.collection_select(:category_id, Category.all, :id, :name, {prompt:"category"}, {id:"product-category", class:"form-control", required:true}) %>
-      </div>
       <br>
       <%= f.label :image, class:"sr-only"  %>
       <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
       <div class="form-inline">
         <div class="form-group">
           <label class="file">
-        <input id="imageFormCover" class="form-control" type="text" readonly>
-        </label>
-        <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">browse for image</a>
+          <input id="imageFormCover" class="form-control" type="text" readonly>
+          <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">browse for image</a>
+          </label>
       </div>
       <br>
       </div>
