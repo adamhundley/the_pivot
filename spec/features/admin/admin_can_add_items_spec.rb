@@ -8,6 +8,7 @@ RSpec.feature "AdminCanAddItems", type: :feature do
                           password: 'password',
                           role: 1
                           )
+                          
     Category.create(name: "coffee")
     visit '/'
 

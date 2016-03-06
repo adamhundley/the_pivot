@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
-    resources :products, only: [:new, :create]
+    get "/inactive_products", to: "products#inactive_index", as: "inactive_products"
+    resources :products, only: [:new, :create, :index, :update]
   end
 
   resources :orders, only: [:new, :create]

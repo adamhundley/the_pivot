@@ -8,12 +8,24 @@ class Product < ActiveRecord::Base
   validates :category_id, presence: true
 
   has_attached_file :image,
-      styles: { index: '275x175>', show: '550x350<' },
+      styles: { index: '275x175>', show: '550x350<', small: '137.5x87.5>' },
       image_path: '/images/:attachment/missing_:style.png'
 
  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def display_price
     price.to_i / 100
+  end
+
+  def self.active_index
+    where(inactive: false).order(:name)
+  end
+
+  def self.inactive_index
+    where(inactive: true).order(:name)
+  end
+
+  def inactive?
+    inactive
   end
 end

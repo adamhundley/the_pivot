@@ -8,7 +8,7 @@
                   <%= link_to "dashboard", admin_dashboard_path %>
                </li>
                <li>
-                   <a href="#">edit products</a>
+                  <%= link_to "edit products", admin_products_path %>
                </li>
                <li>
                   <%= link_to "add product", new_admin_product_path %>
@@ -21,6 +21,9 @@
                </li>
                <li>
                    <a href="#">remove user</a>
+               </li>
+               <li>
+                  <%= link_to "inactive products", admin_inactive_products_path %>
                </li>
                <li class="sidebar-brand">
                   <a href="#">user interface</a>
