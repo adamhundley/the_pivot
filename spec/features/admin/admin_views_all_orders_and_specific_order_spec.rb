@@ -14,6 +14,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
     order1 = user.orders.create(street: "1600 pennslyvania", city: "washington", state: "District of Columbia", zip: "46250", first_name: "jonathon", last_name: "adams", email: "spam@foundingfathers.biz")
       order_product1 = order1.order_products.create(product_id: product1.id, quantity: 10)
       order_product2 = order1.order_products.create(product_id: product3.id, quantity: 11)
+      order1.comments.create(comment: "Test comment")
 
     order2 = user.orders.create(street: "1600 pennslyvania", city: "washington", state: "District of Columbia", zip: "46250", first_name: "jonathon", last_name: "adams", email: "spam@foundingfathers.biz")
       order_product3 = order2.order_products.create(product_id: product2.id, quantity: 1)
@@ -44,43 +45,40 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
       expect(page).to have_content(order1.total)
       expect(page).to have_content(order1.product_quantity)
       expect(page).to_not have_content(order2.total)
-
-      fill_in "comment", with: "this is test comment, jonathon."
-
       select "completed", from: "order_status"
       click_on "update"
-
-      expect(current_path).to eq(admin_orders_path)
-      expect(Order.first.status).to eq("completed")
-
-      expect(Order.first.comment).to eq("this is test comment, jonathon.")
-
-      click_on(order1.id)
-      save_and_open_page
-
-      expect(current_path).to eq(admin_order_path(order1.id))
-
-        expect(page).to have_content(order1.id)
-        expect(page).to have_content(order1.total)
-        expect(page).to have_content(order1.product_quantity)
-        expect(Order.first.status).to eq("completed")
-        expect(Order.first.comment).to eq("this is test comment, jonathon.")
-        expect(page).to have_button("update")
-
-
-        expect(page).to have_content(order1.first_name)
-        expect(page).to have_content(order1.last_name)
-        expect(page).to have_content("1600 pennslyvania")
-        expect(page).to have_content(order1.city)
-        expect(page).to have_content(order1.state)
-        expect(page).to have_content(order1.zip)
-
-        fill_in "comment", with: "blah blah blah."
-
-        expect(page).to have_content(order_product1.product.name)
-        expect(page).to have_content(order_product1.quantity)
-        expect(page).to have_content(order_product1.product.price)
-        expect(page).to have_content(order_product1.total)
     end
+
+    expect(current_path).to eq(admin_orders_path)
+    expect(Order.first.status).to eq("completed")
+
+    click_on(order1.id)
+
+    expect(current_path).to eq(admin_order_path(order1.id))
+    within "div#order-information" do
+      expect(page).to have_content(order1.id)
+      expect(page).to have_content(order1.display_total)
+      expect(Order.first.status).to eq("completed")
+      expect(page).to have_button("update")
+    end
+
+    within "div#order-comments" do
+      expect(Order.first.comments.last.comment).to eq("Test comment")
+      expect(page).to have_button("add comment")
+    end
+
+    within "div#customer-information" do
+      expect(page).to have_content(order1.first_name)
+      expect(page).to have_content(order1.last_name)
+      expect(page).to have_content("1600 pennslyvania")
+      expect(page).to have_content(order1.city)
+      expect(page).to have_content(order1.state)
+      expect(page).to have_content(order1.zip)
+    end
+
+    expect(page).to have_content(order_product1.product.name)
+    expect(page).to have_content(order_product1.quantity)
+    expect(page).to have_content(order_product1.product.display_price)
+    expect(page).to have_content(order_product1.display_total)
   end
 end

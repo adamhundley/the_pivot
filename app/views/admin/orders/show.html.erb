@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-xs-4 order-show-header" id="customer-information">
-      <h3><span><%= @order.name %></span></h3>
+      <h3><span><%= @order.name %></span></h3><br>
       <% if @order.unit %>
         <%= @order.street %>, Unit:<%= @order.unit %>
       <% else %>
@@ -25,7 +25,7 @@
   </div>
   <br>
   <div class="row">
-    <div class="table-responsive" id="order-information">
+    <div class="table-responsive" id="order-comments">
       <table class="table order-info-table table-condensed">
       <%= form_for [:admin, @comment] do |f| %>
         <tr>
