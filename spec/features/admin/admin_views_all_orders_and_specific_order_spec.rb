@@ -1,33 +1,60 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "AdminViewsAllOrders", type: :feature do
   scenario "they see all of the orders" do
     coffee = Category.create(name:"coffee")
 
-    product1 = coffee.products.create(name:"Finca San Matias", price: 2500, description:"Es todo que necessita.", image: open("https://s3.amazonaws.com/littleowl-turing/products/finca_san_matias.jpg"))
-    product2 = coffee.products.create(name:"Gatchatha AA Kenya", price: 2000, description:"Gatchatha have it.", image: open("https://s3.amazonaws.com/littleowl-turing/products/gatchatha_aa_kenya.jpg"))
-    product3 = coffee.products.create(name:"Inter Continental Pack", price: 4000, description:"Study abroad.", image: open("https://s3.amazonaws.com/littleowl-turing/products/inter_continental_pack.jpg"))
+    product1 = coffee.products.create(name: "Finca San Matias",
+                                      price: 2500,
+                                      description: "Es todo que necessita.",
+                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/finca_san_matias.jpg"))
+    product2 = coffee.products.create(name: "Gatchatha AA Kenya",
+                                      price: 2000,
+                                      description: "Gatchatha have it.",
+                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/gatchatha_aa_kenya.jpg"))
+    product3 = coffee.products.create(name: "Inter Continental Pack",
+                                      price: 4000,
+                                      description: "Study abroad.",
+                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/inter_continental_pack.jpg"))
 
 
-    user = User.create(first_name: "john", last_name: "adams", email: "email@foundingfathers.biz", password: "password")
+    user = User.create(first_name: "john",
+                       last_name: "adams",
+                       email: "email@foundingfathers.biz",
+                       password: "password")
 
-    order1 = user.orders.create(street: "1600 pennslyvania", city: "washington", state: "District of Columbia", zip: "46250", first_name: "jonathon", last_name: "adams", email: "spam@foundingfathers.biz")
-      order_product1 = order1.order_products.create(product_id: product1.id, quantity: 10)
-      order_product2 = order1.order_products.create(product_id: product3.id, quantity: 11)
-      order1.comments.create(comment: "Test comment")
+    order1 = user.orders.create(street: "1600 pennslyvania",
+                                city: "washington",
+                                state: "District of Columbia",
+                                zip: "46250",
+                                first_name: "jonathon",
+                                last_name: "adams",
+                                email: "spam@foundingfathers.biz")
 
-    order2 = user.orders.create(street: "1600 pennslyvania", city: "washington", state: "District of Columbia", zip: "46250", first_name: "jonathon", last_name: "adams", email: "spam@foundingfathers.biz")
-      order_product3 = order2.order_products.create(product_id: product2.id, quantity: 1)
-      order_product4 = order2.order_products.create(product_id: product3.id, quantity: 2)
+    order_product1 = order1.order_products.create(product_id: product1.id,
+                                                  quantity: 10)
+    order1.order_products.create( product_id: product3.id,
+                                  quantity: 11)
+    order1.comments.create(comment: "Test comment")
+
+    order2 = user.orders.create(street: "1600 pennslyvania",
+                                city: "washington",
+                                state: "District of Columbia",
+                                zip: "46250",
+                                first_name: "jonathon",
+                                last_name: "adams",
+                                email: "spam@foundingfathers.biz")
+
+    order2.order_products.create(product_id: product2.id, quantity: 1)
+    order2.order_products.create(product_id: product3.id, quantity: 2)
 
     admin = User.create(first_name: "john",
                         last_name: "admin",
                         email: "admin@example.com",
-                          password: 'password',
-                          role: 1
-                          )
+                        password: "password",
+                        role: 1)
 
-    visit '/'
+    visit "/"
     click_on "login"
     fill_in "email", with: admin.email
     fill_in "password", with: admin.password

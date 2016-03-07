@@ -1,16 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "AdminCanAddItems", type: :feature do
   scenario "they see all added items" do
     admin = User.create(first_name: "john",
                         last_name: "adams",
                         email: "admin@example.com",
-                          password: 'password',
-                          role: 1
-                          )
+                        password: 'password',
+                        role: 1)
 
     Category.create(name: "coffee")
-    visit '/'
+    visit "/"
 
     click_on "login"
 
