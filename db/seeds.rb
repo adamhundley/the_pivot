@@ -83,8 +83,10 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
 
       order_date = Faker::Time.between(date, DateTime.now - 1)
       order.update(created_at: order_date, updated_at: order_date)
-      rand(0..2).times do
-        order.comments.create(comment: Faker::StarWars.quote)
+      rand(0..3).times do
+        comment = order.comments.create(comment: Faker::StarWars.quote)
+        comment_date = Faker::Time.between(order_date, DateTime.now - 1)
+        comment.update(created_at: comment_date, updated_at: comment_date)
       end
 
       rand(1..7).times do
