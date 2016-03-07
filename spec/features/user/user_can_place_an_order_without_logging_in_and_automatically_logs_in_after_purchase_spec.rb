@@ -48,6 +48,5 @@ RSpec.feature "NonUserCanPlaceOrder", type: :feature do
     expect(page).to have_content("Order total: $15")
     click_on "details"
     expect(page).to have_content("Ethiopian")
-    expect(current_path).to eq("/users/#{user.id}/orders/3")
   end
 end

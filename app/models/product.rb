@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def display_price
-    price.to_i / 100
+    "$#{price.to_i / 100}"
   end
 
   def self.active_index

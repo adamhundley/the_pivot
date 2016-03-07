@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-hover table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>date</th>
+        <th>id</th>
+        <th>name</th>
+        <th>product quantity</th>
+        <th>order total</th>
+        <th>latest comment</th>
+        <th>status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @orders.each do |order| %>
+      <tr id="<%= order.id %>-order">
+        <td><%= order.date %></td>
+        <td><%= link_to order.id, admin_order_path(order.id)%></td>
+        <td><%= link_to order.name, user_orders_path(order.user.id)%></td>
+        <td><%= order.product_quantity %></td>
+        <td><%= order.display_total %></td>
+        <% if order.comments.empty? %>
+          <td></td>
+        <% else %>
+          <td><%= order.comments.last.comment %></td>
+        <% end %>
+
+        <%= form_for [:admin, order], url: admin_order_path(order.id) do |f| %>
+          <td><%= f.select(:status, options_for_select(%w(paid completed cancelled), order.status), {prompt: order.status}, {class:"update-form", required:true}) %></td>
+          <td><%= f.submit "update order", class:"btn btn-checkout btn-s"%></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

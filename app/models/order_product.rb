@@ -5,4 +5,12 @@ class OrderProduct < ActiveRecord::Base
   validates :quantity, presence: true
   validates :product_id, presence: true
   validates :order_id, presence: true
+
+  def total
+    quantity * product.price
+  end
+
+  def display_total
+    "$#{total / 100.00}"
+  end
 end

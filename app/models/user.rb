@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   def admin_message
     ["Life is good, #{self.first_name}."]
   end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

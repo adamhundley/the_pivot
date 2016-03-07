@@ -42,11 +42,8 @@
                   <%= form_tag(cart_product_path(id: product.id), class:"form-inline") do %>
                     <input type="hidden" name="_method" value="patch">
                     <div class="col-xs-5 col-sm-2 col-md-1">
-                    <select class="form-control" name="quantity">
-                      <option><%= product.quantity %></option>
-                      <%= render partial: "shared/options" %>
-                    </select>
-                  </div>
+                      <%= select_tag "quantity", options_for_select([*1..10], product.quantity), {class: "form-control"} %>
+                    </div>
                   <div class="text-left">
                     <%= submit_tag "Update", class:"btn btn-little-owl"%>
                   <% end %>

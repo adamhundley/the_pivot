@@ -15,6 +15,8 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def index
+    # if params[:active] = true
+    # do some query in the params to distinquish between active/inactive
     @products = Product.active_index
   end
 
