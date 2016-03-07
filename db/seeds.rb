@@ -83,6 +83,9 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
 
       order_date = Faker::Time.between(date, DateTime.now - 1)
       order.update(created_at: order_date, updated_at: order_date)
+      rand(0..2).times do
+        order.comments.create(comment: Faker::StarWars.quote)
+      end
 
       rand(1..7).times do
         order_product = order.order_products.create(product_id: Product.order("RANDOM()").first.id, quantity: rand(10))
