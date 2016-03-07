@@ -12,7 +12,7 @@
     <div class="col-sm-5">
       <div class="cart text-center">
         <h3><%= @product.name %></h3>
-        <h2 class="text-center"><small>$</small><%= @product.display_price %></h2><br>
+        <h2 class="text-center"><%= @product.display_price %></h2><br>
         <%= form_tag(cart_products_path(product_id: @product.id), method: "post") do %>
           <select class="form-control" name="quantity">
             <%= render partial: "shared/options"  %>

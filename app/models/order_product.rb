@@ -9,4 +9,8 @@ class OrderProduct < ActiveRecord::Base
   def total
     quantity * product.price
   end
+
+  def display_total
+    "$#{total / 100.00}"
+  end
 end

@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :order_products
   has_many :products, through: :order_products
+  has_many :comments
 
   validates :user_id, presence: true
   validates :first_name, presence: true
@@ -15,6 +16,10 @@ class Order < ActiveRecord::Base
     order_products.map do |order_product|
       order_product.total
     end.inject(:+) / 100
+  end
+
+  def display_total
+    "$#{total}"
   end
 
 

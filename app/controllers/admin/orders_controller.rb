@@ -17,6 +17,7 @@ class Admin::OrdersController < Admin::BaseController
 
   def show
     @order = Order.find(params[:id])
+    @comment = Comment.new
   end
 
 private

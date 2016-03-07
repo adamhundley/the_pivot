@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306225931) do
+ActiveRecord::Schema.define(version: 20160307030510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20160306225931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "order_id"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["order_id"], name: "index_comments_on_order_id", using: :btree
 
   create_table "order_products", force: :cascade do |t|
     t.integer  "product_id"
@@ -45,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160306225931) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "comment"
     t.string   "status",     default: "paid"
   end
 
@@ -80,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160306225931) do
     t.integer  "role",            default: 0
   end
 
+  add_foreign_key "comments", "orders"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"

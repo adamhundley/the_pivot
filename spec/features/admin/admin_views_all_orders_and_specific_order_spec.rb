@@ -56,6 +56,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
       expect(Order.first.comment).to eq("this is test comment, jonathon.")
 
       click_on(order1.id)
+      save_and_open_page
 
       expect(current_path).to eq(admin_order_path(order1.id))
 
@@ -69,7 +70,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
 
         expect(page).to have_content(order1.first_name)
         expect(page).to have_content(order1.last_name)
-        expect(page).to have_content(Order.first.street)
+        expect(page).to have_content("1600 pennslyvania")
         expect(page).to have_content(order1.city)
         expect(page).to have_content(order1.state)
         expect(page).to have_content(order1.zip)
