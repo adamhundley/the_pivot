@@ -79,23 +79,27 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
     user.update(created_at: date, updated_at: date)
 
     rand(1..4).times do
-      order = user.orders.create(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, first_name: first_name, last_name: last_name, email: email)
+      order = user.orders.new(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, first_name: first_name, last_name: last_name, email: email)
 
-      order_date = Faker::Time.between(date, DateTime.now - 1)
-      order.update(created_at: order_date, updated_at: order_date)
-      rand(0..3).times do
-        comment = order.comments.create(comment: Faker::StarWars.quote)
-        comment_date = Faker::Time.between(order_date, DateTime.now - 1)
-        comment.update(created_at: comment_date, updated_at: comment_date)
-      end
+      if order.save
+        order_date = Faker::Time.between(date, DateTime.now - 1)
+        order.update(created_at: order_date, updated_at: order_date)
+        rand(0..3).times do
+          comment = order.comments.create(comment: Faker::StarWars.quote)
+          comment_date = Faker::Time.between(order_date, DateTime.now - 1)
+          comment.update(created_at: comment_date, updated_at: comment_date)
+        end
 
-      rand(1..7).times do
-        order_product = order.order_products.create(product_id: Product.order("RANDOM()").first.id, quantity: rand(1..10))
+        rand(1..7).times do
+          order_product = order.order_products.create(product_id: Product.order("RANDOM()").first.id, quantity: rand(1..10))
 
-        order_product.update(created_at: order_date, updated_at: order_date)
+          order_product.update(created_at: order_date, updated_at: order_date)
+        end
       end
     end
   end
 end
 
-User.create(first_name: "admin", last_name: "admin", email: "admin@littleowl.com", password: "password", role: 1)
+admin = User.new(first_name: "admin", last_name: "admin", email: "admin@littleowl.com", password: "password", role: 1)
+
+admin.save

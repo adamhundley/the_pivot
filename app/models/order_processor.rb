@@ -9,6 +9,10 @@ class OrderProcessor
     current_user.orders.new(params)
   end
 
+  def build_full_name(params)
+    "#{params[:first_name]} #{params[:last_name]}"
+  end
+
   def find_cart_products(cart)
     cart.map do |id, quantity|
       [Product.find(id.to_i), quantity]
