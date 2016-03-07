@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "AdminCanViewAllItemsAndEdit", type: :feature do
-  scenario "they edit items" do
+RSpec.feature "AdminCanViewAllOrders", type: :feature do
+  scenario "they view all orders" do
     admin = User.create(first_name: "john",
                         last_name: "adams",
                         email: "admin@example.com",
