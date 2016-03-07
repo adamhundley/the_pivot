@@ -55,11 +55,11 @@ private
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :email, :street, :unit, :city, :state, :zip, :user_id)
+    params.require(:order).permit(:first_name, :last_name, :email, :street, :unit, :city, :state, :zip, :user_id, :fullname)
   end
 
   def new_user_order_params
-    params.permit(:first_name, :last_name, :email, :street, :unit, :city, :state, :zip, :user_id)
+    params.permit(:first_name, :last_name, :email, :street, :unit, :city, :state, :zip, :user_id, :fullname)
   end
 
   def user_params

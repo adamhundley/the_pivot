@@ -1,7 +1,15 @@
 class Admin::OrdersController < Admin::BaseController
 
   def index
-    @orders = Order.by_date
+    if params[:id_search]
+      redirect_to admin_order_path(params[:id_search])
+    elsif params[:search]
+      @orders = Order.search(params[:search]).by_date
+    elsif params[:date_search]
+      @orders = Order.search_by_date(params[:date_search])
+    else
+      @orders = Order.by_date
+    end
   end
 
   def update
