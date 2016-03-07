@@ -8,7 +8,7 @@ RSpec.feature "AdminCanAddItems", type: :feature do
                           password: 'password',
                           role: 1
                           )
-                          
+
     Category.create(name: "coffee")
     visit '/'
 
@@ -29,7 +29,6 @@ RSpec.feature "AdminCanAddItems", type: :feature do
     fill_in "name", with: "Ethiopian"
     fill_in "price", with: 100
     fill_in "description", with: "is guud"
-      select "coffee", from: "product-category"
     end
 
     expect(page).to have_content("browse for image")

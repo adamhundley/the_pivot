@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
 
   def total
     order_products.map do |order_product|
-      order_product.quantity * order_product.product.price
+      order_product.total
     end.inject(:+) / 100
   end
 
@@ -22,5 +22,21 @@ class Order < ActiveRecord::Base
     products.each do |product, quantity|
       order_products.create(product_id: product.id, quantity: quantity)
     end
+  end
+
+  def product_quantity
+    order_products.count
+  end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def self.by_date
+    order(updated_at: :desc)
+  end
+
+  def date
+    updated_at.strftime("%B %-d, %Y")
   end
 end

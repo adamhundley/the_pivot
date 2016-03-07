@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "/dashboard", to: "users#show"
     get "/inactive_products", to: "products#inactive_index", as: "inactive_products"
     resources :products, only: [:new, :create, :index, :update]
+    resources :orders, only: [:index, :show, :update]
   end
 
   resources :orders, only: [:new, :create]
