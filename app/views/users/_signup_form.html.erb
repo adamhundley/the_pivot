@@ -1,10 +1,8 @@
 <div class="container">
   <div class="form-group text-center form-div">
     <%= form_for(@user) do |f| %>
-      <%= f.label :first_name, class:"sr-only"  %>
-      <%= f.text_field :first_name, placeholder: "first name", class:"form-control text-input" %><br>
-      <%= f.label :last_name, class:"sr-only"  %>
-      <%= f.text_field :last_name, placeholder: "last name", class:"form-control text-input" %><br>
+      <%= f.label :fullname, class:"sr-only"  %>
+      <%= f.text_field :fullname, placeholder: "name", class:"form-control text-input" %><br>
       <%= f.label :email, class:"sr-only"  %>
       <%= f.email_field :email, placeholder: "email", class:"form-control text-input" %><br>
       <%= f.label :password, class:"sr-only"  %>

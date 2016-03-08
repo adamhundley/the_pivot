@@ -4,6 +4,7 @@ RSpec.describe Order, :type => :model do
   def valid_attributes
     {
          user_id:                        1,
+        fullname:         "david whitaker",
       first_name:                  "david",
        last_name:               "whitaker",
            email:    "example@example.com",
@@ -95,7 +96,7 @@ RSpec.describe Order, :type => :model do
   end
 
   it "it belongs to a user" do
-    user = User.create(password: "password", first_name: "david", last_name: "whitaker", email: "email@email.com")
+    user = User.create(password: "password", fullname: "david whitaker", first_name: "david", last_name: "whitaker", email: "email@email.com")
 
     attributes = valid_attributes.merge(user_id: user.id)
     result     = Order.create(attributes)

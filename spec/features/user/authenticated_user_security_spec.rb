@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "AuthenticatedUserSecurity", type: :feature do
   scenario "An authenticated user cannot view another users data" do
-    user = User.create(first_name: "John", last_name: "Adams", email: "email@example.com", password: "password")
-    user2 = User.create(first_name: "Adams", last_name: "Poop", email: "snail@example.com", password: "password")
+    user = User.create(first_name: "John", last_name: "Adams", fullname: "John Adams", email: "email@example.com", password: "password")
+    user2 = User.create(first_name: "Adams", last_name: "Poop", fullname: "Adams Poop", email: "snail@example.com", password: "password")
 
     visit "/"
 

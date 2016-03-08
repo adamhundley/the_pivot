@@ -20,6 +20,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
 
     user = User.create(first_name: "john",
                        last_name: "adams",
+                       fullname: "john adams",
                        email: "email@foundingfathers.biz",
                        password: "password")
 
@@ -27,12 +28,14 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
                                 city: "washington",
                                 state: "District of Columbia",
                                 zip: "46250",
+                                fullname: "jonathon adams",
                                 first_name: "jonathon",
                                 last_name: "adams",
                                 email: "spam@foundingfathers.biz")
 
     order_product1 = order1.order_products.create(product_id: product1.id,
                                                   quantity: 10)
+
     order1.order_products.create( product_id: product3.id,
                                   quantity: 11)
     order1.comments.create(comment: "Test comment")
@@ -41,6 +44,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
                                 city: "washington",
                                 state: "District of Columbia",
                                 zip: "46250",
+                                fullname: "jonathon adams",
                                 first_name: "jonathon",
                                 last_name: "adams",
                                 email: "spam@foundingfathers.biz")
@@ -50,6 +54,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
 
     admin = User.create(first_name: "john",
                         last_name: "admin",
+                        fullname: "john admin",
                         email: "admin@example.com",
                         password: "password",
                         role: 1)

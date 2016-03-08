@@ -14,8 +14,7 @@ RSpec.feature "UserCreatesAccount", type: :feature do
     click_on "signup"
 
     expect(current_path).to eq("/users/new")
-    fill_in "first name", with: "John"
-    fill_in "last name", with: "Adams"
+    fill_in "name", with: "John Adams"
     fill_in "email", with: "test@test.com"
     fill_in "password", with: "password"
 

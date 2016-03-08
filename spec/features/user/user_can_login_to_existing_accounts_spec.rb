@@ -4,7 +4,7 @@ RSpec.feature "UserCanLoginToExistingAccount", type: :feature do
   scenario "user logs in to account" do
     category = Category.create(name:"coffee")
     product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good", image: open("http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg"))
-    user = User.create(first_name: "John", last_name: "Adams", email: "email@example.com", password: "password")
+    user = User.create(first_name: "John", last_name: "Adams", fullname: "John Adams", email: "email@example.com", password: "password")
 
     visit "/products/#{product.id}"
     click_on "Add to cart"
@@ -19,10 +19,9 @@ RSpec.feature "UserCanLoginToExistingAccount", type: :feature do
     click_on "login"
 
     expect(page).to have_content("Hey John, welcome to Little Owl.")
-    
+
     expect(current_path).to eq("/")
 
-    #within whatever
     expect(page).to_not have_link("login")
     expect(page).to have_content("John")
     expect(page).to have_link("logout")

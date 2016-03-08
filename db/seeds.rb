@@ -69,17 +69,16 @@ gifts.products.create(name:"LO Ornaments", price: 1000, description:"Never too e
 gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", image: open("https://s3.amazonaws.com/littleowl-turing/products/gifts/pitcher.jpg"))
 
 300.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
+  fullname = Faker::Name.name
   email = Faker::Internet.free_email(first_name)
-  user = User.new(first_name: first_name, last_name: last_name, email: email, password: "password")
+  user = User.new(fullname: fullname, email: email, password: "password")
 
   if user.save
     date = Faker::Time.between(DateTime.now - 700, DateTime.now - 2)
     user.update(created_at: date, updated_at: date)
 
     rand(1..4).times do
-      order = user.orders.new(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, first_name: first_name, last_name: last_name, email: email)
+      order = user.orders.new(street: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, fullname: fullname, email: email)
 
       if order.save
         order_date = Faker::Time.between(date, DateTime.now - 1)
@@ -100,6 +99,6 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
   end
 end
 
-admin = User.new(first_name: "admin", last_name: "admin", email: "admin@littleowl.com", password: "password", role: 1)
+admin = User.new(fullname: "admin", email: "admin@littleowl.com", password: "password", role: 1)
 
 admin.save

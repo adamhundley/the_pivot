@@ -13,7 +13,7 @@
           <% if current_user %>
             <%= link_to "Checkout", new_user_order_path(current_user), class:"btn btn-checkout form-control" %>
           <% else %>
-            <%= link_to "Checkout", new_order_path, class:"btn btn-checkout form-control" %>
+            <%= link_to "Checkout", checkout_login_path, class:"btn btn-checkout form-control" %>
           <% end %>
         </div>
         <h6>or</h6>
@@ -36,7 +36,7 @@
               <div class="product-info container">
                 <p class="product-title"><%= product.name %></p>
 
-                <p>$<%= product.display_price %></p>
+                <p><%= product.display_price %></p>
 
                 <div id="quantity-dropdown" class="row text-left">
                   <%= form_tag(cart_product_path(id: product.id), class:"form-inline") do %>

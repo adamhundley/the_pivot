@@ -4,6 +4,7 @@ RSpec.feature "AdminCanViewAllItemsAndEdit", type: :feature do
   scenario "they edit items" do
     admin = User.create(first_name: "john",
                         last_name: "adams",
+                        fullname: "john adams",
                         email: "admin@example.com",
                         password: "password",
                         role: 1)

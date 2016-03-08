@@ -4,6 +4,7 @@ RSpec.feature "AdminCanViewAllOrders", type: :feature do
   scenario "they view all orders" do
     admin = User.create(first_name: "john",
                         last_name: "adams",
+                        fullname: "john adams",
                         email: "admin@example.com",
                         password: "password",
                         role: 1)

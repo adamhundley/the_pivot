@@ -6,11 +6,8 @@ class OrderProcessor
   end
 
   def process_current_user(params, current_user)
-    current_user.orders.new(params)
-  end
-
-  def build_full_name(params)
-    "#{params[:first_name]} #{params[:last_name]}"
+    processed_params = process_user_params(params)
+    current_user.orders.new(processed_params)
   end
 
   def find_cart_products(cart)
@@ -27,5 +24,17 @@ class OrderProcessor
       @products.map do |product|
       product.first.price * product.last
     end.reduce(:+) / 100
+  end
+
+  def process_user_params(params)
+    {
+      email: params[:stripeEmail],
+      fullname: params[:stripeShippingName],
+      street: params[:stripeShippingAddressLine1],
+      city: params[:stripeShippingAddressCity],
+      state: params[:stripeShippingAddressState],
+      zip: params[:stripeShippingAddressZip],
+      card_token: params[:stripeToken]
+    }
   end
 end
