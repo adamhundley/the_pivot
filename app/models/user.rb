@@ -1,18 +1,18 @@
 class User < ActiveRecord::Base
-  before_save :build_full_name
+  before_save :build_name
   has_secure_password
   has_many :orders
   has_many :order_products, through: :orders
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :fullname, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
   enum role: %w(default admin super_admin)
 
-  def build_full_name
-    self.fullname = "#{first_name} #{last_name}"
+  def build_name
+    self.first_name = fullname.split[0]
+    self.last_name = fullname.split[-1]
   end
 
   def admin_message

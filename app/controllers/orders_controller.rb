@@ -6,14 +6,14 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def signup
+    login_or_create_user
+    redirect_to new_user_order_path(current_user)
+  end
+
   def create
     order_processor = OrderProcessor.new(session[:cart])
-    if current_user
-      @order = order_processor.process_current_user(order_params, current_user)
-    else
-      login_or_create_user
-      @order = order_processor.process_current_user(new_user_order_params, current_user)
-    end
+    @order = order_processor.process_current_user(stripe_params, current_user)
     if @order.save
       @order.process(order_processor.products)
       flash[:info] = "Thanks for your order! :)"
@@ -54,15 +54,12 @@ private
     end
   end
 
-  def order_params
-    params.require(:order).permit(:first_name, :last_name, :email, :street, :unit, :city, :state, :zip, :user_id, :fullname)
-  end
-
-  def new_user_order_params
-    params.permit(:first_name, :last_name, :email, :street, :unit, :city, :state, :zip, :user_id, :fullname)
-  end
-
   def user_params
     params.permit(:first_name, :last_name, :email, :password)
   end
+
+  def stripe_params
+    params.permit(:stripeEmail, :stripeToken, :stripeShippingName, :stripeShippingAddressLine1, :stripeShippingAddressCity, :stripeShippingAddressZip, :stripeShippingAddressState, :stripeShippingAddressZip )
+  end
+
 end

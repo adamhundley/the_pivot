@@ -24,7 +24,7 @@
               <div class="product-info container">
                 <p class="product-title"><%= product.first.name %></p>
 
-                <p>$<%= product.first.display_price %></p>
+                <p><%= product.first.display_price %></p>
 
                 <div id="quantity-dropdown" class="row text-left">
                   <%= form_tag(cart_path(id: product.first.id), class:"form-inline") do %>
@@ -49,9 +49,9 @@
     <br>
     <div class="container">
       <% if current_user %>
-        <%= render partial: "checkout_form" %>
+        <%= render partial: "checkout_form", locals: {amount: raw_cart_total(@cart.products) } %>
       <% else %>
-        <%= render partial: "checkout_new_user_form" %>
+        <%= render partial: "checkout_new_user_form", locals: {amount: raw_cart_total(@cart.products) } %>
       <% end %>
     </div>
   </div>

@@ -16,7 +16,7 @@ gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 2.0'
 gem 'unicorn'
-
+gem 'stripe'
 
 group :development, :test do
   gem 'rspec'
