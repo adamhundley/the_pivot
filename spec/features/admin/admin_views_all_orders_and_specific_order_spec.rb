@@ -66,7 +66,7 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
     click_on "login"
     visit admin_dashboard_path
 
-    click_on "orders"
+    click_on "active orders"
 
     expect(current_path).to eq(admin_orders_path)
 
