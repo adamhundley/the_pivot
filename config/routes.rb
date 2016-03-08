@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :orders, only: [:new, :create]
+  get "orders/login", to: "orders#checkout_login", as: "checkout_login"
+  post "orders/login", to: "orders#checkout_user", as: "checkout_user"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"

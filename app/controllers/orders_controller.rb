@@ -6,10 +6,16 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def signup
+  def checkout_login
+
+  end
+
+  def checkout_user
     login_or_create_user
     redirect_to new_user_order_path(current_user)
   end
+
+
 
   def create
     order_processor = OrderProcessor.new(session[:cart])
@@ -41,7 +47,6 @@ class OrdersController < ApplicationController
     end
   end
 
-private
   def login_or_create_user
     @user = User.find_by(email: params[:email])
     @user = User.new(user_params) if @user.nil?
@@ -50,12 +55,14 @@ private
       session[:user_id] = @user.id
     else
       flash.now[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."
-      render :new
+      render :checkout_login
     end
   end
 
+  private
+
   def user_params
-    params.permit(:first_name, :last_name, :email, :password)
+    params.permit(:fullname, :email, :password)
   end
 
   def stripe_params

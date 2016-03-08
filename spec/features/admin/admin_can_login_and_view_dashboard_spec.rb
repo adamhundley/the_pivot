@@ -4,6 +4,7 @@ RSpec.feature "AdminCanLoginAndViewDashboard", type: :feature do
   scenario "Admin sees dashboard" do
       admin = User.create(first_name: "john",
                           last_name: "adams",
+                          fullname: "john adams",
                           email: "admin@example.com",
                           password: "password",
                           role: 1)

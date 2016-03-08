@@ -48,11 +48,7 @@
     <% end %>
     <br>
     <div class="container">
-      <% if current_user %>
-        <%= render partial: "checkout_form", locals: {amount: raw_cart_total(@cart.products) } %>
-      <% else %>
-        <%= render partial: "checkout_new_user_form", locals: {amount: raw_cart_total(@cart.products) } %>
-      <% end %>
+      <%= render partial: "checkout_form", locals: {amount: raw_cart_total(@cart.products) } %>
     </div>
   </div>
 </div>

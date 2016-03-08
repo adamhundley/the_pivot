@@ -2,8 +2,7 @@ require "rails_helper"
 
 RSpec.feature "AdminCanAddItems", type: :feature do
   scenario "they see all added items" do
-    admin = User.create(first_name: "john",
-                        last_name: "adams",
+    admin = User.create(fullname: "john adams",
                         email: "admin@example.com",
                         password: 'password',
                         role: 1)
