@@ -26,14 +26,13 @@
     <% flash.each do |type, message| %>
       <%= content_tag :div, sanitize(message), class: "alert alert_#{type} admin-flash" %>
     <% end %>
-    <div class="container" id="page-content-wrapper">
+    <div id="page-content-wrapper">
   <% else %>
     <%= render partial: "shared/nav" %>
 
     <% flash.each do |type, message| %>
       <%= content_tag :div, sanitize(message), class: "alert alert_#{type}" %>
     <% end %>
-    <div class="container">
 <% end %>
 
 
