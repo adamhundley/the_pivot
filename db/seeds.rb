@@ -70,7 +70,7 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
 
 300.times do
   fullname = Faker::Name.name
-  email = Faker::Internet.free_email(first_name)
+  email = Faker::Internet.free_email(fullname.split[0])
   user = User.new(fullname: fullname, email: email, password: "password")
 
   if user.save
