@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="category-list">
+    <%= render partial: "shared/category_imgs" %>
+  </div>
   <%= render partial: "shared/featured_products" %>
   <% @categories.each do |category| %>
     <div class="row">
