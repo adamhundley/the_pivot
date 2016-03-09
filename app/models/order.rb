@@ -12,6 +12,26 @@ class Order < ActiveRecord::Base
   validates :city, presence: true
   validates :zip, presence: true
 
+  scope :processed_orders, -> { where(status: "paid" || "completed") }
+
+  scope :cancelled_orders, -> { where(status: "cancelled") }
+
+  def self.total_revenue
+    processed_orders.sum(:order_total)
+  end
+
+  def self.cancelled_revenue
+    cancelled_orders.sum(:order_total)
+  end
+
+  def self.daily_average_revenue
+    total_revenue / processed_orders.group(:created_at).count.length
+  end
+
+  def self.weekly_average_revenue
+    total_revenue / processed_orders.group_by_week(:created_at).count.length
+  end
+
   def self.search(search)
     where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
   end
@@ -41,6 +61,7 @@ class Order < ActiveRecord::Base
       order_products.create(product_id: product.id, quantity: quantity)
     end
     process_stripe_payment
+    self.update(order_total: total)
   end
 
   def product_quantity
@@ -59,6 +80,10 @@ class Order < ActiveRecord::Base
     updated_at.strftime("%B %-d, %Y")
   end
 
+  def self.top_state
+    group(:state).count.sort_by { |state, n| n }.last[0]
+  end
+
   def process_stripe_payment
     customer = Stripe::Customer.create email: email,
                                        card: card_token
@@ -67,5 +92,4 @@ class Order < ActiveRecord::Base
                           description: id,
                           currency: 'usd'
   end
-
 end
