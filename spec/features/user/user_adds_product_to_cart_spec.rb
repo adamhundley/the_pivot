@@ -27,6 +27,6 @@ RSpec.feature "UserAddsProductToCart", type: :feature do
 
     expect(page).to have_content(product.name)
     expect(page).to have_content(product.price/100)
-    expect(page).to have_content("Order Total $33")
+    expect(page).to have_content("$33")
   end
 end
