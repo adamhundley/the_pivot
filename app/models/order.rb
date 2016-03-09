@@ -73,7 +73,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.by_date
-    order(updated_at: :desc).limit(50)
+    order(updated_at: :desc)
   end
 
   def date
