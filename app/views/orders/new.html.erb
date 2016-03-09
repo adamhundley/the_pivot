@@ -1,54 +1,45 @@
-<div id="order" class="container">
-  <div class="cart">
-    <div class="row">
-      <div class="col-xs-6 text-center">
-        <div class="product-header">
-          <h2>Order</h2>
-        </div>
-        <p>Order Total</p>
-        <h1 class="cart-total">$<%= cart_total(@cart.products) %></h1>
+<div id="product" class="container">
+  <div class="row">
+  </div><br><br>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed table-products">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="text-center">product</th>
+              <th class="text-center">price</th>
+              <th class="text-center">quantity</th>
+              <th class="text-center">subtotal</th>
+            </tr>
+          </thead>
+          <% @cart.products.each do |product| %>
+            <tr>
+              <td><%= image_tag(product.image.url(:small), class: "product_image img-responsive img-rounded") %></td>
+                <td><h4><%= product.name %></h4></td>
+                <td><h4><%= product.display_price %></h4></td>
+                <td><h4><%= product.quantity %></h4></td>
+                <td><h4>$<%= product.format_subtotal %></h4></td>
+            </tr>
+          <% end %>
+            <tfoot>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tfoot>
+        </table>
       </div>
     </div>
-  </div>
-    <% @products.each do |product| %>
-    <div class="row cart-product container">
-      <div id="<%= product.id %>-product">
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="cart-image">
-
-              <%= image_tag(product.image.url, class: "product_image img-responsive img-rounded") %>
-            </div>
-          </div>
-          <div class="col-xs-8">
-              <div class="product-info container">
-                <p class="product-title"><%= product.name %></p>
-
-                <p><%= product.display_price %></p>
-
-                <div id="quantity-dropdown" class="row text-left">
-                  <%= form_tag(cart_path(id: product.id), class:"form-inline") do %>
-                    <input type="hidden" name="_method" value="patch">
-                    <div class="col-xs-5 col-sm-2 col-md-1">
-                    <select class="form-control" name="quantity">
-                      <option><%= product.quantity %></option>
-                      <%= render partial: "shared/options"  %>
-                    </select>
-                  </div>
-                  <div class="text-left">
-                    <%= submit_tag "Update", class:"btn btn-little-owl"%>
-                  <% end %>
-                  </div>
-                </div>
-              <h5><%= link_to "remove from cart", cart_path(product.id), method: :delete %></h5>
-            </div>
-          </div>
-        </div>
+    <div class="col-sm-4 text-center checkout-con">
+      <div class="cart text-center">
+        <h3>Hey, <%= current_user.fullname %>.</h3>
+        <h4>Your total is $<%= cart_total(@cart.products) %></h4><br>
+        <p>Click "submit order" below and you'll be asked all billing and shipping questions. Then enjoy the sweet nectar of the coffee gods.</p>
+          <%= render partial: "checkout_form", locals: {amount: raw_cart_total(@cart.products) } %>
       </div>
-    <% end %>
-    <br>
-    <div class="container">
-      <%= render partial: "checkout_form", locals: {amount: raw_cart_total(@cart.products) } %>
     </div>
   </div>
 </div>
