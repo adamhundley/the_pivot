@@ -11,7 +11,7 @@ RSpec.feature "AdminCanDeactivateAProduct", type: :feature do
     product = category.products.create(name: "Ethiopian",
                                        price:1500,
                                        description: "Ethiopian coffee is super good",
-                                       image: open("http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg"))
+                                      )
 
     visit "/"
     click_on "login"

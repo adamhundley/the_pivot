@@ -27,7 +27,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'shoulda-matchers'
   gem 'database_cleaner'
 end
 
@@ -35,6 +34,11 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   gem 'spring'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov', require: false
 end
 
 ruby "2.2.4"
