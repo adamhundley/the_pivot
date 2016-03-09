@@ -1,12 +1,29 @@
-<div class="container">
-  <div class="form-group text-center form-div">
-    <%= form_for(:session, url: login_path, autocomplete: :off) do |f| %>
-      <%= f.label :email, class:"sr-only"  %>
-      <%= f.email_field :email, placeholder: "email", class:"form-control text-input" %><br>
-      <%= f.label :password, class:"sr-only"  %>
-      <%= f.password_field :password, placeholder: "password", class:"form-control text-input" %><br>
-      <%= f.submit "login", class:"btn btn-little-owl" %>
-      <%= link_to "signup", new_user_path, class:"btn btn-primary" %>
-    <% end %>
+<div class="container sign-up-div">
+  <div class="row text-center">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <h1><small>welcome back :)</small></h1>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group text-center form-div">
+        <%= form_for(:session, url: login_path, autocomplete: :off) do |f| %>
+          <%= f.email_field :email, placeholder: "email", class:"form-control text-input" %><br>
+          <%= f.label :password, class:"sr-only"  %>
+          <%= f.password_field :password, placeholder: "password", class:"form-control text-input" %><br>
+          <%= f.submit "login", class:"btn btn-little-owl" %>
+          <%= link_to "signup", new_user_path, class:"btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+    </div>
   </div>
 </div>
