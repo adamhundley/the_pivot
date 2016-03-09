@@ -15,31 +15,30 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def index
-    # if params[:active] = true
-    # do some query in the params to distinquish between active/inactive
-    @products = Product.active_index
-  end
-
-  def inactive_index
-    @products = Product.inactive_index
+    if params[:inactive] == "true"
+      @products = Product.inactive_index
+    else
+      @products = Product.active_index
+    end
   end
 
   def update
     @product = Product.find(params[:id])
     status = @product.inactive?
+
     if @product.update(product_params)
       if status == true && status == @product.inactive?
         flash[:alert] = "Sorry mate! Reactivate the product!"
-        return redirect_to admin_inactive_products_path
+        return redirect_to admin_products_path(inactive: true)
       elsif status == true
         flash[:info] = "#{@product.name} has been activated"
-        return redirect_to admin_inactive_products_path
+        return redirect_to admin_products_path(inactive: true)
       elsif @product.inactive?
         flash[:alert] = "#{@product.name} has been deactivated"
       else
         flash[:info] = "Congrats! #{@product.name} has been updated!"
       end
-      redirect_to admin_products_path
+      redirect_to admin_products_path(inactive: false)
     else
       flash.now[:alert] = "Sorry, boss lolololololololol.  Something went wrong :(... Please try again."
       render :new

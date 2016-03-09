@@ -26,7 +26,7 @@ RSpec.feature "AdminCanViewAllItemsAndEdit", type: :feature do
 
     visit admin_dashboard_path
 
-    click_on "edit products"
+    click_on "active products"
 
     expect(current_path).to eq(admin_products_path)
 

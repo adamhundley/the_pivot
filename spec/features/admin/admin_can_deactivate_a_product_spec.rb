@@ -22,7 +22,7 @@ RSpec.feature "AdminCanDeactivateAProduct", type: :feature do
 
     visit admin_dashboard_path
 
-    click_on "edit products"
+    click_on "active products"
 
     expect(current_path).to eq(admin_products_path)
 
@@ -35,11 +35,11 @@ RSpec.feature "AdminCanDeactivateAProduct", type: :feature do
 
     click_on "inactive products"
 
-    expect(current_path).to eq(admin_inactive_products_path)
+    expect(current_path).to eq(admin_products_path)
 
     within "tr##{product.id}-product" do
       find(:css, "#product_inactive").set(false)
-      click_on "activate product"
+      click_on "update product"
     end
 
     expect(page).to have_content("Ethiopian has been activated")
