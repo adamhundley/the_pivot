@@ -26,6 +26,6 @@ RSpec.feature "UserRemovesAProductFromCarts", type: :feature do
     expect(page).to_not have_content(product.price/100)
 
     expect(page).to have_link "#{product.name}"
-    expect(page).to have_content("Order Total $18")
+    expect(page).to have_content("$18")
   end
 end
