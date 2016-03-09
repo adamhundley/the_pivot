@@ -26,7 +26,6 @@ RSpec.feature "UserCanLoginToExistingAccount", type: :feature do
     expect(page).to have_content("John")
     expect(page).to have_link("logout")
     expect(page).to have_link("order history")
-    expect(page).to have_link("settings")
 
     click_on "cart"
     expect(page).to have_content("Ethiopian")
@@ -40,7 +39,6 @@ RSpec.feature "UserCanLoginToExistingAccount", type: :feature do
     expect(page).to have_link("login")
     expect(page).to_not have_link("logout")
     expect(page).to_not have_link("order history")
-    expect(page).to_not have_link("settings")
     expect(page).to_not have_content("John Adams")
 
   end

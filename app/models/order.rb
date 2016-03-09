@@ -25,10 +25,12 @@ class Order < ActiveRecord::Base
   end
 
   def self.daily_average_revenue
+    return if Order.count == 0
     total_revenue / processed_orders.group(:created_at).count.length
   end
 
   def self.weekly_average_revenue
+    return if Order.count == 0
     total_revenue / processed_orders.group_by_week(:created_at).count.length
   end
 
@@ -81,6 +83,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.top_state
+    return if Order.count == 0
     group(:state).count.sort_by { |state, n| n }.last[0]
   end
 
