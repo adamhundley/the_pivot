@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "UserChangesQunatityOfProductInCart", type: :feature do
   scenario "they change the quanity of a product and see it updated in the cart" do
     category = Category.create(name:"coffee")
-    product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good", image: open("http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg"))
+    product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good")
 
     visit "/products/#{product.id}"
     click_on "Add to cart"

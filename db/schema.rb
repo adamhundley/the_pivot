@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20160308203421) do
     t.string   "name"
     t.integer  "price"
     t.string   "description"
-    t.string   "image_url"
     t.integer  "category_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false

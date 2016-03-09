@@ -7,15 +7,15 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
     product1 = coffee.products.create(name: "Finca San Matias",
                                       price: 2500,
                                       description: "Es todo que necessita.",
-                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/finca_san_matias.jpg"))
+                                      )
     product2 = coffee.products.create(name: "Gatchatha AA Kenya",
                                       price: 2000,
                                       description: "Gatchatha have it.",
-                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/gatchatha_aa_kenya.jpg"))
+                                      )
     product3 = coffee.products.create(name: "Inter Continental Pack",
                                       price: 4000,
                                       description: "Study abroad.",
-                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/inter_continental_pack.jpg"))
+                                      )
 
 
     user = User.create(first_name: "john",
