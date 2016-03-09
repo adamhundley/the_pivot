@@ -26,6 +26,7 @@
     margin-top: 100px;
     margin-bottom: 0;
 }
+
 .hero-unit h2 {
     font-size: 25px;
     color: #FFFFFF;
@@ -34,6 +35,44 @@
 .landing-span {
   font-weight: normal;
 }
+
+.category-unit {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height:250px;
+  }
+
+.category-landing {
+  margin: 0px;
+  padding: 0px;
+}
+
+.coffee-landing {
+  background-image:url('https://images.unsplash.com/photo-1455813870877-04a32045af63?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=264ec158e23999db9350a0502fa4e60b');
+}
+
+.tools-landing {
+  background-image:url('https://images.unsplash.com/photo-1455470956270-4cbb357f7052?crop=entropy&dpr=2&fit=crop&fm=jpg&h=650&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=925');
+}
+
+.gifts-landing {
+  background-image:url('https://images.unsplash.com/photo-1438968623539-2cfd04ee37ea?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=480f15603124c80a5007c636d4e9880f');
+}
+
+.category-unit h1 {
+  margin: 0px;
+  font-size: 40px;
+  padding-top: 15px;
+}
+
+.category-landing a {
+  text-decoration: none;
+  color: #000;
+  margin: 0;
+}
+
 
 /* Landscape phones and down */
 @media (max-width: 600px) {
@@ -47,6 +86,11 @@
     margin-top: 60px;
     margin-bottom: 0;
   }
+
+  .category-unit {
+      width: 100%;
+      height:300px;
+    }
 }
 
 @media (max-width: 456px) {
@@ -60,4 +104,9 @@
     margin-top: 50px;
     margin-bottom: 0;
   }
+
+  .category-unit {
+      width: 100%;
+      height:250px;
+    }
 }
