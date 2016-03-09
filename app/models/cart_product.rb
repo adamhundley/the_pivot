@@ -10,4 +10,8 @@ attr_reader :product, :quantity
   def subtotal
     product.price * quantity
   end
+
+  def format_subtotal
+    subtotal / 100
+  end
 end
