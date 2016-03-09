@@ -2,23 +2,18 @@ class OrdersController < ApplicationController
   helper OrdersHelper
 
   def new
-    @products = OrderProcessor.new(@cart.products).products
+    @products = OrderProcessor.new(@cart).products
     @order = Order.new
   end
 
-  def checkout_login
-
-  end
 
   def checkout_user
     login_or_create_user
     redirect_to new_user_order_path(current_user)
   end
 
-
-
   def create
-    order_processor = OrderProcessor.new(session[:cart])
+    order_processor = OrderProcessor.new(@cart)
     @order = order_processor.process_current_user(stripe_params, current_user)
     if @order.save
       @order.process(order_processor.products)
@@ -59,6 +54,9 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout_login
+
+  end
   private
 
   def user_params

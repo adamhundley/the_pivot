@@ -14,6 +14,9 @@ class Product < ActiveRecord::Base
 
  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+ scope :active_products, -> { where(inactive: false) }
+
+
   def display_price
     "$#{price.to_i / 100}"
   end

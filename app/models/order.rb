@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
   def total
     order_products.map do |order_product|
       order_product.total
-    end.inject(:+) / 100
+    end.inject(:+) / 100 
   end
 
   def display_total
@@ -59,8 +59,8 @@ class Order < ActiveRecord::Base
   end
 
   def process(products)
-    products.each do |product, quantity|
-      order_products.create(product_id: product.id, quantity: quantity)
+    products.each do |product|
+      order_products.create(product_id: product.id, quantity: product.quantity)
     end
     process_stripe_payment
     self.update(order_total: total)

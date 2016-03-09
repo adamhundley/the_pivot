@@ -1,8 +1,8 @@
 class OrderProcessor
   attr_reader :products
 
-  def initialize(cart_products)
-    @products = cart_products
+  def initialize(cart)
+    @products = cart.products
   end
 
   def process_current_user(params, current_user)
