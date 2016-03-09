@@ -32,7 +32,7 @@
         <%= f.label :image, class:"sr-only"  %>
         <%= f.file_field :image, { id:"#{product.id}_file_input", style:"display:none" } %>
           <label class="file">
-          <td><a class="btn btn-primary btn-s" onclick="$('input[id=<%= product.id %>_file_input]').click();">browse for image</a></td>
+          <td><a class="btn btn-primary btn-s" onclick="$('input[id=<%= product.id %>_file_input]').click();">update image</a></td>
           </label>
         <td><%= f.submit "update product", class:"btn btn-checkout btn-s"%></td>
         <td class="danger"><%= f.label :inactive, class:"sr-only", id:"inactive" %>
