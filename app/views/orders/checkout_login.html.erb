@@ -1,11 +1,31 @@
-<div class="form-group text-center form-div">
-  <%= form_tag(checkout_user_path) do %>
-    <%= label_tag :fullname,  nil, class:"sr-only"  %>
-    <%= text_field_tag :fullname, nil, required:true, placeholder: "name", class:"form-control text-input" %><br>
-    <%= label_tag :email,  nil, class:"sr-only"  %>
-    <%= email_field_tag :email, nil, required:true, placeholder: "email", class:"form-control text-input" %><br>
-    <%= label_tag :password,  nil, class:"sr-only"  %>
-    <%= password_field_tag :password, nil, required:true, placeholder: "enter or create password", class:"form-control text-input" %><br>
-    <%= submit_tag "continue", class:"btn btn-checkout" %>
-  <% end %>
+<div class="container sign-up-div">
+  <div class="row text-center">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <h1><small>just a few more steps 💁</small></h1>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-6">
+      <div class="form-group text-center form-div">
+        <%= form_tag(checkout_user_path) do %>
+        <%= label_tag :fullname,  nil, class:"sr-only"  %>
+        <%= text_field_tag :fullname, nil, required:true, placeholder: "name", class:"form-control text-input" %><br>
+        <%= label_tag :email,  nil, class:"sr-only"  %>
+        <%= email_field_tag :email, nil, required:true, placeholder: "email", class:"form-control text-input" %><br>
+        <%= label_tag :password,  nil, class:"sr-only"  %>
+        <%= password_field_tag :password, nil, required:true, placeholder: "enter or create password", class:"form-control text-input" %><br>
+        <%= submit_tag "continue", class:"btn btn-checkout" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
 </div>
