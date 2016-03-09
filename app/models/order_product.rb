@@ -10,13 +10,12 @@ class OrderProduct < ActiveRecord::Base
     quantity * product.price
   end
 
-
-
   def self.top_product_revenue
     top_product.price * (top_product_info[1] / 100)
   end
 
   def self.top_product
+    return if OrderProduct.count == 0
     Product.find(top_product_info[0])
   end
 

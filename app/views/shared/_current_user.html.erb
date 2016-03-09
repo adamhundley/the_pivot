@@ -11,12 +11,9 @@
       <ul class="dropdown-menu">
         <li>
           <a href="/">
-            <%= current_user.first_name %></a>
+            <%= current_user.fullname.capitalize %></a>
         </li>
         <li><%= link_to "order history", user_orders_path(current_user) %></li>
-        <li>
-          <a href="/">settings</a>
-        </li>
         <li>
           <%= link_to "logout", logout_path, method: :delete %>
         </li>

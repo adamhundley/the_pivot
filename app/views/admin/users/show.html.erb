@@ -53,7 +53,10 @@
     </div>
     <div class="col-xs-5 rev-data sub-data text-center">
       <h4><span class="label label-info top-product">top product</span></h4>
-      <span class="revenue-span"><%= link_to @order_products.top_product.name, product_path(@order_products.top_product) %></span>
+
+      <% if !@order_products.empty? %>
+        <span class="revenue-span"><%= link_to @order_products.top_product.name, product_path(@order_products.top_product) %></span>
+      <% end %>
     </div>
   </div>
 </div>

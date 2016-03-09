@@ -5,9 +5,7 @@ RSpec.feature "UserViewsAllProducts", type: :feature do
     category = Category.create(name:"coffee")
     product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good")
 
-    visit root_path
-
-    click_on "shop all"
+    visit products_path
 
     within "div#products" do
       expect(page).to have_content(product.name)
