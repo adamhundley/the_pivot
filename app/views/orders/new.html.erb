@@ -21,7 +21,7 @@
           </thead>
           <% @cart.products.each do |product| %>
             <tr>
-              <td><%= image_tag(product.image.url(:small), class: "product_image img-responsive img-rounded") %></td>
+              <td><%= image_tag(product.image.url(:small), class: "product_image img-responsive") %></td>
                 <td><h4><%= product.name %></h4></td>
                 <td><h4><%= product.display_price %></h4></td>
                 <td><h4><%= product.quantity %></h4></td>
@@ -32,8 +32,8 @@
               <th></th>
               <th></th>
               <th></th>
-              <th></th>
-              <th></th>
+              <th class="order-total">Total:</th>
+              <th class="order-total">$<%= cart_total(@cart.products) %></th>
             </tfoot>
         </table>
       </div>

@@ -7,7 +7,7 @@ RSpec.feature "UserViewsAllProducts", type: :feature do
 
     visit products_path
 
-    within "div#products" do
+    within "div##{product.id}-index" do
       expect(page).to have_content(product.name)
     end
   end
