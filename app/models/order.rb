@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
   def total
     order_products.map do |order_product|
       order_product.total
-    end.inject(:+) / 100 
+    end.inject(:+) / 100
   end
 
   def display_total
