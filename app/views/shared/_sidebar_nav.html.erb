@@ -17,13 +17,13 @@
     <%= link_to "cancelled orders", admin_orders_path(status: "cancelled") %>
   </li>
   <li>
-    <%= link_to "edit products", admin_products_path %>
+    <%= link_to "active products", admin_products_path(inactive: false) %>
+  </li>
+  <li>
+    <%= link_to "inactive products", admin_products_path(inactive: true) %>
   </li>
   <li>
     <%= link_to "add product", new_admin_product_path %>
-  </li>
-  <li>
-    <%= link_to "inactive products", admin_inactive_products_path %>
   </li>
   <li class="sidebar-header">
     <p>user interface</p>
