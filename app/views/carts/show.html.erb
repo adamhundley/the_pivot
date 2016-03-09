@@ -22,20 +22,18 @@
               <h5><%= link_to "remove from cart", cart_product_path(product.id), method: :delete %></h5>
             </div>
             <div class="col-sm-4">
-                <div class="product-info container">
+                <div class="cart-info container">
                   <br><br>
                   <div id="quantity-dropdown" class="row text-left">
                     <%= form_tag(cart_product_path(id: product.id), class:"form-inline") do %>
                       <input type="hidden" name="_method" value="patch">
-
                       <div class="col-xs-5 col-sm-2 col-md-1">
                         <%= select_tag "quantity", options_for_select([*1..10], product.quantity), {class: "form-control"} %>
                       </div>
-
                       <div class="text-left">
                         <%= submit_tag "Update", class:"btn btn-little-owl"%>
                       <% end %>
-                    </div>
+                      </div>
                   </div>
               </div>
             </div>
@@ -44,7 +42,7 @@
       </div>
       <% end %>
     </div>
-    <div class="col-sm-5 text-center checkout-con">
+    <div class="col-sm-4 col-sm-offset-1 text-center checkout-con">
       <div class="cart">
         <div class="product-header">
           <h3>Order Subtotal (<%= @cart.count %> items)</h3>
