@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   helper OrdersHelper
 
   def new
-    @products = OrderProcessor.new(session[:cart]).products
+    @products = OrderProcessor.new(@cart.products).products
     @order = Order.new
   end
 

@@ -1,8 +1,8 @@
 class OrderProcessor
   attr_reader :products
 
-  def initialize(cart)
-    @products = find_cart_products(cart)
+  def initialize(cart_products)
+    @products = cart_products
   end
 
   def process_current_user(params, current_user)
@@ -10,19 +10,9 @@ class OrderProcessor
     current_user.orders.new(processed_params)
   end
 
-  def find_cart_products(cart)
-    cart.map do |id, quantity|
-      [Product.find(id.to_i), quantity]
-    end
-  end
-
-  def product_total(product)
-    "$#{(product.last * product.first.price) / 100}"
-  end
-
   def cart_total
       @products.map do |product|
-      product.first.price * product.last
+      product.price * product.quantity
     end.reduce(:+) / 100
   end
 
