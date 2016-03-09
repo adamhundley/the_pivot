@@ -54,6 +54,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (1.4.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -80,6 +81,8 @@ GEM
       thor (~> 0.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    groupdate (2.5.2)
+      activesupport (>= 3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -234,10 +237,12 @@ DEPENDENCIES
   aws-sdk (< 2.0)
   bcrypt (~> 3.1.7)
   capybara
+  chartkick
   coffee-rails (~> 4.1.0)
   database_cleaner
   faker
   figaro
+  groupdate
   jbuilder (~> 2.0)
   jquery-rails
   launchy

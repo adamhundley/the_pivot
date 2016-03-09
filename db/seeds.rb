@@ -94,6 +94,12 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
 
           order_product.update(created_at: order_date, updated_at: order_date)
         end
+        total = order.total
+        order.update(order_total: total)
+
+        statuses = ["paid","paid","paid","paid","paid","completed","completed","completed","completed","completed", "completed","completed","completed","completed","completed","cancelled"]
+
+        order.update(status: statuses.sample)
       end
     end
   end
