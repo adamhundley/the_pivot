@@ -17,6 +17,9 @@ gem 'figaro'
 gem 'aws-sdk', '< 2.0'
 gem 'unicorn'
 gem 'stripe'
+gem 'chartkick'
+gem 'groupdate'
+
 
 group :development, :test do
   gem 'rspec'

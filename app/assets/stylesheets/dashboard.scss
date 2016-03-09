@@ -1,0 +1,98 @@
+.dashboard-rev-sub-header {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.dashboard-rev-header {
+  margin-bottom: 0px;
+}
+
+.number-header {
+  font-size: 30px;
+  float:left;
+  margin-left: 50px;
+  color:#16a085;
+}
+
+.text-header {
+  font-size: 30px;
+  float:left;
+  margin-left: 10px;
+  color: #7f8c8d;
+}
+
+.dashboard-second-row {
+  margin-top: 20px;
+}
+
+@media (max-width:767px) {
+  .dashboard-rev-header {
+
+    #total-revenue {
+      font-size: 25px;
+      float:left;
+      margin-left: 50px;
+      color:#16a085;
+    }
+
+    #total-revenue-header {
+      font-size: 25px;
+      float:left;
+      margin-left: 10px;
+      color: #7f8c8d;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .dashboard-rev-header {
+
+    #total-revenue {
+      font-size: 20px;
+      float:left;
+      margin-left: 20px;
+      color:#16a085;
+    }
+
+    #total-revenue-header {
+      font-size: 20px;
+      float:left;
+      margin-left: 10px;
+      color: #7f8c8d;
+    }
+  }
+}
+
+.rev-data {
+  background-color: #ecf0f1;
+  padding:0px;
+  margin: 2px;
+  height: 85px;
+  border-radius: 4px;
+  padding-top: 7px;
+}
+
+.revenue-span {
+  font-size: 20px;
+  color:#16a085;
+}
+
+.label-success {
+  float: right;
+}
+
+.sub-data {
+  margin: 0px;
+}
+
+.top-product {
+  background-color: #1abc9c;
+}
+
+.top-state {
+  background-color: #e74c3c;
+}
+
+.data-point-header {
+  margin-bottom: 0px;
+}

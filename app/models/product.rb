@@ -29,4 +29,8 @@ class Product < ActiveRecord::Base
   def inactive?
     inactive
   end
+
+  def self.category_distribution
+    group(:category).count.map { |k, v| [k.name, v] }
+  end
 end
