@@ -10,10 +10,17 @@
   padding: 0;
 }
 
+.push-right{
+  float: right;
+}
+
 .order-info-table {
   margin-top: 25px;
 }
 
+.update-order-status{
+  float: right;
+}
 .float-right {
   float: right;
 }
@@ -24,6 +31,10 @@
 
 .order-id {
   margin: 0;
+}
+
+#order-comments {
+  margin-top: 20px;
 }
 
 .order-date {
