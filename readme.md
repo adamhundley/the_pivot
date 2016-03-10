@@ -1,4 +1,4 @@
-#![logo](app/assets/images/nav_logo.ico)Little Owl
+#![logo](app/assets/images/nav_logo.png)Little Owl
 
 Heroku: https://littleowl.herokuapp.com
 
