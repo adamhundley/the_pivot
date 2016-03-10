@@ -1,39 +1,39 @@
-<table>
-  <tr align="center" style="text-align:center">
-    <td style="font-size:36px;line-height:1.2">Order Confirmation</td>
-  </tr>
-  <tr align="center" style="text-align:center">
-    <td style="font-size:18px">
-      <p style="margin-bottom:35px">
-        We received your order and it'll ship shortly fam.
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td style="border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;padding:35px 0 0">
-      <p style="font-weight:500;margin:0">Order Id: <%= @order.id %> </p>
-    </td>
-  </tr>
-  <tr>
-    <td style="width:100%">
-      <table bgcolor="#fff" style="background:#fff;border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;margin:20px 0 30px;max-width:768px;padding:20px 0;width:100%">
-        <tbody>
-          <% @order.order_products.each do |order_product| %>
-          <tr style="border-bottom-color:#e5e5e5;border-bottom-style:solid;border-bottom-width:1px;border-collapse:separate">
-            <td style="padding:20px 0;width:30%">
-              <%= image_tag(order_product.product.image.url(:small), class:"product-image img-rounded") %>
-             </td>
-            <td>
-              <%= order_product.product.description %>
-            </td>
-          </tr>
-          <% end %>
-
-        </tbody>
-
-      </table>
-
-    </td>
-  </tr>
-
-</table>
+<div bgcolor="#fff" style="background:#fff;margin:0;max-width:100%;padding:0;width:100%">
+  <table>
+    <tr align="center" style="text-align:center">
+      <td style="font-size:36px;line-height:1.2">Order Confirmation</td>
+    </tr>
+    <tr align="center" style="text-align:center">
+      <td style="font-size:18px">
+        <p style="margin-bottom:35px">
+          We received your order and it'll ship shortly fam.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;padding:35px 0 0">
+        <p style="font-weight:500;margin:0">Order Id: <%= @order.id %> </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="width:100%">
+        <table bgcolor="#fff" style="background:#fff;border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;margin:20px 0 30px;max-width:768px;padding:20px 0;width:100%">
+          <tbody>
+            <% @order.order_products.each do |order_product| %>
+            <tr style="border-bottom-color:#e5e5e5;border-bottom-style:solid;border-bottom-width:1px;border-collapse:separate">
+              <td style="padding:20px 0;width:30%">
+                <%= order_product.quantity %><span style="color:#999999;padding:0 10px">x</span>
+                <%= image_tag(order_product.product.image.url(:small), class:"product-image img-rounded") %>
+               </td>
+              <td style="padding:20px 0 20px 10px;width:70%">
+                <%= order_product.product.description %>
+                <span style="float:right"><%= @order.total %></span>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
