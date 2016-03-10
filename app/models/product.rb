@@ -12,10 +12,9 @@ class Product < ActiveRecord::Base
       styles: { index: '275x175>', show: '550x350<', small: '137.5x87.5>' },
       default_url: '/images/nav-logo.png'
 
- validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
- scope :active_products, -> { where(inactive: false) }
-
+  scope :active_products, -> { where(inactive: false) }
 
   def display_price
     "$#{price.to_i / 100}"

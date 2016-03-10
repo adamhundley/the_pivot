@@ -1,5 +1,4 @@
 class MailingListEmailsController < ApplicationController
-
   def create
     @email = MailingListEmail.new(mailing_list_email_params)
     if @email.save
@@ -11,7 +10,7 @@ class MailingListEmailsController < ApplicationController
     end
   end
 
-private
+  private
 
   def mailing_list_email_params
     params.permit(:email)

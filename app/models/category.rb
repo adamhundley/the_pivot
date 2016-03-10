@@ -7,5 +7,4 @@ class Category < ActiveRecord::Base
   def active_products
     products.active_products
   end
-
 end
