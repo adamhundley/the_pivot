@@ -33,8 +33,8 @@
         <th>date</th>
         <th>id</th>
         <th>name</th>
-        <th>product quantity</th>
-        <th>order total</th>
+        <th>products</th>
+        <th>total</th>
         <th>latest comment</th>
         <th>status</th>
         <th></th>
@@ -50,7 +50,7 @@
         <% if order.comments.empty? %>
           <td></td>
         <% else %>
-          <td class="text-nowrap"><%= order.comments.last.comment %></td>
+          <td><%= order.comments.last.comment %></td>
         <% end %>
 
         <%= form_for [:admin, order], url: admin_order_path(order.id) do |f| %>
