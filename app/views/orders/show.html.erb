@@ -3,13 +3,17 @@
     <h1>sweet nectar of the coffee gods.</h1>
   </div>
 </div><br>
-<div class="container past-order-review">
-  <h3 class="order-id little">Order <%= @order.id %></h3>
-  <h3 class="order-date"><%= @order.date %></h3>
+<div class="container">
   <div class="row">
-  </div><br><br>
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="container past-order-review">
+        <h3 class="order-id little">Order <%= @order.id %></h3>
+        <h3 class="order-date"><%= @order.date %></h3>
+      </div>
+    </div>
+  </div><br>
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-8 col-sm-offset-2">
       <div class="table-responsive">
         <table class="table table-hover table-condensed table-products">
           <thead>
@@ -27,6 +31,7 @@
                 <td><h4><%= order_product.product.name %></h4></td>
                 <td><h4><%= order_product.product.display_price %></h4></td>
                 <td><h4><%= order_product.quantity %></h4></td>
+                <td><h4><%= order_product.display_total %></h4></td>
             </tr>
           <% end %>
             <tfoot>
