@@ -5,8 +5,8 @@
   </div>
   <div class="row products-rows">
     <div class="col-sm-7">
-      <div class="product-image">
-          <%= image_tag(@product.image.url(:show), class: "product-image img-responsive img-rounded") %>
+      <div class="product-images">
+          <%= image_tag(@product.image.url(:show), class: "img-responsive") %>
       </div>
     </div>
     <div class="col-sm-5">
@@ -22,4 +22,11 @@
       </div>
     </div>
   </div>
+  <br><br>
+  <div class="category-name">
+    <h2>more stuff you may like</h2>
+    <div class="aligncenter divider">-</div>
+  </div>
+  <%= render partial: "shared/featured_products" %>
 </div>
+<%= render partial: "shared/mailing_list" %>

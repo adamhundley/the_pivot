@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12 text-center mailing-list">
+    <h1><i class="fa fa-envelope fa-2x"></i></h1>
+    <h2>Be in the know.</h2>
+    <p>Sign up for tips, deals, and wisdom.</p>
+    <br>
+    <%= form_tag mailing_list_emails_path do %>
+      <%= email_field_tag :email, params[:email], placeholder: "email", class: "update-form"%><br><br>
+      <%= submit_tag "sign up", class:"btn btn-little-owl btn-sm"  %>
+    <% end %>
+  </div>
+</div>

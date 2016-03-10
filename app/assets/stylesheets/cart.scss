@@ -18,12 +18,21 @@
   margin-bottom: 20px;
 }
 
+.checkout-total {
+  text-align: center;
+  font-weight: 800;
+}
 .shopping-cart-title {
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: -10px;
   margin-top: 5px;
 }
 
+.order-total{
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+}
 .product-title {
   font-weight: 600;
   font-size: 1.5em;
@@ -41,7 +50,7 @@
 
 .cart-total {
   margin-top: 0px;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 65px;
   margin-bottom: 20px;
 }
