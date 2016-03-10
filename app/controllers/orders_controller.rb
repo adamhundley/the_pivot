@@ -56,8 +56,8 @@ class OrdersController < ApplicationController
   end
 
   def checkout_login
-
   end
+
   private
 
   def user_params
@@ -67,5 +67,4 @@ class OrdersController < ApplicationController
   def stripe_params
     params.permit(:stripeEmail, :stripeToken, :stripeShippingName, :stripeShippingAddressLine1, :stripeShippingAddressCity, :stripeShippingAddressZip, :stripeShippingAddressState, :stripeShippingAddressZip )
   end
-
 end
