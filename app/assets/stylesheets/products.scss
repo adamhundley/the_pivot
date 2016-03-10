@@ -50,6 +50,10 @@
   .xs-product-row {
     display: none;
   }
+
+  .all-hero-unit {
+    display: none;
+  }
 }
 
 @media (max-width:767px) {
@@ -71,6 +75,10 @@
 
   .featured-sub-product {
     display: none;
+  }
+
+  .all-hero-unit {
+    background-image: url('https://images.unsplash.com/photo-1444012236767-1b471c68781c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=80b7caf0ee750fbca6d5e68136aac5d1');
   }
 }
 
