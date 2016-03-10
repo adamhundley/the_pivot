@@ -9,9 +9,8 @@
     <li class="dropdown pull-right nav-icon">
       <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle"><i class="fa fa-user fa-lg"></i></a>
       <ul class="dropdown-menu">
-        <li>
-          <a href="/">
-            <%= current_user.fullname.downcase %></a>
+        <li class="name-in-dropdown">
+          <%= current_user.fullname.downcase %>
         </li>
         <li><%= link_to "order history", user_orders_path(current_user) %></li>
         <li>
