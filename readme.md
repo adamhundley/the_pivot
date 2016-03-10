@@ -15,6 +15,11 @@ A primary goal for the Little Owl project was to model ux design workflow from i
 
 Moving forward (if the app was live), we would expect to continually interact with our ideal users in an iterative process of continual design improvement.
 
+#####Agile TDD
+Another goal for this project was to mock a two week sprint on an agile team with a focus on test-driven-development. We used [waffle.io](https://waffle.io/) to manage issues and pull requests and [simplecov](https://github.com/colszowka/simplecov) to monitor test coverage.
+
+![agile stats](app/assets/images/agile_tdd.png)
+
 ####Technical Overview
 * Full stack ruby-on-rails
 * jQuery
@@ -39,4 +44,6 @@ rspec spec/features/user/user_adds_product_to_cart_spec.rb
 In order to see coverage for our testing suite simply type the command `open coverage/index.html` and it will show the index page for our simple cov code coverage. 
 
 Happy testing!
- 
+
+###Team
+![team](app/assets/images/team.png)
