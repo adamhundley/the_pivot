@@ -20,6 +20,8 @@ Another goal for this project was to mock a two week sprint on an agile team wit
 
 ![agile stats](app/assets/images/agile_tdd.png)
 
+![test coverage](app/assets/images/code_coverage_for_little_owl.png)
+
 ####Technical Overview
 * Full stack ruby-on-rails
 * jQuery
