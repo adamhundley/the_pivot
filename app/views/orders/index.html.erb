@@ -1,34 +1,33 @@
+<div class="order-hero-unit order-history-hero-unit">
+  <div class="container text-center hero-container">
+    <h1>oh, the nostalgia.</h1>
+  </div>
+</div><br>
 <div id="orders" class="container">
-  <div class="cart">
-    <div class="row">
-      <div class="col-xs-6 text-center">
-        <div class="product-header">
-          <h2>Orders</h2>
-        </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="table-responsive">
+        <table class="table table-hover table-condensed table-products">
+          <thead>
+            <tr>
+              <th class="text-center">order</th>
+              <th class="text-center">date</th>
+              <th class="text-center">status</th>
+              <th class="text-center">total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><h4><%= link_to order.id, user_order_path(current_user, order) %></h4></td>
+              <td><h4><%= order.date %></h4></td>
+              <td><h4><%= order.status %></h4></td>
+              <td><h4><%= order.display_total %></h4></td>
+              <td><h4><%= link_to "details", user_order_path(current_user, order) %></h4></td>
+            </tr>
+          <% end %>
+        </table>
       </div>
     </div>
-  </div>
-    <% @orders.each do |order| %>
-    <div class="row order container">
-      <div id="<%= order.id %>-order">
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="order-info">
-              <p>Order id: <%= order.id %></p><br>
-              <p>Order total: $<%= order.total %></p><br>
-              <p><%= order.total %></p><br>
-              <% order.products.each do |product| %>
-                <p><%= product.name %></p>
-              <% end %>
-              <p><%= link_to "details", user_order_path(current_user, order) %></p><br>
-            </div>
-          </div>
-          <div class="col-xs-8">
-              <div class="order-info container">
-              </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
   </div>
 </div>
