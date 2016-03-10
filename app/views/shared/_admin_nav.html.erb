@@ -8,11 +8,8 @@
             <i class="fa fa-user fa-lg"></i>
           </a>
           <ul class="dropdown-menu">
-            <li>
-                <%= link_to current_user.fullname.downcase, admin_dashboard_path %>
-            </li>
-            <li>
-              <a href="/">settings</a>
+            <li class="name-in-dropdown">
+                <%= current_user.fullname.downcase %>
             </li>
             <li>
               <%= link_to "logout", logout_path, method: :delete %>
