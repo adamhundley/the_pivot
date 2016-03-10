@@ -1,5 +1,5 @@
 <div bgcolor="#fff" style="background:#fff;margin:0;max-width:100%;padding:0;width:100%">
-  <table>
+  <table bgcolor="#fff" style="background:#fff;margin-left:auto;margin-right:auto;max-width:768px;padding:0 20px;width:100%">
     <tr align="center" style="text-align:center">
       <td style="font-size:36px;line-height:1.2">Order Confirmation</td>
     </tr>
@@ -27,10 +27,37 @@
                </td>
               <td style="padding:20px 0 20px 10px;width:70%">
                 <%= order_product.product.description %>
-                <span style="float:right"><%= @order.total %></span>
+                <span style="float:right"><%= order_productproduct.price.quantity %></span>
               </td>
             </tr>
             <% end %>
+            <tr>
+              <td>
+                <table bgcolor="#fff" style="background:#fff;margin-left:auto;margin-right:auto;max-width:768px;padding-bottom:30px;width:100%">
+                  <tbody>
+                    <tr>
+                      <td valign="top" style="font-size:18px;vertical-align:top;width:100%">
+                        <p style="font-weight:600;margin:0 0 10px">
+                          Shipping Address
+                        </p>
+                        <div style="line-height:1.4">
+                          <%= @order.fullname %><br><br>
+                          <%= @order.street %><br><br>
+                          <%= @order.city %> <%= @order.state %> <%= @order.zip %>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr align="center" style="text-align:center">
+                      <td style="border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;line-height:1.4;padding:30px 0 0">
+                        <span style="color:#999999;padding:0 0 10px">Order Total</span>
+                        <br><br>
+                        <span style="font-size:36px;font-weight:600"> <%= @order.total %> </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
           </tbody>
         </table>
       </td>
