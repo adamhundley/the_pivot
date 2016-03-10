@@ -16,6 +16,7 @@ Admin Password: password
 
 ###Goals
 #####End-to-End UX Design
+![team](app/assets/images/ux_banner.png)
 A primary goal for the Little Owl project was to model ux design workflow from ideation to production.  We started this process by building a Journey Map to define our ideal users. With an idea of these users defined, we interviewed a group of people who fit "The Persona" in order to gather insights on what type of experience our users would like when interacting with and ecommerce app. Rooted in this research, we wireframed the entire app and did our first round of usability testing without writing a snippet of code.
 
 Moving forward (if the app was live), we would expect to continually interact with our ideal users in an iterative process of continual design improvement.
