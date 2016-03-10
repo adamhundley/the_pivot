@@ -2,13 +2,15 @@ require 'spec_helper'
 
 RSpec.describe OrderMailer do
   describe 'email' do
-    let(:order) { mock_model Order, first_name: 'Lucas', last_name: "Jones", street: "123 St.", city: "Denver", state: "CO", zip: "80209", user_id: 3, email: 'lucas@email.com', fullname: "Lucas Jones", order_total: "40", mock_model OrderProduct, product_id: 1, order_id: order.id, quantity: 1}
+    let(:order) { mock_model Order, first_name: 'Lucas', last_name: "Jones", street: "123 St.", city: "Denver", state: "CO", zip: "80209", user_id: 3, email: 'lucas@email.com', fullname: "Lucas Jones", order_total: "40"}
+
+    let(:order_product) {mock_model OrderProduct, product_id: 1, order_id: order.id, quantity: 1}
 
 
 
-    require "pry"; binding.pry}
+    require "pry"; binding.pry
 
-    let(:mail) { OrderMailer.order_email(order) }
+    let(:mail) { OrderMailer.order_email(order_product }
 
     it 'renders the subject' do
       expect(mail.subject).to eql('test confirmation email')
