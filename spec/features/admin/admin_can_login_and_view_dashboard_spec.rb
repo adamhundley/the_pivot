@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "AdminCanLoginAndViewDashboard", type: :feature do
-  scenario "Admin sees dashboard" do
+  scenario "Admin sees dashboard when they successfully login" do
       admin = User.create(first_name: "john",
                           last_name: "adams",
                           fullname: "john adams",

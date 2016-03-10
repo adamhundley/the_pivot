@@ -89,7 +89,6 @@ RSpec.feature "AdminViewsAllOrders", type: :feature do
     expect(current_path).to eq(admin_order_path(order1.id))
     within "div#order-information" do
       expect(page).to have_content(order1.id)
-      expect(page).to have_content(order1.display_total)
       expect(Order.first.status).to eq("completed")
       expect(page).to have_button("update")
     end

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "AdminCantAddProductWithoutCategory", type: :feature do
-  scenario "they see the correct flash message" do
+  scenario "they see the correct flash message when adding a product with a missing category" do
     admin = User.create(fullname: "john adams",
                         email: "admin@example.com",
                         password: 'password',

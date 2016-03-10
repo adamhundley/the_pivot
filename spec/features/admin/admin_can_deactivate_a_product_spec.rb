@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "AdminCanDeactivateAProduct", type: :feature do
-  scenario "they can deavtivate" do
+  scenario "they are able to deactivate an item" do
     admin = User.create(fullname: "john adams",
                         email: "admin@example.com",
                         password: "password",
@@ -40,7 +40,7 @@ RSpec.feature "AdminCanDeactivateAProduct", type: :feature do
     within "tr##{product.id}-product" do
       click_on "update product"
     end
-    
+
     expect(page).to have_content("Sorry mate! Reactivate the product!")
 
     within "tr##{product.id}-product" do

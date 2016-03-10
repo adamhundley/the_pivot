@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  helper OrdersHelper
 
   def new
     @products = OrderProcessor.new(@cart).products
