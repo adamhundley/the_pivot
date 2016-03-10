@@ -1,12 +1,39 @@
-<head>
+<table>
+  <tr align="center" style="text-align:center">
+    <td style="font-size:36px;line-height:1.2">Order Confirmation</td>
+  </tr>
+  <tr align="center" style="text-align:center">
+    <td style="font-size:18px">
+      <p style="margin-bottom:35px">
+        We received your order and it'll ship shortly fam.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td style="border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;padding:35px 0 0">
+      <p style="font-weight:500;margin:0">Order Id: <%= @order.id %> </p>
+    </td>
+  </tr>
+  <tr>
+    <td style="width:100%">
+      <table bgcolor="#fff" style="background:#fff;border-collapse:collapse;border-top-color:#e5e5e5;border-top-style:solid;border-top-width:1px;font-size:18px;margin:20px 0 30px;max-width:768px;padding:20px 0;width:100%">
+        <tbody>
+          <% @order.order_products.each do |order_product| %>
+          <tr style="border-bottom-color:#e5e5e5;border-bottom-style:solid;border-bottom-width:1px;border-collapse:separate">
+            <td style="padding:20px 0;width:30%">
+              <%= image_tag(order_product.product.image.url(:small), class:"product-image img-rounded") %>
+             </td>
+            <td>
+              <%= order_product.product.description %>
+            </td>
+          </tr>
+          <% end %>
 
-</head>
-<body>
-  <h1>Sup duh, <%= @order.first_name %></h1>
-  <p>
-    Thanks for the order.
-  </p>
-  <p>
-    If you like that product you should maybe check out some others
-  </p>
-</body>
+        </tbody>
+
+      </table>
+
+    </td>
+  </tr>
+
+</table>
