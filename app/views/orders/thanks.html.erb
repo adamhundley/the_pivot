@@ -1,3 +1,9 @@
-<h1>Your order was successfully placed.</h1>
-<h4>We've emailed a receipt to <%= @order.email %></h4>
-<h4>If you have any questions, you can always contact us.</h4>
+<div class="container-fluid text-center">
+  <h1>Hey <%= current_user.first_name %>! 🎉🎉</h1>
+  <h3>We've emailed a receipt to <%= @order.email %></h3><br>
+  <h4>Here at Little Owl we work super hard to make the best products and share them with the world.<br>If you have any questions about your order or coffee in general, please don't hesitate to <a href="mailto:littleowlturing@gmail.com?Subject=hello%20again" target="_top">contact us</a>.</h4>
+</div>
+<%= render partial: "shared/mailing_list" %>
+<div class="container-fluid">
+  <%= render partial: "shared/featured_products" %>
+</div>
