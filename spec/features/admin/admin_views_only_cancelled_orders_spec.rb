@@ -82,7 +82,6 @@ RSpec.feature "AdminViewsCancelledOrders", type: :feature do
 
     within "div#order-information" do
       expect(page).to have_content(order1.id)
-      expect(page).to have_content(order1.display_total)
       expect(page).to have_button("update")
       select "completed", from: "order_status"
     end
