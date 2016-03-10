@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-  <div class="col-xs-6 container past-order-review">
+  <div class="col-xs-6 container past-order-review" id="order-information">
   <%= form_for [:admin, @order], url: admin_order_path(@order.id), html: {class:"form-inline"} do |f| %>
   <br>
     <h2 class="order-id little">Order # <%= @order.id %>
