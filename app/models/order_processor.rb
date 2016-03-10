@@ -24,7 +24,6 @@ class OrderProcessor
       city: params[:stripeShippingAddressCity],
       state: params[:stripeShippingAddressState],
       zip: params[:stripeShippingAddressZip],
-      card_token: params[:stripeToken]
-    }
+      card_token: params[:stripeToken]}
   end
 end

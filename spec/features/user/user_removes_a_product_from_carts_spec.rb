@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.feature "UserRemovesAProductFromCarts", type: :feature do
   scenario "they see all that the removed item is no longer there" do
     category = Category.create(name:"coffee")
-    product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good", image: "http://www.ethiopia-xperience.com/images/Pics_uploaded_by_Jos/EthiopianCoffee2010_586.jpg")
+    product = category.products.create(name:"Ethiopian", price:1500, description:"Ethiopian coffee is super good")
 
-    product2 = category.products.create(name:"Columbian", price:1800, description:"Columbian coffee is super good", image: "https://s3.amazonaws.com/littleowl-turing/products/Bonavita+1900TS+Brewer.png")
+    product2 = category.products.create(name:"Columbian", price:1800, description:"Columbian coffee is super good")
     visit "/products/#{product.id}"
     click_on "Add to cart"
 

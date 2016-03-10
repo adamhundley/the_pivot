@@ -38,6 +38,12 @@ RSpec.feature "AdminCanDeactivateAProduct", type: :feature do
     expect(current_path).to eq(admin_products_path)
 
     within "tr##{product.id}-product" do
+      click_on "update product"
+    end
+    
+    expect(page).to have_content("Sorry mate! Reactivate the product!")
+
+    within "tr##{product.id}-product" do
       find(:css, "#product_inactive").set(false)
       click_on "update product"
     end

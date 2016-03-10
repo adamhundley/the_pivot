@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "AdminViewsCancelledOrders", type: :feature do
-  scenario "they see only cancelled orders" do
+RSpec.feature "AdminUsesSearchFeatureForOrders", type: :feature do
+  before(:each) do
     coffee = Category.create(name:"coffee")
 
     product1 = coffee.products.create(name: "Finca San Matias",
@@ -45,52 +45,55 @@ RSpec.feature "AdminViewsCancelledOrders", type: :feature do
                         email: "admin@example.com",
                         password: "password",
                         role: 1)
-
     visit "/"
     click_on "login"
     fill_in "email", with: admin.email
     fill_in "password", with: admin.password
     click_on "login"
     visit admin_dashboard_path
+  end
 
-    click_on "cancelled orders"
+  scenario "they search by id" do
+    click_on "active orders"
 
-    expect(current_path).to eq(admin_orders_path)
+    fill_in "search by order id", with: 324234
+    click_on "search by id"
 
-    within "tr##{order1.id}-order" do
-      expect(page).to have_content(order1.id)
-      expect(page).to have_content(order1.fullname)
-      expect(page).to have_content(order1.total)
-      expect(page).to have_content(order1.product_quantity)
-    end
+    expect(page).to have_content("Order 324234 doesn't exist silly!")
 
-    expect(page).to_not have_content(order2.fullname)
-    expect(page).to_not have_content(order2.total)
+    fill_in "id_search", with: "#{Order.last.id}"
+    click_on "search by id"
 
-    click_on(order1.id)
+    expect(current_path).to eq(admin_order_path("#{Order.last.id}"))
 
-    expect(current_path).to eq(admin_order_path(order1.id))
+    expect(page).to have_content("#{Order.last.total}")
+    expect(page).to have_content("#{Order.last.order_products.first.product.name}")
+    expect(page).to have_content("#{Order.last.fullname}")
+    expect(page).to have_content("#{Order.last.street}")
+    expect(page).to have_content("#{Order.last.city}")
+    expect(page).to have_content("#{Order.last.state}")
+    expect(page).to have_content("#{Order.last.zip}")
+  end
 
-    within "div#customer-information" do
-      expect(page).to have_content(order1.first_name)
-      expect(page).to have_content(order1.last_name)
-      expect(page).to have_content("1600 pennslyvania")
-      expect(page).to have_content(order1.city)
-      expect(page).to have_content(order1.state)
-      expect(page).to have_content(order1.zip)
-    end
+  scenario "they search by name" do
+    click_on "active orders"
 
-    within "div#order-information" do
-      expect(page).to have_content(order1.id)
-      expect(page).to have_content(order1.display_total)
-      expect(page).to have_button("update")
-      select "completed", from: "order_status"
-    end
-
-    click_on "update"
+    fill_in "search by name", with: "jonathon adams"
+    click_on "search by name"
 
     expect(current_path).to eq(admin_orders_path)
-    expect(Order.first.status).to eq("completed")
+    expect(page).to have_content("#{Order.first.fullname}")
 
+  end
+
+  scenario "they search by date" do
+    click_on "active orders"
+
+    fill_in "date_search", with: "#{Order.first.updated_at.strftime("%B %-d, %Y")}"
+
+    click_on "search by date"
+
+    expect(current_path).to eq(admin_orders_path)
+    expect(page).to have_content("#{Order.last.fullname}")
   end
 end

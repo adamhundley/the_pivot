@@ -6,8 +6,7 @@ RSpec.feature "AdminViewsCompletedOrders", type: :feature do
 
     product1 = coffee.products.create(name: "Finca San Matias",
                                       price: 2500,
-                                      description: "Es todo que necessita.",
-                                      image: open("https://s3.amazonaws.com/littleowl-turing/products/finca_san_matias.jpg"))
+                                      description: "Es todo que necessita.")
 
     user = User.create(first_name: "john",
                        last_name: "adams",
