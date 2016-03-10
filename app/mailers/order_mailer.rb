@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class OrderMailer < ApplicationMailer
   default from: "littleowlturing@gmail.com"
 
   def order_email(order)
