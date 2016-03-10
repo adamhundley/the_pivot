@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @order = order_processor.process_current_user(stripe_params, current_user)
     if @order.save
       @order.process(order_processor.products)
-      UserMailer.order_email(@order).deliver_now
+      OrderMailer.order_email(@order).deliver_now
       flash[:info] = "Thanks for your order! :)"
       session[:cart] = nil
       redirect_to user_thanks_path(current_user, @order.id)
