@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "AdminCanAddProduct", type: :feature do
-  scenario "they see the correct flash message" do
+  scenario "they see the correct flash message after product is added" do
     admin = User.create(fullname: "john adams",
                         email: "admin@example.com",
                         password: 'password',

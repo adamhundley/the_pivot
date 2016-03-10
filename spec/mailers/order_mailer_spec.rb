@@ -17,7 +17,7 @@ RSpec.describe OrderMailer do
     let(:mail) { OrderMailer.order_email(@order) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql('Alright, Alright Alright. Your joe is on the way.')
+      expect(mail.subject).to eql('🎉Alright, Alright, Alright. Your joe is on the way!🎉')
     end
 
     it 'renders the receiver email' do
