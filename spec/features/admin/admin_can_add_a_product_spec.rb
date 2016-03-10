@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.feature "AdminCanAddItems", type: :feature do
-  scenario "they see all added items" do
+RSpec.feature "AdminCanAddProduct", type: :feature do
+  scenario "they see the correct flash message" do
     admin = User.create(fullname: "john adams",
                         email: "admin@example.com",
                         password: 'password',
@@ -27,8 +27,10 @@ RSpec.feature "AdminCanAddItems", type: :feature do
     fill_in "name", with: "Ethiopian"
     fill_in "price", with: 100
     fill_in "description", with: "is guud"
+    select "coffee", from: "product-category"
     end
+    click_on "create product"
 
-    expect(page).to have_content("browse for image")
+    expect(page).to have_content("Life is good, john")
   end
 end
