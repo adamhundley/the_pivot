@@ -7,7 +7,9 @@ RSpec.feature "UserViewsASpecificProduct", type: :feature do
 
     visit "/coffee"
 
-    click_on "Ethiopian"
+    within "div##{product.name}-link" do
+      click_on "#{product.id}-product"
+    end
 
     expect(current_path).to eq("/products/#{product.id}")
 
