@@ -1,7 +1,7 @@
 #Little Owl
 [![Stories in Progress](https://badge.waffle.io/weilandia/little_owl.png?label=Ready)](http://waffle.io/weilandia/little_owl.io)
 
-LittleOwl is an enterprise eCommerce app built on rails.  Production is hosted [here](http://tiwizard.com/downloads/fall-down/).
+LittleOwl is an enterprise eCommerce app built on rails.  Production is hosted [here](http://littleowl.herokuapp.com).
 
 Admin Username: admin@littleowl.com
 
