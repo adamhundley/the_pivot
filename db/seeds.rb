@@ -68,7 +68,11 @@ gifts.products.create(name:"LO Ornaments", price: 1000, description:"Never too e
 
 gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", image: open("https://s3.amazonaws.com/littleowl-turing/products/gifts/pitcher.jpg"))
 
-300.times do
+coffee.products.create(name:"Terra Terra", price: 2000, description:"Yum.", image: open("https://s3.amazonaws.com/littleowl-turing/products/terra_bella.jpg"), inactive: true)
+
+gifts.products.create(name:"Espressoooo", price: 4000, description:"FANCY.", image: open("https://s3.amazonaws.com/littleowl-turing/products/espresso+set.jpg"), inactive: true)
+
+400.times do
   fullname = Faker::Name.name
   email = Faker::Internet.free_email(fullname.split[0])
   user = User.new(fullname: fullname, email: email, password: "password")
@@ -83,7 +87,7 @@ gifts.products.create(name:"Pitcher", price: 2500, description:"Chic all.", imag
       if order.save
         order_date = Faker::Time.between(date, DateTime.now - 1)
         order.update(created_at: order_date, updated_at: order_date)
-        rand(0..3).times do
+        rand(0..4).times do
           comment = order.comments.create(comment: Faker::StarWars.quote)
           comment_date = Faker::Time.between(order_date, DateTime.now - 1)
           comment.update(created_at: comment_date, updated_at: comment_date)
