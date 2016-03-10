@@ -14,15 +14,10 @@ RSpec.describe OrderMailer do
       @order.order_products.create(product_id: Product.last.id, order_id: Order.last.id, quantity: 1)
     end
 
-
-    # let(:order) { mock_model Order, first_name: 'Lucas', last_name: "Jones", street: "123 St.", city: "Denver", state: "CO", zip: "80209", user_id: 3, email: 'lucas@email.com', fullname: "Lucas Jones", order_total: "40"}
-    #
-    # let(:order_product) {mock_model OrderProduct, product_id: Product.last.id, order_id: Order.last.id, quantity: 1}
-
     let(:mail) { OrderMailer.order_email(@order) }
 
     it 'renders the subject' do
-      expect(mail.subject).to eql('test confirmation email')
+      expect(mail.subject).to eql('Alright, Alright Alright. Your joe is on the way.')
     end
 
     it 'renders the receiver email' do
@@ -33,13 +28,8 @@ RSpec.describe OrderMailer do
       expect(mail.from).to eql(['littleowlturing@gmail.com'])
     end
 
-    it 'assigns @name' do
+    it 'assigns @order.fullname' do
       expect(mail.body.encoded).to match(@user.fullname)
-    end
-
-    it 'assigns @confirmation_url' do
-      expect(mail.body.encoded)
-        .to match("http://littleowl.herokuapp.com")
     end
   end
 end
