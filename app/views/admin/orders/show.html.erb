@@ -60,7 +60,7 @@
       </thead>
       <% @order.order_products.each do |order_product| %>
         <tr id="<%= order_product.id %>-order-product">
-          <td><%= image_tag(order_product.product.image.url(:small), class:"product-image img-rounded") %></td>
+          <td><%= image_tag(order_product.product.image.url(:small), class:"product-image") %></td>
           <td> <%= order_product.product.name %> </td>
           <td> <%= order_product.product.display_price %> </td>
           <td> <%= order_product.quantity %> </td>
