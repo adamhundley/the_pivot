@@ -43,6 +43,5 @@ RSpec.feature "UserCreatesAccount", type: :feature do
     expect(page).to_not have_link("logout")
     expect(page).to_not have_link("order history")
     expect(page).to_not have_content("John Adams")
-
   end
 end

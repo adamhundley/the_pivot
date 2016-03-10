@@ -5,8 +5,8 @@ class Admin::CommentsController < Admin::BaseController
       flash[:info] = "Comments on comments."
       redirect_to admin_order_path(params[:comment][:order_id])
     else
-      flash.now[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."
-      render :new
+      flash[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."
+      redirect_to admin_order_path(params[:comment][:order_id])
     end
   end
 

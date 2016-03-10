@@ -5,8 +5,8 @@ class MailingListEmailsController < ApplicationController
       flash[:info] = "Hey, thx for joining :)"
       redirect_to root_path
     else
-      flash.now[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."
-      render :new
+      flash[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."
+      redirect_to root_path
     end
   end
 

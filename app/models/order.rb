@@ -20,10 +20,6 @@ class Order < ActiveRecord::Base
     processed_orders.sum(:order_total)
   end
 
-  def self.cancelled_revenue
-    cancelled_orders.sum(:order_total)
-  end
-
   def self.daily_average_revenue
     return if Order.count == 0
     total_revenue / processed_orders.group(:created_at).count.length

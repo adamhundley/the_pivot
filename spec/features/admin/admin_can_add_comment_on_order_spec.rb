@@ -72,6 +72,13 @@ RSpec.feature "AdminCanCommentOnOrder", type: :feature do
     within "div#order-comments" do
       expect(Order.first.comments.last.comment).to eq("Test comment")
       expect(page).to have_button("add comment")
+
+      click_on("add comment")
+    end
+
+    expect(page).to have_content("Sorry, friend.  Something went wrong :(... Please try again.")
+
+    within "div#order-comments" do
       fill_in "comment", with: "another comment"
       click_on("add comment")
       expect(Order.first.comments.last.comment).to eq("another comment")
