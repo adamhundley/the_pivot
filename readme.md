@@ -1,3 +1,5 @@
+#![logo](app/assets/images/nav-logo.png)Little Owl
+
 Heroku: https://littleowl.herokuapp.com
 
- ![Alt Text](http://g.recordit.co/Hjx1VB0drc.gif)
+ ![admin workflow](app/assets/images/admin_workflow.gif)
