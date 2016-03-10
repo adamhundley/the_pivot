@@ -31,32 +31,18 @@
               </td>
             </tr>
             <% end %>
-            <tr>
-              <td>
-                <table bgcolor="#fff" style="background:#fff;margin-left:auto;margin-right:auto;max-width:768px;padding-bottom:30px;width:100%">
-                  <tbody>
-                    <tr>
-                      <td valign="top" class="email" style="font-size:18px;vertical-align:top;width:50%">
-                        <p style="font-weight:600;margin:0 0 10px">
-                          Shipping Address
-                        </p>
-                        <div style="line-height:1.4">
-                          <%= @order.fullname %><br><br>
-                          <%= @order.street %><br><br>
-                          <%= @order.city %> <%= @order.state %> <%= @order.zip %>
-                        </div>
-                      </td>
-                      <td valign="top" class "email" style="font-size:18px;vertical-align:top;width:50%">
-                        <p style="font-weight:600;margin:0 0 10px">
-                          Order Total
-                        </p>
-                        <div style="line-height:1.4">
-                          <%= @order.total %><br><br>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            <tr style="border-bottom-color:#e5e5e5;border-bottom-style:solid;border-bottom-width:1px;border-collapse:separate">
+              <td style="padding:20px 0;width:30%">
+                <div style="line-height:1.4">
+                  <h4>Shipping Address</h4>
+                  <%= @order.fullname %><br><br>
+                  <%= @order.street %><br><br>
+                  <%= @order.city %> <%= @order.state %> <%= @order.zip %>
+                </div>
+               </td>
+              <td style="padding:20px 0 20px 10px;width:70%">
+                <span style="float:right">
+                  <h4>Order total</h4>                  $<%= @order.total %></span>
               </td>
             </tr>
           </tbody>
