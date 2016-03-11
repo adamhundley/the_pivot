@@ -27,18 +27,26 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if current_user
+      @order = current_user.orders.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def thanks
-    @order = Order.find(params[:order_id])
+    if current_user
+      @order = current_user.orders.find(params[:order_id])
+    else
+      redirect_to root_path
+    end
   end
 
   def index
     if current_user
       @orders = current_user.orders
     else
-      redirect_to "public/404"
+      redirect_to root_path
     end
   end
 
