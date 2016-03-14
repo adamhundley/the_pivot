@@ -23,6 +23,6 @@ RSpec.feature "AuthenticatedUserSecurity", type: :feature do
 
     visit "/users/1/orders"
 
-    expect(page).to have_content("Hey person, stop trying to hack our shit.")
+    expect(page).to have_content("the neat blend")
   end
 end
