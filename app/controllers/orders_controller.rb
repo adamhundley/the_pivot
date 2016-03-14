@@ -12,10 +12,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order_processor = OrderProcessor.new(@cart)
-    @order = order_processor.process_current_user(stripe_params, current_user)
+    @order = OrderProcessor.new(@cart).process_current_user(stripe_params, current_user)
+    @order.process(order_processor.products)
     if @order.save
-      @order.process(order_processor.products)
       OrderMailer.order_email(@order).deliver_now
       flash[:info] = "Thanks for your order! :)"
       session[:cart] = nil
