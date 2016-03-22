@@ -1,5 +1,6 @@
 #Little Owl
-[![Stories in Progress](https://badge.waffle.io/weilandia/little_owl.png?label=Ready)](http://waffle.io/weilandia/little_owl.io) &nbsp;&nbsp;&nbsp;&nbsp; [![Code Climate](https://codeclimate.com/github/weilandia/little_owl/badges/gpa.svg)](https://codeclimate.com/github/weilandia/little_owl)
+[![Stories in Ready](https://badge.waffle.io/adamhundley/the_pivot.svg?label=ready&title=Ready)](http://waffle.io/adamhundley/the_pivot)
+<!-- [![Code Climate](https://codeclimate.com/github/weilandia/little_owl/badges/gpa.svg)](https://codeclimate.com/github/weilandia/little_owl) -->
 
 LittleOwl is an enterprise eCommerce app built on rails.  Production is hosted [here](http://littleowl.herokuapp.com).
 
@@ -8,11 +9,11 @@ Admin Username: admin@littleowl.com
 Admin Password: password
 
 #####Admin Workflow
- ![admin workflow](app/assets/images/admin_workflow.gif)
- 
+ <!-- ![admin workflow](app/assets/images/admin_workflow.gif) -->
+
 #####User Workflow
- ![user workflow](app/assets/images/user_workflow.gif)
- 
+ <!-- ![user workflow](app/assets/images/user_workflow.gif) -->
+
 
 ###Goals
 #####End-to-End UX Design
@@ -44,13 +45,13 @@ Once you have the repo cloned, make sure to reset the database on your local mac
 
 In order to run the tests, enter `rspec` in the command line.
 
-If you would like to run a specific test enter, the whole path of that test, preceeded by the rspec command: ie. 
+If you would like to run a specific test enter, the whole path of that test, preceeded by the rspec command: ie.
 
 ```
 rspec spec/features/user/user_adds_product_to_cart_spec.rb
 ```
 
-In order to see coverage for our testing suite simply type the command `open coverage/index.html` and it will show the index page for our simple cov code coverage. 
+In order to see coverage for our testing suite simply type the command `open coverage/index.html` and it will show the index page for our simple cov code coverage.
 
 Happy testing!
 
