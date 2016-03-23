@@ -109,6 +109,6 @@ gifts.products.create(name:"Espressoooo", price: 4000, description:"FANCY.", ima
   end
 end
 
-admin = User.new(fullname: "admin", email: "admin@littleowl.com", password: "password", role: 1)
+admin = User.new(fullname: "admin", email: "admin@camp.com", password: "password", role: 1)
 
 admin.save

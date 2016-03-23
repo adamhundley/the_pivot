@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="text-center form-div col-xs-6">
+      <h1><small>add those awesome products</small></h1>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div id="new-property" class="form-group has success text-center form-div col-xs-6">
+      <%= form_for [:user, @property] do |f| %>
+        <%= f.label :title, class:"sr-only"  %>
+        <%= f.text_field :title, placeholder: "title", class:"form-control form-control-success" %><br>
+        <%= f.label :description, class:"sr-only"  %>
+        <%= f.text_field :description, placeholder: "description", class:"form-control text-input" %><br>
+        <%= f.label :price, class:"sr-only"  %>
+        <%= f.text_field :price, placeholder: "price", class:"form-control text-input" %><br>
+        <%= f.collection_select(:property_type_id, PropertyType.all, :id, :name, {prompt:"property type"}, {id:"property-type", class:"form-control", required:true}) %>
+        <br>
+        <%= f.label :street, class:"sr-only"  %>
+        <%= f.text_field :street, placeholder: "street", class:"form-control form-control-success" %><br>
+        <%= f.label :unit, class:"sr-only"  %>
+        <%= f.text_field :unit, placeholder: "unit", class:"form-control form-control-success" %><br>
+        <%= f.label :city, class:"sr-only"  %>
+        <%= f.text_field :city, placeholder: "city", class:"form-control form-control-success" %><br>
+        <%= f.select :state, options_for_select(us_states), {class: "form-control form-control"} %><br>
+        <%= f.label :zip, class:"sr-only"  %>
+        <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success" %><br>
+
+
+        <%= f.select "bedrooms", options_for_select([*1..16], @property.bedrooms), {class: "form-control form-control"} %>
+        <%= f.select "bathrooms", options_for_select([*1..10], @property.bathrooms), {class: "form-control form-control"} %>
+        <%= f.select "sleeps", options_for_select([*1..25], @property.sleeps), {class: "form-control form-control"} %>
+
+        <%= f.label :image, class:"sr-only"  %>
+        <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
+        <div class="form-inline">
+          <div class="form-group">
+            <label class="file">
+            <input id="imageFormCover" class="form-control" type="text" readonly>
+            <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">browse for image</a>
+            </label>
+        </div>
+        <br>
+        </div>
+        <br>
+        <%= f.submit "List my Pad!", class:"btn btn-little-owl" %>
+      <% end %>
+    </div>
+    <div class="col-xs-3">
+    </div>
+  </div>
+</div>

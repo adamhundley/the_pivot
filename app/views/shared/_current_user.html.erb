@@ -1,11 +1,13 @@
 <ul class="nav pull-left user-cart">
-  <% if current_page?(controller: "sessions", action: "new") || current_page?(controller: "users", action: "new") %>
-    <% if !@cart.contents.empty? %>
-      <li class="pull-right nav-icon">
-        <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
-      </li>
-    <% end %>
-  <% elsif current_user  %>
+  <% if current_user %>
+    <a href="<%= current_user.slug %>/properties/new">
+    <button type="button" name="button", class="btn btn-little-owl btn-lg">List my Pad</button></a>
+  <% else %>
+    <a href="/properties/new">
+      <button type="button" name="button", class="btn btn-little-owl btn-lg">List my Pad</button></a>
+  <% end %>
+
+  <% if current_user  %>
     <li class="dropdown pull-right nav-icon">
       <a href="#" data-toggle="dropdown" style="color:#777; margin-top: 5px;" class="dropdown-toggle"><i class="fa fa-user fa-lg"></i></a>
       <ul class="dropdown-menu">
