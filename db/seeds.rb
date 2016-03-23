@@ -72,7 +72,7 @@ coffee.products.create(name:"Terra Terra", price: 2000, description:"Yum.", imag
 
 gifts.products.create(name:"Espressoooo", price: 4000, description:"FANCY.", image: open("https://s3.amazonaws.com/littleowl-turing/products/espresso+set.jpg"), inactive: true)
 
-400.times do
+40.times do
   fullname = Faker::Name.name
   email = Faker::Internet.free_email(fullname.split[0])
   user = User.new(fullname: fullname, email: email, password: "password")
