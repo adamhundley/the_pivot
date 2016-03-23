@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   has_secure_password
   before_save :build_name
+  before_create :create_slug
   has_many :orders
   has_many :order_products, through: :orders
+  has_many :properties
 
   validates :fullname, presence: true
   validates :email, presence: true, uniqueness: true
@@ -21,5 +23,9 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def create_slug
+    self.slug = fullname.parameterize
   end
 end
