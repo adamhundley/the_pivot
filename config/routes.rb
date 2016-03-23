@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'home#index'
 
   resources :products, only: [:index, :show]
@@ -10,6 +11,12 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :index, :create, :show]
     get "/orders/:order_id/thanks", to: "orders#thanks", as: "thanks"
   end
+
+  namespace :user, path: ":user_name", as: :user do
+    resources :properties, only: [:new, :create, :index]
+  end
+
+  get ":user_name/dashboard", to: "users#show", as: :user_dashboard
 
   namespace :admin do
     get "/dashboard", to: "users#show"
