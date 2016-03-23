@@ -12,15 +12,15 @@ RSpec.feature "UserListsTheirProperty", type: :feature do
 
     expect(current_path).to eq("/#{user.slug}/properties/new")
 
-    fill_in "title", with: "Beautiful 2 BR downtown"
-    fill_in "description", with: "test description"
-    fill_in "price", with: 200
+    fill_in "property title", with: "Beautiful 2 BR downtown"
+    fill_in "property description", with: "test description"
+    fill_in "rental price per day", with: 200
     select "Entire House/Apartment",from: "property-type"
     fill_in "street", with: "123 Test Street"
     fill_in "city", with: "Denver"
     select "Colorado",from: "property_state"
     fill_in "zip", with: "80207"
-    select "3",from: "property_bedrooms"
+    select "3",from: "bedroom-dropdown"
     select "2",from: "property_bathrooms"
     select "5",from: "property_sleeps"
 

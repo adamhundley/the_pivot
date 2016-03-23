@@ -64,11 +64,11 @@
             <%= f.select "sleeps", options_for_select([*1..25], @property.sleeps), {}, {class: "form-control form-control"} %>
           </div>
         </div><br>
-        <!-- <div class="form-group">
-          <% ["one", "two", "three"].each do |x| %>
-            <%= f.label x %>
+        <div class="form-group">
+          <% @amenities.each do |x| %>
+            <%= f.label x.name %>
             <%= f.check_box :sleeps %>
-          <% end %> -->
+          <% end %>
 
           <label class="checkbox-inline">
             <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1

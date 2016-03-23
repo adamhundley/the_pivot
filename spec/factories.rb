@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :amenity do
+    name "MyString"
+  end
   factory :property_type do
     name "Entire House/Apartment"
   end
