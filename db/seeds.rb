@@ -5,7 +5,8 @@ class Seed
     generate_property_types
     generate_properties
     generate_amenities
-  end
+    add_amenities_to_property
+ end
 
   def generate_admin
     fullname = Faker::Name.name
@@ -52,10 +53,17 @@ class Seed
   def generate_amenities
     amenities = ["tv", "washer/dryer", "internet",
                  "cable", "kitchen", "pool", "Pets allowed",
-                 "fireplace", "Free Parking" "Esentials"]
+                 "fireplace", "Free Parking", "Esentials"]
+    10.times do |i|
+    Amenity.create!(name: amenities[i])
+    end
+  end
+
+  def add_amenities_to_property
     Property.all.each do |property|
+      amenities = Amenity.all.take(rand(3..10))
       amenities.each do |amenity|
-        property.amenities.create(name: amenity)
+        property.amenities << amenity
       end
     end
   end
