@@ -1,3 +1,52 @@
+class Seed
+  def initialize
+    generate_admin
+    generate_properties
+    generate_amenities
+  end
+
+  def generate_admin
+    fullname = Faker::Name.name
+    email = Faker::Internet.free_email(fullname.split[0])
+    100.times do |i|
+      user = User.new(fullname: fullname,
+                      email:    email,
+                      password: "password",
+                      role:     1,
+                      )
+    end
+  end
+
+  def generate_properties
+    user_ids = User.all.pluck(:id)
+    100.times do |i|
+      user = User.find(id: user_ids[-1])
+      property = Property.create!(title:       Faker::Hipster.sentence,
+                                  description: Faker::Lorem.paragraph,
+                                  price:       rand(100..500),
+                                  street:      Faker::Address.street_address,
+                                  city:        Faker::Address.city,
+                                  state:       Faker::Address.state,
+                                  zip:         Faker::Address.zip,
+                                  bedrooms:    rand(1..16),
+                                  bathroom:    rand(1..6),
+                                  sleeps:      rand(1..16),
+                                  user_id:     user.id,
+                                  approved:    true)
+
+      user_ids.pop
+    end
+  end
+
+  def generate_amenities
+    amenities = ["tv", "washer/dryer", "internet",
+                 "cable", "kitchen", "pool", "Pets allowed",
+                 "fireplace", "Free Parking" "Esentials"]
+    300.times do
+      property = Property.find
+    end
+  end
+end
 coffee = Category.create(name:"coffee")
 tools = Category.create(name:"tools")
 gifts = Category.create(name:"gifts")
