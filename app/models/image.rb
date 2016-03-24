@@ -1,4 +1,5 @@
-class Image
+class Image < ActiveRecord::Base
+belongs_to :property
 
   has_attached_file :image,
       styles: { index: '275x175>', show: '550x350<', small: '137.5x87.5>' },
