@@ -35,9 +35,16 @@ class Seed
                                   sleeps:      rand(1..16),
                                   user_id:     user.id,
                                   approved:    true)
-
+      generate_property_types(property)
       user_ids.pop
     end
+  end
+
+  def generate_property_types(property)
+    types = ["full House/apt", "private room",
+             "shared room"]
+    property_type = PropertyType.create!(name: types[rand(0..2)])
+    property_type.properties << property
   end
 
   def generate_amenities
