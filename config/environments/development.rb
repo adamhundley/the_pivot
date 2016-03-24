@@ -19,14 +19,14 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
   config.paperclip_defaults = {
-    storage: :s3,
-    s3_region: ENV['AWS_REGION'],
-    s3_credentials: {
-      bucket: ENV['AWS_BUCKET_NAME'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    }
-  }
+  	storage: :s3,
+  	s3_region: ENV['AWS_REGION'],
+  	s3_credentials: {
+  	bucket: ENV['AWS_BUCKET_NAME'],
+  	access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  	secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  	}
+   }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: 'localhost:3000'}
   config.action_mailer.delivery_method = :smtp
