@@ -1,10 +1,10 @@
 <ul class="nav pull-left user-cart">
   <% if current_user %>
     <a href="<%= current_user.slug %>/properties/new">
-    <button type="button" name="button", class="btn btn-little-owl btn-lg">List my Pad</button></a>
+    <button type="button" name="button", class="btn btn-little-owl btn-lg list-my-pad">List my Pad</button></a>
   <% else %>
     <a href="/properties/new">
-      <button type="button" name="button", class="btn btn-little-owl btn-lg">List my Pad</button></a>
+      <button type="button" name="button", class="btn btn-little-owl btn-lg list-my-pad">List my Pad</button></a>
   <% end %>
 
   <% if current_user  %>
