@@ -1,3 +1,8 @@
+<div class="order-hero-unit">
+  <div class="container text-center hero-container">
+    <h1></h1>
+  </div>
+</div>
 <div class="container">
   <div class="row">
     <div class="text-center form-div col-sm-6 col-sm-offset-3">
@@ -8,7 +13,8 @@
   <div class="row">
     <div id="new-property" class="form-group has success text-center form-div col-sm-6 col-sm-offset-3">
       <%= form_for [:user, @property] do |f| %>
-      <h3>Property Information</h3><br>
+      <h3>Property Information</h3>
+
       <div class="form-horizontal">
         <div class="form-group">
           <%= f.label :title, class:"sr-only"  %>
@@ -25,7 +31,7 @@
         <div class="form-group">
           <%= f.collection_select(:property_type_id, PropertyType.all, :id, :name, {prompt:"property type"}, {id:"property-type", class:"form-control", required:true}) %>
         </div>
-        <h3>Property Location</h3><br>
+        <h3>Property Location</h3>
         <div class="form-group">
           <div class="col-sm-8">
             <%= f.label :street, class:"sr-only"  %>
@@ -48,8 +54,8 @@
             <div class="col-sm-3">
               <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success" %>
           </div>
-        </div><br>
-        <h3>Property Details</h3><br>
+        </div>
+        <h3>Property Details</h3>
         <div class="form-group">
           <div class="col-sm-4">
             <%= f.label :bedrooms %>
@@ -63,45 +69,17 @@
             <%= f.label :sleeps %>
             <%= f.select "sleeps", options_for_select([*1..25], @property.sleeps), {}, {class: "form-control form-control"} %>
           </div>
-        </div><br>
-        <!-- <div class="form-group">
-          <% ["one", "two", "three"].each do |x| %>
-            <%= f.label x %>
-            <%= f.check_box :sleeps %>
-          <% end %> -->
-
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" id="inlineCheckbox1" value="option1"> Amenity 1
-          </label><br><br>
         </div>
-        <%= f.label :image, class:"glsr-only"  %>
+        <h3>Property Amenities</h3>
+        <% @amenities.each do |amenity| %>
+          <div class="checkbox-inline">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="inlineCheckbox1" name="property[amenities][]" value="<%= amenity.name %>"> <%= amenity.name %>
+            </label>
+          </div>
+        <% end %>
+        <br><br>
+        <%= f.label :image, class:"sr-only"  %>
         <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
         <div class="form-inline">
           <div class="form-group">

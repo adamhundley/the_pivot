@@ -1,6 +1,7 @@
 class User::PropertiesController < ApplicationController
   def new
     @property = Property.new
+    @amenities = Amenity.all
   end
 
   def create

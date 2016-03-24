@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322232624) do
+ActiveRecord::Schema.define(version: 20160323192137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -104,6 +110,14 @@ ActiveRecord::Schema.define(version: 20160322232624) do
   add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree
   add_index "properties", ["user_id"], name: "index_properties_on_user_id", using: :btree
 
+  create_table "property_amenities", force: :cascade do |t|
+    t.integer "property_id"
+    t.integer "amenity_id"
+  end
+
+  add_index "property_amenities", ["amenity_id"], name: "index_property_amenities_on_amenity_id", using: :btree
+  add_index "property_amenities", ["property_id"], name: "index_property_amenities_on_property_id", using: :btree
+
   create_table "property_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -129,4 +143,6 @@ ActiveRecord::Schema.define(version: 20160322232624) do
   add_foreign_key "products", "categories"
   add_foreign_key "properties", "property_types"
   add_foreign_key "properties", "users"
+  add_foreign_key "property_amenities", "amenities"
+  add_foreign_key "property_amenities", "properties"
 end
