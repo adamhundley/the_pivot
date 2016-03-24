@@ -2,6 +2,7 @@ class Seed
   def initialize
     generate_admin
     generate_properties
+    generate_property_types
     generate_amenities
   end
 
@@ -42,8 +43,10 @@ class Seed
     amenities = ["tv", "washer/dryer", "internet",
                  "cable", "kitchen", "pool", "Pets allowed",
                  "fireplace", "Free Parking" "Esentials"]
-    300.times do
-      property = Property.find
+    Property.all.each do |property|
+      amenities.each do |amenity|
+        property.amenities << amenity
+      end
     end
   end
 end
