@@ -3,6 +3,7 @@ class Seed
   def initialize
     generate_admin
     generate_properties
+    generate_amenities
   end
 
   def generate_admin
@@ -38,9 +39,21 @@ class Seed
       user_ids.pop
     end
   end
+
+  def generate_amenities
+    amenities = ["tv", "washer/dryer", "internet",
+                 "cable", "kitchen", "pool", "Pets allowed",
+                 "fireplace", "Free Parking" "Esentials"]
+    Property.all.each do |property|
+      amenities.each do |amenity|
+        property.amenities.create(name: amenity)
+      end
+    end
+  end
 end
 
 Seed.new
+
 
 #coffee = Category.create(name:"coffee")
 #tools = Category.create(name:"tools")
