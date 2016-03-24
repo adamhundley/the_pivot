@@ -5,7 +5,6 @@ class User::PropertiesController < ApplicationController
   end
 
   def create
-    require "pry"; binding.pry
     @property = current_user.properties.create(property_params)
     if @property.save
       flash[:info] = "Congrats #{current_user.fullname}! Your new listing is pending approval."

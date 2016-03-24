@@ -4,6 +4,8 @@ RSpec.feature "UserListsTheirProperty", type: :feature do
   scenario "user lists a property" do
     user = create(:user)
     create(:property_type)
+    create(:amenity)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit "/"
@@ -23,10 +25,12 @@ RSpec.feature "UserListsTheirProperty", type: :feature do
     select "3",from: "bedroom-dropdown"
     select "2",from: "property_bathrooms"
     select "5",from: "property_sleeps"
+    page.check('wifi')
 
     click_on "List my Pad!"
 
     expect(current_path).to eq("/#{user.slug}/dashboard")
     expect(page).to have_content("Congrats #{user.fullname}! Your new listing is pending approval.")
+    
   end
 end
