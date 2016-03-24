@@ -7,6 +7,9 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of :password_digest}
 
 
-  it { should have_many :order_products }
-  it { should have_many :orders }
+  it { should have_many :properties }
+
+  it "has a valid factory" do
+    expect(build(:user)).to be_valid
+  end
 end
