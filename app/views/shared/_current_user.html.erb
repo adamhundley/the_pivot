@@ -3,7 +3,7 @@
     <a href="<%= current_user.slug %>/properties/new">
     <button type="button" name="button", class="btn btn-little-owl btn-lg list-my-pad">List my Pad</button></a>
   <% else %>
-    <a href="/properties/new">
+    <a href="/login">
       <button type="button" name="button", class="btn btn-little-owl btn-lg list-my-pad">List my Pad</button></a>
   <% end %>
 
@@ -14,7 +14,7 @@
         <li class="name-in-dropdown">
           <%= current_user.fullname.downcase %>
         </li>
-        <li><%= link_to "order history", user_orders_path(current_user) %></li>
+        <li><%= link_to "my dashboard", user_dashboard_path(current_user) %></li>
         <li>
           <%= link_to "logout", logout_path, method: :delete %>
         </li>
