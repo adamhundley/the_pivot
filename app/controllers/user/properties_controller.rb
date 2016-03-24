@@ -6,7 +6,9 @@ class User::PropertiesController < ApplicationController
 
   def create
     @property = current_user.properties.create(property_params)
+    @image = Image.create(image: image_params)
     if @property.save
+      @property.images << @image
       flash[:info] = "Congrats #{current_user.fullname}! Your new listing is pending approval."
       redirect_to user_dashboard_path
     else
@@ -19,6 +21,10 @@ class User::PropertiesController < ApplicationController
 private
 
   def property_params
-    params.require(:property).permit(:title, :description, :street, :unit, :city, :state, :zip, :price, :bedrooms, :bathrooms, :sleeps, :property_type_id, :image)
+    params.require(:property).permit(:title, :description, :street, :unit, :city, :state, :zip, :price, :bedrooms, :bathrooms, :sleeps, :property_type_id)
+  end
+
+  def image_params
+    params[:property][:image]
   end
 end
