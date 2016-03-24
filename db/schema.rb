@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 20160323192137) do
 
   add_index "comments", ["order_id"], name: "index_comments_on_order_id", using: :btree
 
+  create_table "images", force: :cascade do |t|
+    t.integer  "property_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "images", ["property_id"], name: "index_images_on_property_id", using: :btree
+
   create_table "mailing_list_emails", force: :cascade do |t|
     t.string "email"
   end
@@ -137,6 +147,7 @@ ActiveRecord::Schema.define(version: 20160323192137) do
   end
 
   add_foreign_key "comments", "orders"
+  add_foreign_key "images", "properties"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"
