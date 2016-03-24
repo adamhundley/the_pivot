@@ -2,6 +2,7 @@ class Seed
 
   def initialize
     generate_admin
+    generate_property_types
     generate_properties
     generate_amenities
   end
@@ -15,6 +16,14 @@ class Seed
                       password: "password",
                       role:     1,
                       )
+    end
+  end
+
+  def generate_property_types
+    types = ["full House/apt", "private room",
+             "shared room"]
+    3.times do |i|
+      PropertyType.create!(name: types[i])
     end
   end
 
@@ -35,16 +44,9 @@ class Seed
                                   sleeps:      rand(1..16),
                                   user_id:     user.id,
                                   approved:    true)
-      generate_property_types(property)
+      add_property_type_to_property(property)
       user_ids.pop
     end
-  end
-
-  def generate_property_types(property)
-    types = ["full House/apt", "private room",
-             "shared room"]
-    property_type = PropertyType.create!(name: types[rand(0..2)])
-    property_type.properties << property
   end
 
   def generate_amenities
@@ -57,6 +59,12 @@ class Seed
       end
     end
   end
+
+  private
+    def add_property_type_to_property(property)
+      property_type = PropertyType.find(rand(1..3))
+      property_type.properties << property
+    end
 end
 
 Seed.new
