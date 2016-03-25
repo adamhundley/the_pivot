@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323192137) do
+ActiveRecord::Schema.define(version: 20160324233718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,26 +62,6 @@ ActiveRecord::Schema.define(version: 20160323192137) do
 
   add_index "order_products", ["order_id"], name: "index_order_products_on_order_id", using: :btree
   add_index "order_products", ["product_id"], name: "index_order_products_on_product_id", using: :btree
-
-  create_table "orders", force: :cascade do |t|
-    t.string   "street"
-    t.string   "unit"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "status",      default: "paid"
-    t.string   "fullname"
-    t.string   "card_token"
-    t.integer  "order_total"
-  end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -135,6 +115,30 @@ ActiveRecord::Schema.define(version: 20160323192137) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.string   "street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "user_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "status",      default: "paid"
+    t.string   "fullname"
+    t.string   "card_token"
+    t.integer  "order_total"
+    t.integer  "property_id"
+    t.date     "checkin"
+    t.date     "checkout"
+  end
+
+  add_index "reservations", ["property_id"], name: "index_reservations_on_property_id", using: :btree
+  add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -147,14 +151,15 @@ ActiveRecord::Schema.define(version: 20160323192137) do
     t.string   "slug"
   end
 
-  add_foreign_key "comments", "orders"
+  add_foreign_key "comments", "reservations", column: "order_id"
   add_foreign_key "images", "properties"
-  add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
-  add_foreign_key "orders", "users"
+  add_foreign_key "order_products", "reservations", column: "order_id"
   add_foreign_key "products", "categories"
   add_foreign_key "properties", "property_types"
   add_foreign_key "properties", "users"
   add_foreign_key "property_amenities", "amenities"
   add_foreign_key "property_amenities", "properties"
+  add_foreign_key "reservations", "properties"
+  add_foreign_key "reservations", "users"
 end
