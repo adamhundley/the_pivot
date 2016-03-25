@@ -1,0 +1,94 @@
+<%= render partial: "shared/user_dashboard_header" %>
+<div class="container">
+      <% @properties.each do |property| %>
+      <div class="row">
+      <div id="new-property" class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
+        <%= form_for [:user, property], url: user_property_path(property.id, current_user.slug) do |f| %>
+        <h3>My Properties Information</h3>
+        <div class="form-horizontal">
+          <div class="form-group">
+            <%= f.label :title, class:"sr-only"  %>
+            <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :description, class:"sr-only"  %>
+            <%= f.text_area :description, placeholder: "property description", class:"form-control text-input" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :price, class:"sr-only"  %>
+            <%= f.text_field :price, placeholder: "rental price per day", class:"form-control text-input", id: "#{property.id}-property-price" %>
+          </div>
+          <div class="form-group">
+            <%= f.collection_select(:property_type_id, PropertyType.all, :id, :name, {prompt:"property type"}, {id:"property-type", class:"form-control", required:true}) %>
+          </div>
+          <h3>My Properties Location</h3>
+          <div class="form-group">
+            <div class="col-sm-8" id="<%= property.id %>-property-street">
+              <%= f.label :street, class:"sr-only"  %>
+              <%= f.text_field :street, placeholder: "street", class:"form-control form-control-success" %>
+            </div>
+            <div class="col-sm-4">
+              <%= f.label :unit, class:"sr-only"  %>
+              <%= f.text_field :unit, placeholder: "unit", class:"form-control form-control-success" %>
+            </div>
+          </div>
+          <div class="form-group">
+              <div class="col-sm-6">
+                <%= f.label :city, class:"sr-only"  %>
+                <%= f.text_field :city, placeholder: "city", class:"form-control form-control-success" %>
+              </div>
+              <div class="col-sm-3">
+                <%= f.select :state, options_for_select(us_states, property.state), {}, {class: "form-control"} %>
+                <%= f.label :zip, class:"sr-only"  %>
+              </div>
+              <div class="col-sm-3">
+                <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div id="new-property" class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
+        <h3>My Properties Details</h3>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <%= f.label :bedrooms %>
+            <%= f.select :bedrooms, options_for_select([*1..16], property.bedrooms), {}, {class: "form-control form-control", id: "bedroom-dropdown"} %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.label :bathrooms %>
+            <%= f.select "bathrooms", options_for_select([*1..10], property.bathrooms), {}, {class: "form-control form-control"} %>
+          </div>
+          <div class="col-sm-4">
+            <%= f.label :sleeps %>
+            <%= f.select "sleeps", options_for_select([*1..25], property.sleeps), {}, {class: "form-control form-control"} %>
+          </div>
+        </div>
+        <br><br><br>
+
+        <h3>My Property Amenities</h3>
+        <% Amenity.all.each do |amenity| %>
+          <%= check_box_tag "property[amenity_ids][]", amenity.id, property.amenities.include?(Amenity.find(amenity.id)) %>
+          <%= label_tag amenity.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <% end %>
+
+
+        <br><br>
+        <%= f.label :image, class:"sr-only"  %>
+        <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
+        <div class="form-inline">
+          <div class="form-group">
+            <label class="file">
+            <input id="imageFormCover" class="form-control" type="text" readonly>
+            <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">upload image</a>
+            </label>
+        </div>
+        <br>
+        </div>
+        <br>
+        <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
+      </div>
+    </div>
+    <hr>
+      <% end %>
+      <% end %>
+</div>

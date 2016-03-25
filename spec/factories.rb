@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :property_amenity do
 
   end
-  
+
   factory :amenity do
     name "wifi"
   end
@@ -22,6 +22,7 @@ FactoryGirl.define do
     bedrooms 2
     bathrooms 2
     sleeps 4
+    approved true
   end
 
   factory :user do
