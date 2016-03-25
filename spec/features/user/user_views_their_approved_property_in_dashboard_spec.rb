@@ -27,7 +27,6 @@ RSpec.feature "UserVieswTheirProperty", type: :feature do
     find_field('property[bedrooms]').value.should eq property.bedrooms.to_s
     find_field('property[bathrooms]').value.should eq property.bathrooms.to_s
     find_field('property[sleeps]').value.should eq property.sleeps.to_s
-    require "pry"; binding.pry
 
     # click_on "Update my Pad!"
     #
