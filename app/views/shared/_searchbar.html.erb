@@ -5,18 +5,19 @@
         <div class="col-md-10 col-md-offset-1">
           <div class="form-section">
             <div class="container-fluid row">
-                <form role="form">
+                <form role="form" action='/properties' method="get">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
                   <div class="col-md-4">
                     <div class="form-group" >
                       <label class="sr-only" for="location">Location</label>
-                      <input type="email" class="form-control" id="location" placeholder="Ready to travel ?">
+                      <input type="text" name="destination" class="form-control" id="location" placeholder="Enter City, State">
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="sr-only" for="checkin">Check in</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="checkin" placeholder="Check in">
+                        <input type="text" class="form-control" name="checkin" id="checkin" placeholder="Check in">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
@@ -25,7 +26,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="checkout">Check out</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" id="checkout" placeholder="Check out">
+                        <input type="text" class="form-control" name="checkout" id="checkout" placeholder="Check out">
                         <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
