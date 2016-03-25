@@ -19,10 +19,8 @@ class User::PropertiesController < ApplicationController
   end
 
   def index
-    if current_user.properties
-      @properties = current_user.properties
-      @amenities = Amenity.all
-    end
+    @properties = current_user.properties
+    @amenities = Amenity.all
   end
 
   def update
