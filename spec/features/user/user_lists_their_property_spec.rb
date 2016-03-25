@@ -28,7 +28,9 @@ RSpec.feature "UserListsTheirProperty", type: :feature do
     select "5",from: "property_sleeps"
     page.check('wifi')
 
-    click_on "List my Pad!"
+    within "div#create-property" do
+      click_on "List my Pad!"
+    end
 
     expect(current_path).to eq("/#{user.slug}/dashboard")
     expect(page).to have_content("Congrats #{user.fullname}! Your new listing is pending approval.")

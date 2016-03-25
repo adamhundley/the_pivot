@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   namespace :user, path: ":user_name", as: :user do
-    resources :properties, only: [:new, :create, :index]
+    resources :properties, only: [:new, :create, :index, :update, :show]
   end
 
   get ":user_name/dashboard", to: "users#show", as: :user_dashboard
