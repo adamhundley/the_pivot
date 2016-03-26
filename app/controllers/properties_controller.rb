@@ -1,8 +1,11 @@
 class PropertiesController < ApplicationController
   def index
-
-    require "pry"
-    binding.pry
-
+    @properties = Property.search(params)
+    @location = find_location(params)
   end
+
+  private
+    def find_location(params)
+      params[:destination]
+    end
 end
