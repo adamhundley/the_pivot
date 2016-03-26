@@ -25,6 +25,27 @@ class Property < ActiveRecord::Base
                    @guest)
   end
 
+  def self.search_by_name(search)
+    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
+  end
+
+  def self.by_date
+    order(updated_at: :desc)
+  end
+
+  def owner
+    user = User.find(self.user_id)
+    user.fullname
+  end
+
+  def display_total
+    "$#{self.price / 100}"
+  end
+
+  def date
+    updated_at.strftime("%B %-d, %Y")
+  end
+
   def self.parse(search)
     @city = search[:destination].split(',')[0]
     @state = search[:destination].split(',')[-1].strip

@@ -22,7 +22,7 @@ FactoryGirl.define do
     bedrooms 2
     bathrooms 2
     sleeps 4
-    approved true
+    approved false
   end
 
   factory :user do

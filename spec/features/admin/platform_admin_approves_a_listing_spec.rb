@@ -9,18 +9,44 @@ RSpec.feature "platform admin approves a property listing" do
                                 password: "password",
                                 role: 1)
 
+    type     = create(:property_type)
+    amenity  = create(:amenity)
+    property = create(:property)
+
+
+    platform_admin.properties << property
+              type.properties << property
+           amenity.properties << property
+
     allow_any_instance_of(ApplicationController).to(
     receive(:current_user).and_return(platform_admin))
 
     visit admin_dashboard_path
+    expect(current_path).to eq('/admin/dashboard')
+
+    click_on "pending properties"
+
+    within(:css, "h1.pending.admin-property-index-header") do
+      expect(page).to have_content("pending properties")
+    end
+
+    expect(page).to have_content("date")
+    expect(page).to have_content("property id")
+    expect(page).to have_content("name")
+    expect(page).to have_content("price")
+    expect(page).to have_content("description")
+    expect(page).to have_content("approved")
+
+    expect(page).to have_content("john adams")
+    refute property.approved?
+
+    within "#1-property" do
+      expect(page).to have_content(property.id)
+      expect(page).to have_button("update property")
+      select "true", from: "property_approved"
+    end
+
+    click_on "update property"
+    expect(page).to have_content("Cheerio! Property 1 has been updated!")
   end
 end
-# when I visit '/admin/dashboard'
-# and I click on pending properties,
-# Then I am redirected to '/admin/pending-properties'
-# and I see a pending property,
-# Then I click on that property,
-# and I am redirected to 'admin/pending-properties/:property_id'
-# I expect to see all information about property and pictures,
-# and I click on "approve",
-# then I am redirected to '/admin/pending-properties'
