@@ -20,6 +20,23 @@ RSpec.feature "Non logged-in users need to login before listing property" do
     find("input[placeholder='password']").set user.password
 
     click_button "login"
+    expect(current_path).to eq("/properties/new")
+    expect(page).to have_content("Hey #{user.first_name}, welcome to C.A.M.P")
+  end
+
+  scenario "regular logins returns them to dashboard" do
+    user = User.create(fullname: "Alex Navarrete",
+                          email: "email@email.com",
+                       password: "password"
+                      )
+
+    visit login_path
+    expect(current_path).to eq("/login")
+
+    find("input[placeholder='email']").set user.email
+    find("input[placeholder='password']").set user.password
+
+    click_button "login"
     expect(current_path).to eq("/#{user.slug}/dashboard")
     expect(page).to have_content("Hey #{user.first_name}, welcome to C.A.M.P")
   end

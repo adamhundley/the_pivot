@@ -1,4 +1,5 @@
 <%= render partial: "shared/user_dashboard_header" %>
+<% if current_user.properties.count >= 1 %>
 <div class="container">
       <% @properties.each do |property| %>
       <div class="row">
@@ -71,7 +72,6 @@
           <%= label_tag amenity.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <% end %>
 
-
         <br><br>
         <%= f.label :image, class:"sr-only"  %>
         <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
@@ -92,3 +92,6 @@
       <% end %>
       <% end %>
 </div>
+<% else %>
+<%= render partial: "shared/no_listings" %>
+<% end %>
