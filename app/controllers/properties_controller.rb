@@ -1,10 +1,17 @@
 class PropertiesController < ApplicationController
   include PropertiesHelper
+
   def new
     @property = Property.new
     @amenities = Amenity.all
     guest_user?
   end
+
+  def index
+    @properties = Property.search(params)
+    @location = find_location(params)
+  end
+
   private
     def property_params
       params.require(:property).permit(:title, :description, :street, :unit, :city, :state, :zip, :price, :bedrooms, :bathrooms, :sleeps, :property_type_id)
@@ -16,5 +23,9 @@ class PropertiesController < ApplicationController
 
     def amenity_params
       params[:property][:amenities]
+    end
+
+    def find_location(params)
+      params[:destination]
     end
 end
