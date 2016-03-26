@@ -1,9 +1,4 @@
 class User::PropertiesController < ApplicationController
-  def new
-    @property = Property.new
-    @amenities = Amenity.all
-  end
-
   def create
     @property = current_user.properties.create(property_params)
     PropertyAmenitizer.new(amenity_params, @property)
@@ -24,7 +19,6 @@ class User::PropertiesController < ApplicationController
   end
 
   def update
-
   end
 
 private

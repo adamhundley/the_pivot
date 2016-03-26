@@ -1,11 +1,5 @@
 <ul class="nav pull-left user-cart">
-  <% if current_user %>
-    <%= link_to "List my Pad", new_user_property_path(current_user.slug), method: :get, class:"btn btn-little-owl btn-lg list-my-pad" %>
-  <% else %>
-    <a href="/login">
-      <button type="button" name="button", class="btn btn-little-owl btn-lg list-my-pad">List my Pad</button>
-    </a>
-  <% end %>
+  <%= link_to "List my Pad", new_property_path, method: :get, class:"btn btn-little-owl btn-lg list-my-pad" %>
 
   <% if current_user  %>
     <li class="dropdown pull-right nav-icon">
