@@ -1,9 +1,10 @@
 <%= render partial: "shared/user_dashboard_header" %>
 <div class="container">
       <% @properties.each do |property| %>
-      <div class="row">
-      <div id="new-property" class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
-        <%= form_for [:user, property], url: user_property_path(property.id, current_user.slug) do |f| %>
+
+      <div class="row" id="edit-property-<%= property.id %>">
+      <div class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
+        <%= form_for [:user, property], url: user_property_path(current_user.slug, property.id) do |f| %>
         <h3>My Properties Information</h3>
         <div class="form-horizontal">
           <div class="form-group">
@@ -85,7 +86,9 @@
         <br>
         </div>
         <br>
-        <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
+        <div id="update-property">
+          <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
+        </div>
       </div>
     </div>
     <hr>
