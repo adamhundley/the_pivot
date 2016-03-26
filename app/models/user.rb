@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   # validates :slug, presence: true
 
-  enum role: %w(default admin super_admin)
+  enum role: %w(default platform_admin admin)
 
   def build_name
     self.first_name = fullname.split[0]

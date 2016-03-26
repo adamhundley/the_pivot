@@ -1,4 +1,4 @@
-#MODIFY FOR CAMP 
+#MODIFY FOR CAMP
 
 # require "rails_helper"
 #
