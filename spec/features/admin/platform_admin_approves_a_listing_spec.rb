@@ -9,7 +9,10 @@ RSpec.feature "platform admin approves a property listing" do
                                 password: "password",
                                 role: 1)
 
+    allow_any_instance_of(ApplicationController).to(
+    receive(:current_user).and_return(platform_admin))
 
+    visit admin_dashboard_path
   end
 end
 # when I visit '/admin/dashboard'
