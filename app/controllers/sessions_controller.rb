@@ -7,11 +7,13 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
+      session[:return_to] = new_user_property_path(current_user.slug) || root_path
+
       if user.admin?
         redirect_to admin_dashboard_path
       else
-        flash[:info] = "Hey #{user.first_name}, welcome to Little Owl."
-        redirect_to root_path
+        flash[:info] = "Hey #{user.first_name}, welcome to C.A.M.P"
+        redirect_to user_dashboard_path(current_user.slug)
       end
     else
       flash.now[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."

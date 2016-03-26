@@ -4,7 +4,6 @@
   </div>
 </div>
 <div class="container">
-
   <div class="row">
     <div id="new-property" class="form-group has success text-center form-div col-sm-6 col-sm-offset-3">
       <%= form_for [:user, @property] do |f| %>
@@ -13,15 +12,15 @@
       <div class="form-horizontal">
         <div class="form-group">
           <%= f.label :title, class:"sr-only"  %>
-          <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success" %>
+          <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success", required:true %>
         </div>
         <div class="form-group">
           <%= f.label :description, class:"sr-only"  %>
-          <%= f.text_area :description, placeholder: "property description", class:"form-control text-input" %>
+          <%= f.text_area :description, placeholder: "property description", class:"form-control text-input", required:true %>
         </div>
         <div class="form-group">
           <%= f.label :price, class:"sr-only"  %>
-          <%= f.text_field :price, placeholder: "rental price per day", class:"form-control text-input" %>
+          <%= f.number_field :price, placeholder: "rental price per day", class:"form-control text-input", required:true %>
         </div>
         <div class="form-group">
           <%= f.collection_select(:property_type_id, PropertyType.all, :id, :name, {prompt:"property type"}, {id:"property-type", class:"form-control", required:true}) %>
@@ -30,7 +29,7 @@
         <div class="form-group">
           <div class="col-sm-8">
             <%= f.label :street, class:"sr-only"  %>
-            <%= f.text_field :street, placeholder: "street", class:"form-control form-control-success" %>
+            <%= f.text_field :street, placeholder: "street", class:"form-control form-control-success", required:true %>
           </div>
           <div class="col-sm-4">
             <%= f.label :unit, class:"sr-only"  %>
@@ -40,29 +39,29 @@
         <div class="form-group">
             <div class="col-sm-6">
               <%= f.label :city, class:"sr-only"  %>
-              <%= f.text_field :city, placeholder: "city", class:"form-control form-control-success" %>
+              <%= f.text_field :city, placeholder: "city", class:"form-control form-control-success", required:true %>
             </div>
             <div class="col-sm-3">
-              <%= f.select :state, options_for_select(us_states), {}, {class: "form-control"} %>
+              <%= f.select :state, options_for_select(us_states), {}, {required:true, class: "form-control"} %>
+            </div>
+            <div class="col-sm-3">
               <%= f.label :zip, class:"sr-only"  %>
-            </div>
-            <div class="col-sm-3">
-              <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success" %>
+              <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success", required:true %>
           </div>
         </div>
         <h3>Property Details</h3>
         <div class="form-group">
           <div class="col-sm-4">
             <%= f.label :bedrooms %>
-            <%= f.select :bedrooms, options_for_select([*1..16], @property.bedrooms), {}, {class: "form-control form-control", id: "bedroom-dropdown"} %>
+            <%= f.select :bedrooms, options_for_select([*1..16], 1), {}, {required:true, class: "form-control form-control", id: "bedroom-dropdown"} %>
           </div>
           <div class="col-sm-4">
             <%= f.label :bathrooms %>
-            <%= f.select "bathrooms", options_for_select([*1..10], @property.bathrooms), {}, {class: "form-control form-control"} %>
+            <%= f.select "bathrooms", options_for_select([*1..10], 1), {}, {required:true, class: "form-control form-control"} %>
           </div>
           <div class="col-sm-4">
             <%= f.label :sleeps %>
-            <%= f.select "sleeps", options_for_select([*1..25], @property.sleeps), {}, {class: "form-control form-control"} %>
+            <%= f.select "sleeps", options_for_select([*1..25], 1), {}, {required:true, class: "form-control form-control"} %>
           </div>
         </div>
         <h3>Property Amenities</h3>
@@ -86,7 +85,9 @@
         <br>
         </div>
         <br>
-        <%= f.submit "List my Pad!", class:"btn btn-little-owl" %>
+        <div id="create-property">
+          <%= f.submit "List my Pad!", class:"btn btn-little-owl" %>
+        </div>
       </div>
       <% end %>
     </div>
