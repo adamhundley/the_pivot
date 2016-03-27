@@ -1,5 +1,5 @@
 <div class="form-group text-center form-div">
-  <%= form_for(:order, url: user_orders_path) do |f| %>
+  <%= form_for(:reservation, url: new_property_path) do |f| %>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-description= "Get dat coffee"
@@ -9,7 +9,7 @@
     data-billing-address= true
     data-shipping-address= true
     data-panel-label= "Total"
-    data-label= "submit order">
+    data-label= "Book Now!">
     </script>
     <% end %>
   </div>
