@@ -29,7 +29,7 @@ class Seed
   end
 
   def generate_properties
-    user_ids = User.all.pluck(:id).take(100)
+    user_ids = User.pluck(:id).take(100)
 
     100.times do |i|
       user = User.find(user_ids[-1])
@@ -70,7 +70,7 @@ class Seed
   end
 
   def generate_reservations_for_property(property)
-    user_ids = User.all.pluck(:id)
+    user_ids = User.pluck(:id)
     10.times do |i|
       checkin = Faker::Date.between(Date.today, 1.year.from_now)
       checkout = checkin.next.next
