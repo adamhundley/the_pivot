@@ -17,4 +17,20 @@ class Property < ActiveRecord::Base
   validates :bedrooms, presence: true
   validates :bathrooms, presence: true
   validates :sleeps, presence: true
+
+  def self.search(search)
+    parse(search)
+    Property.where("city = ? and state = ? and sleeps >= ?",
+                   @city,
+                   @state,
+                   @guest)
+  end
+
+  def self.parse(search)
+    @city = search[:destination].split(',')[0]
+    @state = search[:destination].split(',')[-1].strip
+    @guest = search[:guest]
+    @checkin = search[:checkin]
+    @checkout = search[:checkout]
+  end
 end

@@ -8,6 +8,11 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'support/database_cleaner'
 require 'factory_girl_rails'
+require "selenium-webdriver"
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -29,6 +34,15 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+
 def create_and_stub_admin
   admin = User.create(first_name: "john",
                       last_name: "adams",
@@ -39,3 +53,5 @@ def create_and_stub_admin
   ApplicationController.any_instance.stub(:current_user) {admin}
   admin
 end
+
+

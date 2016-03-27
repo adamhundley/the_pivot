@@ -23,4 +23,6 @@ RSpec.describe Property, type: :model do
   it "fails with missing title" do
     Property.create(title: "", description: "test")
   end
+
+
 end
