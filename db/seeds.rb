@@ -11,7 +11,7 @@ class Seed
   def generate_admin
     fullname = Faker::Name.name
     email = Faker::Internet.free_email(fullname.split[1])
-    100.times do |i|
+    200.times do |i|
       user = User.create!(fullname: fullname,
                       email:    "#{i}" + email,
                       password: "password",
@@ -29,7 +29,7 @@ class Seed
   end
 
   def generate_properties
-    user_ids = User.all.pluck(:id)
+    user_ids = User.all.pluck(:id).take(100)
 
     100.times do |i|
       user = User.find(user_ids[-1])
@@ -46,6 +46,7 @@ class Seed
                                   user_id:     user.id,
                                   approved:    true)
       add_property_type_to_property(property)
+      generate_reservations_for_property(property)
       user_ids.pop
     end
   end
@@ -68,10 +69,29 @@ class Seed
     end
   end
 
+  def generate_reservations_for_property(property)
+    user_ids = User.all.pluck(:id)
+    10.times do |i|
+      checkin = Faker::Date.between(Date.today, 1.year.from_now)
+      checkout = checkin.next.next
+      reservation = Reservation.create!(property_id: property.id,
+                                        user_id: user_ids[rand(200)],
+                                        checkin: checkin,
+                                        checkout: checkout)
+      book_nights(checkin, checkout, reservation)
+    end
+  end
+
   private
     def add_property_type_to_property(property)
       property_type = PropertyType.find(rand(1..3))
       property_type.properties << property
+    end
+
+    def book_nights(checkin, checkout, reservation)
+      nights = ReservationNightCalculator.new(checkin, checkout)
+      total_nights = nights.add_up_nights
+      ReservationNight.book(total_nights, reservation)
     end
 end
 
