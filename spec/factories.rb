@@ -38,5 +38,4 @@ FactoryGirl.define do
   sequence :email, ["a", "b", "c", "d"].cycle do |n|
     "#{n}@example.com"
   end
-
 end
