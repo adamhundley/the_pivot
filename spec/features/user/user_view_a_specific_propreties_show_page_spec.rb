@@ -19,6 +19,7 @@ RSpec.feature "UserViewsAProperty", type: :feature do
     expect(page).to have_content(property.city)
     expect(page).to have_content(property.state)
     expect(page).to have_content(property.zip)
+    expect(page).to have_content(property.property_type)
     expect(page).to have_content(property.bedrooms)
     expect(page).to have_content(property.bathrooms)
     expect(page).to have_content(property.sleeps)
