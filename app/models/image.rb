@@ -6,6 +6,6 @@ belongs_to :property
       default_url: "logo.ico"
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_size :image, {:less_than => 1.megabytes, message: "Your image must be less than 1 mb"} 
 
 end
-
