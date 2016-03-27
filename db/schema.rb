@@ -1,4 +1,3 @@
-
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -12,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324233718) do
+ActiveRecord::Schema.define(version: 20160326171050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +114,13 @@ ActiveRecord::Schema.define(version: 20160324233718) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservation_nights", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.date    "night"
+  end
+
+  add_index "reservation_nights", ["reservation_id"], name: "index_reservation_nights_on_reservation_id", using: :btree
+
   create_table "reservations", force: :cascade do |t|
     t.string   "street"
     t.string   "unit"
@@ -160,6 +166,7 @@ ActiveRecord::Schema.define(version: 20160324233718) do
   add_foreign_key "properties", "users"
   add_foreign_key "property_amenities", "amenities"
   add_foreign_key "property_amenities", "properties"
+  add_foreign_key "reservation_nights", "reservations"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users"
 end
