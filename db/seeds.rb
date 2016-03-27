@@ -1,12 +1,16 @@
 class Seed
 
   def initialize
+    @images = ["https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1457429804461041.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458645252559534.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458477215180193.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458490203467318.jpg"]
     generate_admin
     generate_property_types
     generate_properties
     generate_amenities
     add_amenities_to_property
- end
+  end
 
   def generate_admin
     fullname = Faker::Name.name
@@ -29,9 +33,9 @@ class Seed
   end
 
   def generate_properties
-    user_ids = User.pluck(:id).take(100)
+    user_ids = User.pluck(:id).take(10)
 
-    100.times do |i|
+    10.times do |i|
       user = User.find(user_ids[-1])
       property = Property.create!(title:       Faker::Hipster.sentence,
                                   description: Faker::Lorem.paragraph,
@@ -47,7 +51,14 @@ class Seed
                                   approved:    true)
       add_property_type_to_property(property)
       generate_reservations_for_property(property)
+      generate_images(property)
       user_ids.pop
+    end
+  end
+
+  def generate_images(property)
+    @images.each do |image|
+      property.images.create!(image: image)
     end
   end
 
