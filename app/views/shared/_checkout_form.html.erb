@@ -2,8 +2,8 @@
   <%= form_for(:reservation, url: new_property_path) do |f| %>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description= "Get dat coffee"
-    data-image= "/assets/nav-logo-dcbacebfd4a74e9dd03a8b25e54dd394ae20fa2d62a47a2c08a4b27fd80962d3.png"
+    data-description= "Treat Yo'self"
+    data-image= "/assets/nav-logo.png"
     data-amount="<%= amount %>"
     data-locale="auto"
     data-billing-address= true

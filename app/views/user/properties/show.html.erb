@@ -44,17 +44,19 @@
         <p>
           <%= @property.description %>
         </p>
-
-        Price per night: <%= @property.price %><br>
-        Sleeps? - <%= @property.sleeps %>
+        <hr>
         <h3>Loctation</h3>
         <%= @property.street %><br>
-        <% if @property.unit %>
-          <%= @property.unit %><br>
-        <% end %>
+          <% if @property.unit %>
+            <%= @property.unit %><br>
+          <% end %>
         <%= @property.city %>, <%= @property.state %>  <%= @property.zip %>
+        <hr>
+        <h4>UPDATE DATES HERE</h4>
+        Price per night: <%= @property.price %><br>
+        <h4>Reservation Total: $<%= @property.price %></h4>
+        <%= render partial: "shared/checkout_form", locals: {amount: @property.price } %>
       </div>
-      <%= render partial: "shared/checkout_form", locals: {amount: @property.price } %>
       <hr>
     </div>
 </div>
