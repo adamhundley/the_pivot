@@ -1,4 +1,3 @@
-
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -12,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324233718) do
+ActiveRecord::Schema.define(version: 20160326171050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +61,26 @@ ActiveRecord::Schema.define(version: 20160324233718) do
 
   add_index "order_products", ["order_id"], name: "index_order_products_on_order_id", using: :btree
   add_index "order_products", ["product_id"], name: "index_order_products_on_product_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "user_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "status",      default: "paid"
+    t.string   "fullname"
+    t.string   "card_token"
+    t.integer  "order_total"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -115,6 +134,13 @@ ActiveRecord::Schema.define(version: 20160324233718) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reservation_nights", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.date    "night"
+  end
+
+  add_index "reservation_nights", ["reservation_id"], name: "index_reservation_nights_on_reservation_id", using: :btree
+
   create_table "reservations", force: :cascade do |t|
     t.string   "street"
     t.string   "unit"
@@ -160,6 +186,7 @@ ActiveRecord::Schema.define(version: 20160324233718) do
   add_foreign_key "properties", "users"
   add_foreign_key "property_amenities", "amenities"
   add_foreign_key "property_amenities", "properties"
+  add_foreign_key "reservation_nights", "reservations"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users"
 end

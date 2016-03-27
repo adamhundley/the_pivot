@@ -28,10 +28,10 @@ RSpec.feature "UserVieswTheirProperty", type: :feature do
     find_field('property[bathrooms]').value.should eq property.bathrooms.to_s
     find_field('property[sleeps]').value.should eq property.sleeps.to_s
 
-    # click_on "Update my Pad!"
-    #
-    # expect(current_path).to eq("/#{user.slug}/dashboard")
-    # expect(page).to have_content("Congrats #{user.fullname}! Your new listing is pending approval.")
+    #click_on "Update my Pad!"
+
+    #expect(current_path).to eq("/#{user.slug}/dashboard")
+    #expect(page).to have_content("Congrats #{user.fullname}! Your new listing is pending approval.")
 
   end
 end

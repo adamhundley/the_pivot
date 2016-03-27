@@ -30,6 +30,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rspec-activemodel-mocks'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'selenium-webdriver', '~> 2.53'
+  gem "chromedriver-helper"
 end
 
 group :development do
@@ -41,6 +43,7 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
+  gem 'capybara-bootstrap-datepicker'
 end
 
 ruby "2.2.4"

@@ -30,6 +30,10 @@ class User::PropertiesController < ApplicationController
     end
   end
 
+  def show
+    @property = Property.find(params[:id])
+  end
+
 private
 
   def property_params

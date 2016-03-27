@@ -2,7 +2,6 @@
 <% if current_user.properties.count >= 1 %>
 <div class="container">
       <% @properties.each do |property| %>
-
       <div class="row" id="edit-property-<%= property.id %>">
       <div class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
         <%= form_for [:user, property], url: user_property_path(current_user.slug, property.id) do |f| %>
