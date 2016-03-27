@@ -8,8 +8,12 @@ class PropertiesController < ApplicationController
   end
 
   def index
-    @properties = Property.search(params)
-    @location = find_location(params)
+    if params[:destination] = nil
+      @properties = Property.search(params)
+      @location = find_location(params)
+    else
+      @properties = Property.all
+    end
   end
 
   private

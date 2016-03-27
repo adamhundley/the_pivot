@@ -6,20 +6,20 @@
       <div class="row">
       <div class="col-sm-8 text-center">
         <br>
-        <%= image_tag("http://placehold.it/600x400")%>
+        <%= image_tag(@property.images.first.image.url(:show))%>
         <br><br>
         <div class="row">
           <div class="col-sm-3">
-            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-home show-icon" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-bed show-icon" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-tint show-icon" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-user show-icon" aria-hidden="true"></span>
           </div>
         </div>
         <div class="row">
@@ -37,7 +37,6 @@
           </div>
         </div>
       </div>
-
       <div class="col-sm-4">
         <h2><%= @property.title %></h2>
         <br>
@@ -60,7 +59,11 @@
       <hr>
     </div>
 </div>
-
-<% @property.images.each do |image| %>
-<%= image_tag(image.image.url(:show), class:"admin-product-image") %>
-<% end %><br>
+<div class="container">
+  <% @property.images.each do |image| %>
+  <div class="col-sm-3">
+    <%= image_tag(image.image.url(:index), class:"admin-product-image") %>
+  </div>
+  <% end %><br>
+</div>
+<hr>
