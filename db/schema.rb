@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326171050) do
+ActiveRecord::Schema.define(version: 20160327023609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,26 +62,6 @@ ActiveRecord::Schema.define(version: 20160326171050) do
   add_index "order_products", ["order_id"], name: "index_order_products_on_order_id", using: :btree
   add_index "order_products", ["product_id"], name: "index_order_products_on_product_id", using: :btree
 
-  create_table "orders", force: :cascade do |t|
-    t.string   "street"
-    t.string   "unit"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "status",      default: "paid"
-    t.string   "fullname"
-    t.string   "card_token"
-    t.integer  "order_total"
-  end
-
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
-
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "price"
@@ -101,20 +81,22 @@ ActiveRecord::Schema.define(version: 20160326171050) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "properties", force: :cascade do |t|
-    t.string  "title"
-    t.string  "description"
-    t.integer "price"
-    t.string  "street"
-    t.string  "unit"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zip"
-    t.integer "bedrooms"
-    t.integer "bathrooms"
-    t.integer "sleeps"
-    t.integer "user_id"
-    t.boolean "approved",         default: false
-    t.integer "property_type_id"
+    t.string   "title"
+    t.string   "description"
+    t.integer  "price"
+    t.string   "street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.integer  "bedrooms"
+    t.integer  "bathrooms"
+    t.integer  "sleeps"
+    t.integer  "user_id"
+    t.boolean  "approved",         default: false
+    t.integer  "property_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree

@@ -30,6 +30,27 @@ class Property < ActiveRecord::Base
                    @guest)
   end
 
+  def self.search_by_name(search)
+    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
+  end
+
+  def self.by_date
+    order(updated_at: :desc)
+  end
+
+  def owner
+    user = User.find(self.user_id)
+    user.fullname
+  end
+
+  def display_total
+    "$#{self.price}"
+  end
+
+  def date
+    updated_at.strftime("%B %-d, %Y")
+  end
+
   def self.search_by_dates(properties)
     result = properties.map do |property|
       property unless property.reservations.reserved?(@checkin, @checkout)

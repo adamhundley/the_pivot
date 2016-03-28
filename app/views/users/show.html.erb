@@ -1,1 +1,3 @@
-<%= render partial: "shared/user_dashboard_header" %>
+<% if !current_user.platform_admin? %>
+  <%= render partial: "shared/user_dashboard_header" %>
+<% end %>
