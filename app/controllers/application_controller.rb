@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  # before_filter :set_time_zone, if: :current_user
+
   before_action :set_cart
   helper_method :current_user
 
@@ -14,4 +16,12 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
+
+  private
+
+    def set_time_zone
+      if current_user
+        Time.zone = current_user.time_zone
+      end
+    end
 end

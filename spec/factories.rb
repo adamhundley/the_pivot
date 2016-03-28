@@ -26,6 +26,14 @@ FactoryGirl.define do
     approved true
   end
 
+  factory :image do
+    image_file_name "assets/images/new_york_hero.jpg"
+    image_content_type "image/jpeg"
+    image_file_size 123
+    image_updated_at 20160314
+  end
+
+
   factory :user do
     fullname
     email

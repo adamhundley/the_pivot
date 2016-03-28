@@ -4,9 +4,11 @@ RSpec.feature "UserViewsPropertyIndex", type: :feature do
   scenario "user views property index" do
     user = create(:user)
     type = create(:property_type)
+    image = create(:image)
     property = create(:property)
     property.property_type = type
-      user.properties << property
+    property.images << image
+    user.properties << property
     amenity = create(:amenity)
     property.amenities << amenity
 
