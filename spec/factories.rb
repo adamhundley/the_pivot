@@ -7,6 +7,7 @@ FactoryGirl.define do
     name "wifi"
   end
 
+
   factory :property_type do
     name "Entire House/Apartment"
   end
@@ -38,5 +39,4 @@ FactoryGirl.define do
   sequence :email, ["a", "b", "c", "d"].cycle do |n|
     "#{n}@example.com"
   end
-
 end

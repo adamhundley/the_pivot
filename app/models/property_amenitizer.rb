@@ -19,4 +19,15 @@ class PropertyAmenitizer
       @property.amenities << amenity
     end
   end
+
+  def self.update(ids, property)
+    if ids.nil?
+      property.amenity_ids = []
+    else
+      new_ids = ids.map do |id|
+        id.to_i
+      end
+      property.amenity_ids = new_ids
+    end
+  end
 end

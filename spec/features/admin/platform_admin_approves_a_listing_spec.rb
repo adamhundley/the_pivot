@@ -29,7 +29,7 @@ RSpec.feature "platform admin approves a property listing" do
     within(:css, "h1.pending.admin-property-index-header") do
       expect(page).to have_content("pending properties")
     end
-
+    save_and_open_page
     expect(page).to have_content("date")
     expect(page).to have_content("property id")
     expect(page).to have_content("name")

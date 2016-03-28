@@ -2,14 +2,14 @@
 <% if current_user.properties.count >= 1 %>
 <div class="container">
       <% @properties.each do |property| %>
-      <div class="row">
-      <div id="new-property" class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
-        <%= form_for [:user, property], url: user_property_path(property.id, current_user.slug) do |f| %>
-        <h3>My Properties Information</h3>
+      <div class="row" id="edit-property-<%= property.id %>">
+      <div class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
+        <%= form_for [:user, property], url: user_property_path(current_user.slug, property.id) do |f| %>
+        <h3>My Property's Information</h3>
         <div class="form-horizontal">
           <div class="form-group">
             <%= f.label :title, class:"sr-only"  %>
-            <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success" %>
+            <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success"%>
           </div>
           <div class="form-group">
             <%= f.label :description, class:"sr-only"  %>
@@ -22,7 +22,7 @@
           <div class="form-group">
             <%= f.collection_select(:property_type_id, PropertyType.all, :id, :name, {prompt:"property type"}, {id:"property-type", class:"form-control", required:true}) %>
           </div>
-          <h3>My Properties Location</h3>
+          <h3>My Property's Location</h3>
           <div class="form-group">
             <div class="col-sm-8" id="<%= property.id %>-property-street">
               <%= f.label :street, class:"sr-only"  %>
@@ -49,7 +49,7 @@
         </div>
       </div>
     <div id="new-property" class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
-        <h3>My Properties Details</h3>
+        <h3>My Property's Details</h3>
         <div class="form-group">
           <div class="col-sm-4">
             <%= f.label :bedrooms %>
@@ -66,7 +66,7 @@
         </div>
         <br><br><br>
 
-        <h3>My Property Amenities</h3>
+        <h3>My Property's Amenities</h3>
         <% Amenity.all.each do |amenity| %>
           <%= check_box_tag "property[amenity_ids][]", amenity.id, property.amenities.include?(Amenity.find(amenity.id)) %>
           <%= label_tag amenity.name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -85,7 +85,9 @@
         <br>
         </div>
         <br>
-        <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
+        <div id="update-property">
+          <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
+        </div>
       </div>
     </div>
     <hr>

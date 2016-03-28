@@ -2,6 +2,7 @@ class Property < ActiveRecord::Base
   belongs_to :user
   belongs_to :property_type
   has_many :images
+  has_many :reservations
   has_many :property_amenities
   has_many :amenities, through: :property_amenities
   accepts_nested_attributes_for :amenities
@@ -18,7 +19,11 @@ class Property < ActiveRecord::Base
   validates :sleeps, presence: true
 
   def self.search(search)
-    parse(search)
+   properties = find_by_city_state_sleeps(parse_search(search))
+   search_by_dates(properties)
+  end
+
+  def self.find_by_city_state_sleeps(search)
     Property.where("city = ? and state = ? and sleeps >= ?",
                    @city,
                    @state,
@@ -39,18 +44,24 @@ class Property < ActiveRecord::Base
   end
 
   def display_total
-    "$#{self.price / 100}"
+    "$#{self.price}"
   end
 
   def date
     updated_at.strftime("%B %-d, %Y")
   end
 
-  def self.parse(search)
+  def self.search_by_dates(properties)
+    result = properties.map do |property|
+      property unless property.reservations.reserved?(@checkin, @checkout)
+    end.compact
+  end
+
+  def self.parse_search(search)
     @city = search[:destination].split(',')[0]
     @state = search[:destination].split(',')[-1].strip
     @guest = search[:guest]
-    @checkin = search[:checkin]
-    @checkout = search[:checkout]
+    @checkin = search[:checkin].delete('-').to_i
+    @checkout = search[:checkout].delete('-').to_i
   end
 end

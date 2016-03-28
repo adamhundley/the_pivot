@@ -6,7 +6,7 @@ class User::PropertiesController < ApplicationController
     if @property.save
       @property.images << @image
       flash[:info] = "Congrats #{current_user.fullname}! Your new listing is pending approval."
-      redirect_to user_dashboard_path
+      redirect_to user_dashboard_path(current_user.slug)
     else
       flash[:alert] = "Something went wrong! Sorry."
       redirect_to :new
@@ -19,12 +19,25 @@ class User::PropertiesController < ApplicationController
   end
 
   def update
+    @property = Property.find(params[:id])
+    if @property.update(property_params)
+      PropertyAmenitizer.update(params[:property][:amenity_ids], @property)
+      flash[:info] = "You have updated your listing."
+      redirect_to user_properties_path(current_user.slug)
+    else
+      flash.now[:alert] = "Something went wrong :(... Please try again."
+      render :new
+    end
+  end
+
+  def show
+    @property = Property.find(params[:id])
   end
 
 private
 
   def property_params
-    params.require(:property).permit(:title, :description, :street, :unit, :city, :state, :zip, :price, :bedrooms, :bathrooms, :sleeps, :property_type_id)
+    params.require(:property).permit(:title, :description, :street, :unit, :city, :state, :zip, :price, :bedrooms, :bathrooms, :sleeps, :property_type_id, :amenity_ids)
   end
 
   def image_params
