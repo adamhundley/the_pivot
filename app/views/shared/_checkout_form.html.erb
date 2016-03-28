@@ -1,4 +1,4 @@
-<div class="form-group text-center form-div">
+<div class="form-group text-center form-div" id="strip-checkout">
   <%= form_for(:reservation, url: new_property_path) do |f| %>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
