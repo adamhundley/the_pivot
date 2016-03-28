@@ -89,7 +89,7 @@ class Seed
                                         user_id: user_ids[rand(200)],
                                         checkin: checkin,
                                         checkout: checkout)
-      book_nights(checkin, checkout, reservation)
+      ReservationNight.book_nights(reservation)
     end
   end
 
@@ -97,12 +97,6 @@ class Seed
     def add_property_type_to_property(property)
       property_type = PropertyType.find(rand(1..3))
       property_type.properties << property
-    end
-
-    def book_nights(checkin, checkout, reservation)
-      nights = ReservationNightCalculator.new(checkin, checkout)
-      total_nights = nights.add_up_nights
-      ReservationNight.book(total_nights, reservation)
     end
 end
 

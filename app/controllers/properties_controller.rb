@@ -11,8 +11,6 @@ class PropertiesController < ApplicationController
     if params[:destination]
       @properties = Property.search(params)
       @location = find_location(params)
-      require "pry"
-      binding.pry
     else
       @properties = Property.all
     end

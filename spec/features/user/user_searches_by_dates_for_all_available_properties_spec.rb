@@ -3,9 +3,7 @@ require "rails_helper"
 RSpec.feature "UserSearchesForPropertiesByAvailableDates", type: :feature do
   scenario "user sees only properties available on specified dates", js: true do
 
-    user1 = create(:user)
-    require "pry"
-    binding.pry
+    user = create(:user)
 
     image = "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458645252559534.jpg"
 
@@ -26,7 +24,15 @@ RSpec.feature "UserSearchesForPropertiesByAvailableDates", type: :feature do
     property3.images.create!(image: image)
     property4.images.create!(image: image)
 
-    reservation1 = property1.reservations.create(user_id: user1.id, checkin: 20160425, checkout: 20160430)
+    reservation1 = property1.reservations.create(user_id: user.id, checkin: 20160425, checkout: 20160430)
+    reservation2 = property2.reservations.create(user_id: user.id, checkin: 20160825, checkout: 20160830)
+    reservation3 = property3.reservations.create(user_id: user.id, checkin: 20160825, checkout: 20160830)
+    reservation4 = property4.reservations.create(user_id: user.id, checkin: 20160825, checkout: 20160830)
+
+    ReservationNight.book_nights(reservation1)
+    ReservationNight.book_nights(reservation2)
+    ReservationNight.book_nights(reservation3)
+    ReservationNight.book_nights(reservation4)
 
     visit "/"
 

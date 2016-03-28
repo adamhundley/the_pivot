@@ -31,16 +31,16 @@ class Property < ActiveRecord::Base
   end
 
   def self.search_by_dates(properties)
-    properties.map do |property|
-      property if property.reservations.available?(@checkin, @checkout)
-    end
+    result = properties.map do |property|
+      property unless property.reservations.reserved?(@checkin, @checkout)
+    end.compact
   end
 
   def self.parse_search(search)
     @city = search[:destination].split(',')[0]
     @state = search[:destination].split(',')[-1].strip
     @guest = search[:guest]
-    @checkin = search[:checkin].to_date
-    @checkout = search[:checkout].to_date
+    @checkin = search[:checkin].delete('-').to_i
+    @checkout = search[:checkout].delete('-').to_i
   end
 end
