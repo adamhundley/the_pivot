@@ -8,6 +8,8 @@ class PropertiesController < ApplicationController
   end
 
   def index
+    session[:checkin] = params[:checkin]
+    session[:checkout] = params[:checkout]
     if params[:destination]
       @properties = Property.search(params)
       @location = find_location(params)

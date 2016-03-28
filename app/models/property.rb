@@ -3,6 +3,7 @@ class Property < ActiveRecord::Base
   belongs_to :property_type
   has_many :images
   has_many :reservations
+  has_many :reservation_nights, through: :reservations
   has_many :property_amenities
   has_many :amenities, through: :property_amenities
   accepts_nested_attributes_for :amenities
@@ -63,5 +64,19 @@ class Property < ActiveRecord::Base
     @guest = search[:guest]
     @checkin = search[:checkin].delete('-').to_i
     @checkout = search[:checkout].delete('-').to_i
+  end
+
+  def nights_reserved
+    reservation_nights.map do |res_night|
+      res_night.night
+    end
+  end
+
+  def possible_nights(checkin, checkout)
+    (checkin.to_date..checkout.to_date).count
+  end
+
+  def cost(checkin, checkout)
+    possible_nights(checkin, checkout) * price
   end
 end

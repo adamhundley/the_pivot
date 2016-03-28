@@ -19,6 +19,7 @@ gem 'unicorn'
 gem 'stripe'
 gem 'chartkick'
 gem 'groupdate'
+gem "simple_calendar", "~> 2.0"
 
 
 group :development, :test do
