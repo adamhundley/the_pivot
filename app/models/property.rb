@@ -19,18 +19,28 @@ class Property < ActiveRecord::Base
   validates :sleeps, presence: true
 
   def self.search(search)
-    parse(search)
+   properties = find_by_city_state_sleeps(parse_search(search))
+   search_by_dates(properties)
+  end
+
+  def self.find_by_city_state_sleeps(search)
     Property.where("city = ? and state = ? and sleeps >= ?",
                    @city,
                    @state,
                    @guest)
   end
 
-  def self.parse(search)
+  def self.search_by_dates(properties)
+    result = properties.map do |property|
+      property unless property.reservations.reserved?(@checkin, @checkout)
+    end.compact
+  end
+
+  def self.parse_search(search)
     @city = search[:destination].split(',')[0]
     @state = search[:destination].split(',')[-1].strip
     @guest = search[:guest]
-    @checkin = search[:checkin]
-    @checkout = search[:checkout]
+    @checkin = search[:checkin].delete('-').to_i
+    @checkout = search[:checkout].delete('-').to_i
   end
 end

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :properties
 
   validates :fullname, presence: true
-  validates :email, presence: true, uniqueness: true
+  #validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
   # validates :slug, presence: true
 
