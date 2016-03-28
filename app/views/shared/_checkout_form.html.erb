@@ -1,10 +1,16 @@
 <div class="form-group text-center form-div">
-  <%= form_for(:reservation, url: new_property_path) do |f| %>
+  <%= form_for(:reservation, url: user_reservations_path(current_user.slug )) do |f| %>
+    <input type="hidden" name="property_user_slug" value="<%= params[:user_name] %>">
+    <input type="hidden" name="property_id" value="<%= params[:id] %>">
+    <input type="hidden" name="checkin" value="<%= session[:checkin] %>">
+    <input type="hidden" name="checkout" value="<%= session[:checkout] %>">
+    <input type="hidden" name="reservation_total" value="<%= amount %>">
+
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
     data-description= "Treat Yo'self"
     data-image= "/assets/nav-logo.png"
-    data-amount="<%= amount %>"
+    data-amount="<%= amount * 100 %>"
     data-locale="auto"
     data-billing-address= true
     data-shipping-address= true
@@ -13,5 +19,4 @@
     </script>
     <% end %>
   </div>
-
 </div>
