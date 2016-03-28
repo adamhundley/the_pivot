@@ -2,7 +2,6 @@ class ReservationProcessor
   attr_reader :property, :reservation
 
   def initialize(current_user, reservation_params)
-    require "pry"; binding.pry
     @property = find_property(reservation_params)
     @reservation = make_reservation(process_reservation_params(current_user, reservation_params))
     make_reservation_nights(reservation)
