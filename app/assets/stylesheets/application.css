@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ *= require simple_calendar
 
  html {
      background-color: #fff;
