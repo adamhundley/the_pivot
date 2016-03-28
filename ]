@@ -8,8 +8,9 @@ class ReservationNight < ActiveRecord::Base
     end
   end
 
-  #def self.reserved?(dates)
-    #dates.each do |date|
-      #include?(ReservationNight.find_by(night: date))
-  #end
+  def self.reserved?(dates)
+      dates.each do |date|
+        include?(ReservationNight.find_by(night: date)
+    end
+  end
 end

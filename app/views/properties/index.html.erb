@@ -52,7 +52,7 @@
       </div>
       <div class="row">
         <div class="col-sm-2 col-sm-offset-2">
-        <h5 class="property-stat-description"><%= property.property_type.name %></h5  >
+        <h5 class="property-stat-description"><%= property.property_type.name if property.property_type %></h5  >
         </div>
         <div class="col-sm-2">
         <h5 class="property-stat-description"><%= property.bedrooms %> Bedrooms</h5 >
