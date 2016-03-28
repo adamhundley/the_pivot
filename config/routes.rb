@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   resources :cart_products, only: [:create, :destroy, :update]
   resources :mailing_list_emails, only: [:create]
 
-  resources :users, only: [:new, :create] do
-    resources :orders, only: [:new, :index, :create, :show]
-    get "/orders/:order_id/thanks", to: "orders#thanks", as: "thanks"
-  end
+  # resources :users, only: [:new, :create] do
+  #   resources :orders, only: [:new, :index, :create, :show]
+  #   get "/orders/:order_id/thanks", to: "orders#thanks", as: "thanks"
+  # end
 
   namespace :admin do
     get "/dashboard", to: "/users#show"
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :user, path: ":user_name", as: :user do
     resources :properties, only: [:create, :index, :update, :show]
+    resources :reservations, only: [:new, :create]
   end
 
   resources :properties, only: [:new, :index]
