@@ -18,7 +18,7 @@
   <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
 </head>
 <body>
-  <% if current_user && current_user.admin? %>
+  <% if current_user && current_user.platform_admin? %>
     <%= render partial: "shared/admin_nav" %>
       <div id="wrapper">
          <div id="sidebar-wrapper">

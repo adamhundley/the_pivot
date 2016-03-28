@@ -8,27 +8,24 @@
     <%= link_to "dashboard", admin_dashboard_path %>
   </li>
   <li>
-    <%= link_to "active orders", admin_orders_path(status: "paid") %>
+    <%= link_to "pending properties", admin_properties_path(approved: "false") %>
   </li>
   <li>
-    <%= link_to "completed orders", admin_orders_path(status: "completed") %>
+    <%= link_to "approved properties", admin_properties_path(approved: "true") %>
   </li>
   <li>
-    <%= link_to "cancelled orders", admin_orders_path(status: "cancelled") %>
+    <%= link_to "current reservations", "#" %>
   </li>
   <li>
-    <%= link_to "active products", admin_products_path(inactive: false) %>
+    <%= link_to "past reservations", "#" %>
   </li>
   <li>
-    <%= link_to "inactive products", admin_products_path(inactive: true) %>
-  </li>
-  <li>
-    <%= link_to "add product", new_admin_product_path %>
+    <%= link_to "users", "#" %>
   </li>
   <li class="sidebar-header">
     <p>user interface</p>
   </li>
   <li>
-    <%= link_to "shop all", products_path %>
+    <%= link_to "all properties????", "#" %>
   </li>
 </ul>

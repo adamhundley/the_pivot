@@ -11,6 +11,13 @@ Rails.application.routes.draw do
     get "/orders/:order_id/thanks", to: "orders#thanks", as: "thanks"
   end
 
+  namespace :admin do
+    get "/dashboard", to: "/users#show"
+    resources :properties, only: [:index, :show, :update]
+    # resources :products, only: [:new, :create, :index, :update]
+    # resources :orders, only: [:index, :show, :update]
+    # resources :comments, only: [:create]
+  end
 
   namespace :user, path: ":user_name", as: :user do
     resources :properties, only: [:create, :index, :update, :show]
@@ -20,12 +27,6 @@ Rails.application.routes.draw do
 
   get ":user_name/dashboard", to: "users#show", as: :user_dashboard
 
-  namespace :admin do
-    get "/dashboard", to: "users#show"
-    resources :products, only: [:new, :create, :index, :update]
-    resources :orders, only: [:index, :show, :update]
-    resources :comments, only: [:create]
-  end
 
   get "orders/login", to: "orders#checkout_login", as: "checkout_login"
   post "orders/login", to: "orders#checkout_user", as: "checkout_user"

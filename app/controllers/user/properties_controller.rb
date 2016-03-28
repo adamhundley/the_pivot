@@ -9,7 +9,7 @@ class User::PropertiesController < ApplicationController
       redirect_to user_dashboard_path(current_user.slug)
     else
       flash[:alert] = "Something went wrong! Sorry."
-      redirect_to new_user_property_path(current_user.slug)
+      redirect_to :new
     end
   end
 

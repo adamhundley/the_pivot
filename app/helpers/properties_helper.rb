@@ -5,4 +5,12 @@ module PropertiesHelper
       redirect_to login_path
     end
   end
+
+  def property_status
+    if params[:approved] == true
+      "active"
+    else
+      "pending"
+    end
+  end
 end

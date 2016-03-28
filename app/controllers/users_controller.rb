@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(slug: params[:user_name])
+    @user = current_user
   end
 
 private
