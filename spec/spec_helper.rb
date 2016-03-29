@@ -33,6 +33,12 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
+RSpec.configure do |c|
+  if c.filter_manager.inclusions.rules.include?(:live)
+    StripeMock.toggle_live(true)
+    puts "Running **live** tests against Stripe..."
+  end
+end
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
