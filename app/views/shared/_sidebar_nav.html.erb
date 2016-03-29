@@ -8,10 +8,13 @@
     <%= link_to "dashboard", admin_dashboard_path %>
   </li>
   <li>
-    <%= link_to "pending properties", admin_properties_path(approved: "false") %>
+    <%= link_to "pending properties", admin_properties_path(status: "pending") %>
   </li>
   <li>
-    <%= link_to "approved properties", admin_properties_path(approved: "true") %>
+    <%= link_to "active properties", admin_properties_path(status: "active") %>
+  </li>
+  <li>
+    <%= link_to "disabled properties", admin_properties_path(status: "disabled") %>
   </li>
   <li>
     <%= link_to "current reservations", "#" %>

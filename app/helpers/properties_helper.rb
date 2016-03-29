@@ -7,10 +7,6 @@ module PropertiesHelper
   end
 
   def property_status
-    if params[:approved] == true
-      "active"
-    else
-      "pending"
-    end
+    params[:status]
   end
 end
