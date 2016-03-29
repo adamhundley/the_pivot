@@ -1,5 +1,6 @@
 <div class="form-group text-center form-div">
-  <%= form_for(:reservation, url: user_reservations_path(current_user.slug )) do |f| %>
+  <% if current_user %>
+  <%= form_for(:reservation, url: user_reservations_path(current_user.slug)) do |f| %>
     <input type="hidden" name="property_user_slug" value="<%= params[:user_name] %>">
     <input type="hidden" name="property_id" value="<%= params[:id] %>">
     <input type="hidden" name="checkin" value="<%= session[:checkin] %>">
@@ -17,6 +18,7 @@
     data-panel-label= "Total"
     data-label= "Book Now!">
     </script>
+    <% end %>
     <% end %>
   </div>
 </div>
