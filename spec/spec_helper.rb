@@ -5,7 +5,6 @@ require 'factory_girl_rails'
 require 'database_cleaner'
 
 SimpleCov.start("rails")
-
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
