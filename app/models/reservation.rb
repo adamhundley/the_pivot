@@ -20,4 +20,13 @@ class Reservation < ActiveRecord::Base
   def self.date_range(checkin, checkout)
     (checkin.to_s.to_date..checkout.to_s.to_date).to_a
   end
+
+  def process_stripe_payment
+    customer = Stripe::Customer.create email: email,
+                                       card: card_token
+    Stripe::Charge.create customer: customer.id,
+                          amount: order_total,
+                          description: id,
+                          currency: 'usd'
+  end
 end

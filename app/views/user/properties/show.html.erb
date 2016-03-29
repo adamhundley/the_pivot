@@ -78,7 +78,7 @@
         <% if session[:checkin] && session[:checkout] %>
           <h5>$<%= @property.price %> per night x <%= @property.possible_nights(session[:checkin], session[:checkout]) %> nights</h5>
           <h4>Reservation Total: $<%= @property.cost(session[:checkin], session[:checkout]) %></h4>
-          <%= render partial: "shared/checkout_form", locals: {amount: @property.price } %>
+          <%= render partial: "shared/checkout_form", locals: {amount: @property.cost(session[:checkin], session[:checkout]) } %>
         <% else %>
           $<%= @property.price  %>
         <% end %>

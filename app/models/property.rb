@@ -53,7 +53,7 @@ class Property < ActiveRecord::Base
   end
 
   def self.search_by_dates(properties)
-    result = properties.map do |property|
+    properties.map do |property|
       property unless property.reservations.reserved?(@checkin, @checkout)
     end.compact
   end
