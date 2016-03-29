@@ -29,4 +29,8 @@ class Reservation < ActiveRecord::Base
                           description: id,
                           currency: 'usd'
   end
+
+  def formatted_total
+    "$#{order_total}"
+  end
 end
