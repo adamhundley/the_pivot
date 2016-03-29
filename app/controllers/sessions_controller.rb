@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   include SessionHelper
   def new
+    session[:return_to] ||= request.referer
   end
 
   def create
@@ -12,7 +13,11 @@ class SessionsController < ApplicationController
         redirect_to admin_dashboard_path
       else
         flash[:info] = "Hey #{user.first_name}, welcome to C.A.M.P"
-        redirect_to redirect_back_or_to(session[:referrer])
+        if session[:return_to]
+          redirect_to session.delete(:return_to)
+        else
+          redirect_to redirect_back_or_to(session[:referrer])
+        end
       end
     else
         flash.now[:alert] = "Sorry, friend.  Something went wrong :(... Please try again."

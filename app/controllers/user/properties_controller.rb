@@ -31,6 +31,11 @@ class User::PropertiesController < ApplicationController
   end
 
   def show
+    if params[:checkin] && params[:checkout]
+      session[:checkin] = params[:checkin]
+      session[:checkout] = params[:checkout]
+    end
+
     @property = Property.find(params[:id])
   end
 
