@@ -61,7 +61,7 @@ class Property < ActiveRecord::Base
   def self.parse_search(search)
     @city = search[:destination].split(',')[0]
     @state = search[:destination].split(',')[-1].strip
-    @guest = search[:guest]
+    @guest = search[:guest].split[0]
     @checkin = search[:checkin].delete('-').to_i
     @checkout = search[:checkout].delete('-').to_i
   end

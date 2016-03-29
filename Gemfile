@@ -21,6 +21,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem "simple_calendar", "~> 2.0"
 gem 'stripe-ruby-mock', '~> 2.2.2', :require => 'stripe_mock'
+gem 'bootstrap-slider-rails'
 
 group :development, :test do
   gem 'rspec'
