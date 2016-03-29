@@ -1,4 +1,5 @@
 $(window).ready(function(){
-//var slider = new Slider('#ex2', {});
-$("#ex2").slider({});
+    $("#ex2").slider({
+        //var properties = $('#location').find('.col-sm-6')
+    });
 });

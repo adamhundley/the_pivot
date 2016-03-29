@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="search" id: "searchbar">
+  <div class="filter-search" id: "searchbar">
     <div class="container">
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -10,14 +10,14 @@
                   <div class="col-md-4">
                     <div class="form-group" >
                       <label class="sr-only" for="location">Location</label>
-                      <input type="text" name="destination" class="form-control" id="location" placeholder="Enter City, State" required>
+                      <input type="text" name="destination" class="form-control" id="location" placeholder="<%= @location %>">
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="sr-only" for="checkin">Check in</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="checkin" id="checkin" placeholder="Check in" required>
+                        <input type="text" class="form-control" name="checkin" id="checkin"  selected="ok" placeholder=<%= session[:checkin] %>>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="checkout">Check out</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="checkout" id="checkout" placeholder="Check out" required>
+                        <input type="text" class="form-control" name="checkout" id="checkout" placeholder=<%= session[:checkout] %>>
                         <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
@@ -35,6 +35,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="guest">Guest</label>
                       <select id="guests" name="guest" class="form-control">
+                        <option value="" default selected><%= session[:guests] %></option>
                           <option value="1 Guest">1 Guest</option>
                           <option value="2 Guests">2 Guests</option>
                           <option value="3 Guests">3 Guests</option>
@@ -65,3 +66,4 @@
     </div>
   </div>
 </div>
+
