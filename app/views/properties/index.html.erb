@@ -17,7 +17,7 @@
       <div class="row property-price">
         <span class="property-index-price">$<%= property.price %></span>
       </div>
-        <%= link_to image_tag(property.images.first.image.url(:show)), user_property_path(property.user.slug, property.id) %>
+        <%= link_to image_tag(property.images.first.image.url(:show)), user_property_path(property.user.slug, property.id), id: "image" %>
         <%= %><br><br>
       <div class="row">
         <div class="col-sm-2 col-sm-offset-2">

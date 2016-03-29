@@ -20,7 +20,7 @@ gem 'stripe'
 gem 'chartkick'
 gem 'groupdate'
 gem "simple_calendar", "~> 2.0"
-
+gem 'stripe-ruby-mock', '~> 2.2.2', :require => 'stripe_mock'
 
 group :development, :test do
   gem 'rspec'
