@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   namespace :user, path: ":user_name", as: :user do
     resources :properties, only: [:create, :index, :update, :show]
-    resources :reservations, only: [:new, :create]
+    resources :reservations, only: [:new, :create, :index]
   end
 
   resources :properties, only: [:new, :index]

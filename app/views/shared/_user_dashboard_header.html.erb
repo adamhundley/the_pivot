@@ -8,7 +8,7 @@
     <ul class="nav navbar-nav">
       <li><%= link_to "My Dashboard", user_dashboard_path(current_user.slug), class:"dashboard-navbar-menu-item" %></li>
       <li><%= link_to "My Listings", user_properties_path(current_user.slug), class:"dashboard-navbar-menu-item" %></li>
-      <li><%= link_to "My Trips", "#", class:"dashboard-navbar-menu-item" %></li>
+      <li><%= link_to "My Trips", user_reservations_path(current_user.slug), class:"dashboard-navbar-menu-item" %></li>
       <li><%= link_to "My Profile", "#", class:"dashboard-navbar-menu-item" %></li>
     </ul>
   </div>

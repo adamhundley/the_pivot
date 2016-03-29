@@ -1,0 +1,37 @@
+<%= render partial: "shared/user_dashboard_header" %>
+<% if current_user.reservations.count >= 1 %>
+  <div class="container">
+    <br>
+        <% @reservations.each do |reservation| %>
+        <div class="row">
+          <div class="col-sm-6">
+            <%= link_to image_tag(reservation.property.images.first.image.url(:show)), user_property_path(reservation.property.user.slug, reservation.property.id) %>
+          </div>
+          <div class="col-sm-6">
+            <h2><%= reservation.property.title %></h2><hr>
+              <div class="row text-center trip-location">
+                <%= reservation.property.street %><br>
+                <% if reservation.property.unit %>
+                <%= reservation.property.unit %><br>
+                <% end %>
+                <%= reservation.property.city %>, <%= reservation.property.state %>  <%= reservation.property.zip %>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-8">
+                  <h3 class="trip-details"><%= reservation.checkin %> - <%= reservation.checkout %></h3>
+                  <h3 class="trip-details">Trip Total: <%= reservation.formatted_total %></h3>
+                </div>
+                <div class="col-sm-4">
+                  <%= link_to "BOOK AGAIN!", user_property_path(reservation.property.user.slug, reservation.property.id), class:"btn btn-success btn-lg list-my-pad" %>
+                </div>
+              </div>
+          </div>
+        </div>
+        <hr>
+        <% end %>
+    </div>
+
+<% else %>
+  <%= render partial: "shared/no_trips" %>
+<% end %>

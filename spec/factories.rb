@@ -12,6 +12,19 @@ FactoryGirl.define do
     name "Entire House/Apartment"
   end
 
+  factory :reservation do
+    street "123 Street St."
+    city "Denver"
+    state "CO"
+    zip "80207"
+    fullname "Josh Mejia"
+    card_token "testtoken"
+    email "test@example.com"
+    order_total 455
+    checkin 20160808
+    checkout 20160810
+  end
+
   factory :property do
     title "Property"
     description "Test description"
@@ -47,4 +60,5 @@ FactoryGirl.define do
   sequence :email, ["a", "b", "c", "d"].cycle do |n|
     "#{n}@example.com"
   end
+
 end
