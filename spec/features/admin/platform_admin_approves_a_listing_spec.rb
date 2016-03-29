@@ -29,21 +29,21 @@ RSpec.feature "platform admin approves a property listing" do
     within(:css, "h1.pending.admin-property-index-header") do
       expect(page).to have_content("pending properties")
     end
-    save_and_open_page
+
     expect(page).to have_content("date")
     expect(page).to have_content("property id")
     expect(page).to have_content("name")
     expect(page).to have_content("price")
     expect(page).to have_content("description")
-    expect(page).to have_content("approved")
+    expect(page).to have_content("status")
 
     expect(page).to have_content("john adams")
-    refute property.approved?
+    refute property.status?
 
     within "#1-property" do
       expect(page).to have_content(property.id)
       expect(page).to have_button("update property")
-      select "true", from: "property_approved"
+      select "true", from: "property_status"
     end
 
     click_on "update property"

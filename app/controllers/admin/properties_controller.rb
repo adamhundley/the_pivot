@@ -2,8 +2,8 @@ class Admin::PropertiesController < ApplicationController
 
   def index
     @properties = Property.by_date
-    if params[:approved]
-      @properties = Property.where(approved: params[:approved]).by_date.limit(50)
+    if params[:status]
+      @properties = Property.where(status: params[:status]).by_date.limit(50)
     elsif params[:id_search]
       if Property.exists?(params[:id_search])
         redirect_to admin_property_path(params[:id_search])
@@ -22,8 +22,8 @@ class Admin::PropertiesController < ApplicationController
     @property = Property.find(params[:id])
 
     if @property.update(property_params)
-      flash[:info] = "Cheerio! Property #{@property.id} has been updated!"
-      redirect_to admin_properties_path(approved: @property.approved)
+      flash[:info] = "Property ID: #{@property.id} from Owner #{@property.owner} has been updated."
+      redirect_to admin_properties_path(status: @property.status)
     else
       flash.now[:alert] = "Sorry, boss lolololololololol.  Something went wrong ;>(... Please try again."
       render :new
@@ -36,6 +36,6 @@ class Admin::PropertiesController < ApplicationController
 
   private
   def property_params
-    params.require(:property).permit(:approved)
+    params.require(:property).permit(:status)
   end
 end
