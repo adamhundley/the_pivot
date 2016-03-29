@@ -48,7 +48,7 @@ class Seed
                                   bathrooms:    rand(1..6),
                                   sleeps:      rand(1..16),
                                   user_id:     user.id,
-                                  approved:    [true, false].sample)
+                                  status:    [true, false].sample)
       add_property_type_to_property(property)
       generate_reservations_for_property(property)
       generate_images(property)
@@ -71,7 +71,7 @@ class Seed
                                   bathrooms:    rand(1..6),
                                   sleeps:      rand(1..16),
                                   user_id:     user.id,
-                                  approved:    [true, false].sample)
+                                  status:    [true, false].sample)
       add_property_type_to_property(property)
       generate_reservations_for_property(property)
       generate_images(property)
@@ -94,7 +94,7 @@ class Seed
                                   bathrooms:    rand(1..6),
                                   sleeps:      rand(1..16),
                                   user_id:     user.id,
-                                  approved:    [true, false].sample)
+                                  status:    ["pending", "active", "disabled"].sample)
       add_property_type_to_property(property)
       generate_reservations_for_property(property)
       generate_images(property)

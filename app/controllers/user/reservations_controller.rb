@@ -20,8 +20,8 @@ class User::ReservationsController < ApplicationController
 
   private
 
-  def reservation_params
-    params.permit(:stripeEmail, :stripeToken, :stripeShippingName, :stripeShippingAddressLine1, :stripeShippingAddressCity, :stripeShippingAddressZip, :stripeShippingAddressState, :stripeShippingAddressZip, :property_user_id, :property_id, :checkin, :checkout, :reservation_total)
-  end
+    def reservation_params
+      params.permit(:stripeEmail, :stripeToken, :stripeShippingName, :stripeShippingAddressLine1, :stripeShippingAddressCity, :stripeShippingAddressZip, :stripeShippingAddressState, :stripeShippingAddressZip, :property_user_id, :property_id, :checkin, :checkout, :reservation_total)
+    end
 
 end

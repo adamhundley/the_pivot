@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327023609) do
+ActiveRecord::Schema.define(version: 20160329030645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,10 +93,10 @@ ActiveRecord::Schema.define(version: 20160327023609) do
     t.integer  "bathrooms"
     t.integer  "sleeps"
     t.integer  "user_id"
-    t.boolean  "approved",         default: false
     t.integer  "property_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",           default: "pending"
   end
 
   add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree

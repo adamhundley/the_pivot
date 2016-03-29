@@ -1,6 +1,6 @@
 <%= render partial: "shared/user_dashboard_header" %>
 <% if current_user.reservations.count >= 1 %>
-  <%= ok %>
+  <%= "ok" %>
 <% else %>
 <%= render partial: "shared/no_trips" %>
 <% end %>

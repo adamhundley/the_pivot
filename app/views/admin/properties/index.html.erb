@@ -35,7 +35,8 @@
         <th>name</th>
         <th>price</th>
         <th>description</th>
-        <th>approved</th>
+        <th>status</th>
+        <th></th>
         <th></th>
       </tr>
     </thead>
@@ -48,10 +49,9 @@
         <td><%= truncate(property.description) %></td>
 
         <%= form_for [:admin, property], url: admin_property_path(property.id) do |f| %>
-        <td><%= f.select(:approved, options_for_select(%w(true false), property.approved), {prompt: property.approved? }) %></td>
+        <td><%= f.select(:status, options_for_select(%w(pending active disable), property.status), {prompt: property.status }) %></td>
           <td><%= f.submit "update property", class:"btn btn-checkout btn-s"%></td>
         <% end %>
-
       </tr>
     <% end %>
   </table>
