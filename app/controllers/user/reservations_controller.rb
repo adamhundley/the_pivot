@@ -14,6 +14,10 @@ class User::ReservationsController < ApplicationController
     end
   end
 
+  def index
+    @reservations = current_user.reservations
+  end
+
   private
 
   def reservation_params
