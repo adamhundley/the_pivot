@@ -30,6 +30,8 @@ RSpec.feature "platform admin disables a property listing" do
     page.has_content?('PENDING PROPERTIES')
     page.has_content?("THIS PROPERTY WILL BE DISABLED!")
 
+    expect(property.status).to eq("pending")
+
     within(:css, "thead") do
       expect(page).to have_content("date")
       expect(page).to have_content("property id")
@@ -39,7 +41,7 @@ RSpec.feature "platform admin disables a property listing" do
       expect(page).to have_content("status")
     end
 
-    within(:css, "#2-property") do
+    within(:css, "##{property_two.id}-property") do
       expect(page).to have_content(property_two.date)
       expect(page).to have_content(property_two.id)
       expect(page).to have_content(property_two.owner)
@@ -49,7 +51,7 @@ RSpec.feature "platform admin disables a property listing" do
       expect(page).to have_button("update property")
     end
 
-    within(:css, "#1-property") do
+    within(:css, "##{property.id}-property") do
       expect(page).to have_content(property.date)
       expect(page).to have_content(property.id)
       expect(page).to have_content(property.owner)
@@ -57,22 +59,23 @@ RSpec.feature "platform admin disables a property listing" do
       expect(page).to have_content(property.description)
       expect(page).to have_content("pending")
       expect(page).to have_button("update property")
-      select "disable", from: "property_status"
+      select "inactive", from: "property_status"
       click_on "update property"
     end
 
+    property.reload
     expect(page).to have_content("Property ID: #{property.id} from Owner #{property.owner} has been updated.")
 
     expect(current_path).to eq(admin_properties_path)
     page.has_no_content?("THIS PROPERTY WILL BE DISABLED!")
 
-    click_on "disabled properties"
-    save_and_open_page
+    click_on "inactive properties"
 
-    within(:css, "h1") do 
-      page.has_content?("DISABLED PROPERTIES")
+    within(:css, "h1") do
+      page.has_content?("INACTIVE PROPERTIES")
     end
 
     page.has_content?("THIS PROPERTY WILL BE DISABLED!")
+    expect(property.status).to eq("inactive")
   end
 end
