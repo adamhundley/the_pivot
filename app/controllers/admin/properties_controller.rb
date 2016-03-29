@@ -20,7 +20,7 @@ class Admin::PropertiesController < ApplicationController
 
   def update
     @property = Property.find(params[:id])
-    
+
     if @property.update(property_params)
       flash[:info] = "Property ID: #{@property.id} from Owner #{@property.owner} has been updated."
       redirect_to admin_properties_path(status: @property.status)
@@ -32,6 +32,7 @@ class Admin::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    # require "pry"; binding.pry
   end
 
   private
