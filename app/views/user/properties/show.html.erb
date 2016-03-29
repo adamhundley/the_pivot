@@ -6,7 +6,7 @@
       <div class="row">
         <h2><%= @property.title %></h2>
 
-      <div class="col-sm-8 text-center">
+      <div class="col-sm-6 text-center">
         <br>
         <%= image_tag(@property.images.first.image.url(:show))%>
         <br><br>
@@ -46,8 +46,9 @@
         </p>
       </div>
       <br>
-      <div class="col-sm-4">
-        <div class="row">
+      <div class="col-sm-6">
+        <div class="row calendar-container">
+          <div class="col-sm-6">
           <%= month_calendar do |date| %>
             <% if @property.nights_reserved.include?(date) %>
               <span class="date-booked"><%= "X" %></span>
@@ -56,33 +57,54 @@
             <% end %>
           <% end %>
         </div>
-          <h5>Check in/Check out</h5>
-          <!-- <%= form_tag do %> -->
+        <div class="col-sm-4 col-sm-offset-1">
+          <%= form_tag({:controller => "properties", :action => "show"}, method: :get) do %>
+          <br>
+          <h5>Check in/Check out: </h5>
+          <div class="form-group">
             <div class="input-group">
               <input type="text" class="form-control" name="checkin" id="checkin" selected="ok" placeholder=<%= session[:checkin] %>>
               <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input type="text" class="form-control" name="checkout" id="checkout" placeholder=<%= session[:checkout] %>>
-              <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input type="submit" value="Update Dates" class="btn btn-checkout btn-sm">
             </div>
-        <!-- <% end %> -->
-           </div>
-
-        <h3>Loctation</h3>
-        <%= @property.street %><br>
-          <% if @property.unit %>
-            <%= @property.unit %><br>
+            <div class="input-group">
+              <input type="text" class="form-control" name="checkout" id="checkout" placeholder=<%= session[:checkout] %>>
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </div>
+          <input type="submit" value="Check Dates" class="btn btn-checkout btn-sm pull-right">
           <% end %>
-        <%= @property.city %>, <%= @property.state %>  <%= @property.zip %>
-        <hr>
-        <% if session[:checkin] && session[:checkout] %>
-          <h5>$<%= @property.price %> per night x <%= @property.possible_nights(session[:checkin], session[:checkout]) %> nights</h5>
-          <h4>Reservation Total: $<%= @property.cost(session[:checkin], session[:checkout]) %></h4>
-          <%= render partial: "shared/checkout_form", locals: {amount: @property.cost(session[:checkin], session[:checkout]) } %>
-        <% else %>
-          $<%= @property.price  %>
-        <% end %>
+        </div>
       </div>
+        <div class="row">
+        <hr>
+          <div class="col-xs-4">
+            <h2>Loctation:</h2>
+          </div>
+          <div class="col-xs-8 location-info">
+            <%= @property.street %><br>
+            <% if @property.unit %>
+            <%= @property.unit %><br>
+            <% end %>
+            <%= @property.city %>, <%= @property.state %>  <%= @property.zip %>
+          </div>
+        </div>
+          <hr>
+        <div class="row text-center price-container">
+            <% if session[:checkin] && session[:checkout] %>
+              <h3 class="location-info">$<%= @property.price %> @ <%= @property.possible_nights(session[:checkin], session[:checkout]) %> nights = $<%= @property.cost(session[:checkin], session[:checkout]) %></h3>
+            <% else %>
+              $<%= @property.price  %>
+            <% end %>
+            <hr>
+        </div>
+            <% if current_user && session[:checkin] != nil && session[:checkout] %>
+            <%= render partial: "shared/checkout_form", locals: {amount: @property.cost(session[:checkin], session[:checkout]) } %>
+            <% else %>
+            <br>
+            <%= link_to "Login & Book Now!", login_path, method: :get, class:"btn btn-info btn-md" %>
+            <% end %>
+      </div>
+    </div>
       <hr>
     </div>
 </div>
