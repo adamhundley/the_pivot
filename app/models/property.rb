@@ -28,11 +28,7 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_by_city_state_sleeps(search)
-    Property.near("#{@city}, #{@state}, US", 3000)
-    # Property.where("city = ? and state = ? and sleeps >= ?",
-    #                @city,
-    #                @state,
-    #                @guest)
+    Property.order(:price).near("#{@city}, #{@state}, US", 3000).where('sleeps >= ?', @guest)
   end
 
   def self.search_by_name(search)
@@ -69,6 +65,7 @@ class Property < ActiveRecord::Base
     @checkin = search[:checkin].delete('-').to_i
     @checkout = search[:checkout].delete('-').to_i
   end
+
 
 
   def nights_reserved

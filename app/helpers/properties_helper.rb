@@ -53,4 +53,24 @@ module PropertiesHelper
       "Guests"
     end
   end
+
+  def min_price(properties)
+    if properties.empty?
+      100
+    else
+      properties.min_by do |property|
+        property.price
+      end.price
+    end
+  end
+
+  def max_price(properties)
+    if properties.empty?
+      1000
+    else
+      properties.max_by do |property|
+        property.price
+      end.price
+    end
+  end
 end
