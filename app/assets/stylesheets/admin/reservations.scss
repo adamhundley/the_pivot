@@ -1,0 +1,29 @@
+// Place all the styles related to the admin/reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-reservations-index-header {
+  margin-top: 0;
+}
+
+.current {
+  color: #2980b9;
+}
+
+.past {
+  color: #FF0000;
+}
+
+#reservation-title {
+  font-size: 40px;
+}
+
+.reservation-info {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+#formatting-total {
+  border-bottom: solid 1px #000000;
+  display: inline;
+  padding-bottom: 3px;
+}

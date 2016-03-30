@@ -17,10 +17,10 @@
     <%= link_to "inactive properties", admin_properties_path(status: "inactive") %>
   </li>
   <li>
-    <%= link_to "current reservations", "#" %>
+    <%= link_to "current reservations", admin_reservations_path(status: "current") %>
   </li>
   <li>
-    <%= link_to "past reservations", "#" %>
+    <%= link_to "past reservations", admin_reservations_path(status: "past") %>
   </li>
   <li>
     <%= link_to "active users", "#" %>
