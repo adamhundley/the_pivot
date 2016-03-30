@@ -1,8 +1,10 @@
 #map {
-  width: 1000px;
-  height: 200px;
+  width: 400px;
+  height: 600px;
+  position: sticky;
 }
 
 .map-container {
   align-items: center;
+  position: absolute;
 }

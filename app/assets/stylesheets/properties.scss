@@ -23,7 +23,7 @@
   }
 
 span.index-icon {
-    font-size: 1.5em;
+    font-size: 1.75em;
     opacity: .7;
 }
 
@@ -34,6 +34,14 @@ span.show-icon {
 
 .property-stat-description {
   font-weight: 300;
+  font-size: 1em;
+
+}
+
+.property-type-description {
+  font-weight: 300;
+  font-size: .75em;
+
 }
 
 #price-slider {
@@ -43,9 +51,24 @@ span.show-icon {
 .property-price {
   font-weight: 200;
   text-align: left;
-  font-size: 4em;
-  margin-left: 10%;
+  font-size: 3em;
+  margin-left: 12%;
   margin-bottom: -15%;
   z-index: 1; position:relative;
   color: white;
+}
+
+.property-divider {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.ok {
+  background-color: white;
+  border-style: solid;
+  border-top: none;
+  border-bottom: none;
+  border-width: thin;
+  border-color: rgba(211, 211, 211, .5);
+
 }

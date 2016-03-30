@@ -20,47 +20,55 @@
   </div>
   <%= render partial: "shared/searchbar_properties" %>
 </div>
+<hr class="property-divider">
 <div class="container">
-    <div class="container text-center" id="location">
+  <div class="col-sm-8">
+
+    <div class="text-center" id="location">
       <% @properties.each do |property| %>
-        <div class="col-sm-6">
-          <h2><%= property.title %></h2>
+        <div class="col-sm-6 ok">
+          <h3><%= property.title %></h3>
           <div class="row property-price">
             <span class="property-index-price">$<%= property.price %></span>
           </div>
-            <%= link_to image_tag(property.images.first.image.url(:show)), user_property_path(property.user.slug, property.id), id: "image" %>
+            <%= link_to image_tag(property.images.first.image.url(:index)), user_property_path(property.user.slug, property.id), id: "image" %>
             <%= %><br><br>
           <div class="row">
-            <div class="col-sm-2 col-sm-offset-2">
+            <div class="col-sm-3">
               <span class="glyphicon glyphicon-home index-icon" aria-hidden="true"></span>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <span class="glyphicon glyphicon-bed index-icon" aria-hidden="true"></span>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <span class="glyphicon glyphicon-tint index-icon" aria-hidden="true"></span>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <span class="glyphicon glyphicon-user index-icon" aria-hidden="true"></span>
             </div>
           </div>
         <div class="row">
-          <div class="col-sm-2 col-sm-offset-2">
-          <h5 class="property-stat-description"><%= property.property_type.name if property.property_type %></h5  >
+          <div class="col-sm-3">
+          <h5 class="property-type-description text-center"><%= property.property_type.name if property.property_type %></h5  >
           </div>
-          <div class="col-sm-2">
-          <h5 class="property-stat-description"><%= property.bedrooms %> Bedrooms</h5 >
+          <div class="col-sm-3">
+          <h5 class="property-stat-description text-center"><%= property.bedrooms %></h5 >
           </div>
-          <div class="col-sm-2">
-          <h5 class="property-stat-description"><%= property.bathrooms %> Bathrooms</h5 >
+          <div class="col-sm-3">
+          <h5 class="property-stat-description text-center"><%= property.bathrooms %></h5 >
           </div>
-          <div class="col-sm-2">
-          <h5 class="property-stat-description"><%= property.sleeps %> Guests</h5 >
+          <div class="col-sm-3">
+          <h5 class="property-stat-description text-center"><%= property.sleeps %></h5 >
           </div>
         </div>
+        <hr class="property-divider">
       </div>
+
       <% end %>
 </div>
+</div>
+<div class="col-sm-4">
+<br>
 <% if params[:destination] %>
   <div class="container map-container">
     <div class="row map-container">
@@ -68,3 +76,5 @@
     </div>
   </div>
 <% end %>
+</div>
+</div>
