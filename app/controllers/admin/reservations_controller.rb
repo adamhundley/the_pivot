@@ -5,6 +5,5 @@ class Admin::ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
-    # require "pry"; binding.pry
   end
 end
