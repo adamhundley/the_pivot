@@ -32,7 +32,6 @@ class Admin::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
-    # require "pry"; binding.pry
   end
 
   private
