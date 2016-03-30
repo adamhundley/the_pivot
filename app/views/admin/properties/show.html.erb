@@ -1,0 +1,87 @@
+<div>
+  <h2>ADMIN DISPLAY MODE</h2>
+</div>
+<div class="property-show-hero-unit">
+  <div class="container text-center hero-container">
+  </div>
+</div>
+<div class="container">
+      <div class="row">
+        <h2><%= @property.title %></h2>
+
+      <div class="col-sm-12 text-center">
+        <br>
+        <%= image_tag(@property.images.first.image.url(:show))%>
+        <br><br>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <span class="glyphicon glyphicon-home show-icon" aria-hidden="true"></span>
+          </div>
+          <div class="col-sm-3">
+            <span class="glyphicon glyphicon-bed show-icon" aria-hidden="true"></span>
+          </div>
+          <div class="col-sm-3">
+            <span class="glyphicon glyphicon-tint show-icon" aria-hidden="true"></span>
+          </div>
+          <div class="col-sm-3">
+            <span class="glyphicon glyphicon-user show-icon" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+          <h5 class="property-stat-description"><%= @property.property_type.name %></h5  >
+          </div>
+          <div class="col-sm-3">
+          <h5 class="property-stat-description"><%= @property.bedrooms %> Bedrooms</h5 >
+          </div>
+          <div class="col-sm-3">
+          <h5 class="property-stat-description"><%= @property.bathrooms %> Bathrooms</h5 >
+          </div>
+          <div class="col-sm-3  ">
+          <h5 class="property-stat-description"><%= @property.sleeps %> Guests</h5 >
+          </div>
+        </div>
+        <h5>Amenities: <% @property.amenities.each do |amenity| %>
+          * <%= amenity.name %>
+        <% end %></h5>
+        <p>
+          <%= @property.description %>
+        </p>
+      </div>
+      <br>
+      <div class="col-sm-12">
+        <div class="row">
+        <hr>
+          <div class="col-xs-4">
+            <h2>Location:</h2>
+          </div>
+          <div class="col-xs-8 location-info">
+            <%= @property.street %><br>
+            <% if @property.unit %>
+            <%= @property.unit %><br>
+            <% end %>
+            <%= @property.city %>, <%= @property.state %>  <%= @property.zip %>
+          </div>
+        </div>
+        <div class="row text-center price-container">
+            <% if session[:checkin] && session[:checkout] %>
+              <h3 class="location-info">$<%= @property.price %> @ <%= @property.possible_nights(session[:checkin], session[:checkout]) %> nights = $<%= @property.cost(session[:checkin], session[:checkout]) %></h3>
+            <% else %>
+              $<%= @property.price  %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+      <hr>
+    </div>
+</div>
+<div class="container">
+  <% @property.images.each do |image| %>
+  <div class="col-sm-3">
+    <%= image_tag(image.image.url(:index), class:"admin-product-image") %>
+  </div>
+  <% end %><br>
+</div>
+
+<hr>

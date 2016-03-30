@@ -44,7 +44,7 @@
       <tr id="<%= property.id %>-property">
         <td class="text-nowrap"><%= property.date %></td>
         <td><%= link_to property.id, admin_property_path(property.id) %></td>
-        <td class="text-nowrap"><%= link_to property.owner, admin_property_path(params[:search] = property.user_id) %></td>
+        <td class="text-nowrap"><%= property.owner %></td>
         <td><%= property.display_total %></td>
         <td><%= truncate(property.description) %></td>
 
