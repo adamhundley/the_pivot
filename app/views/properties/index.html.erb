@@ -3,11 +3,23 @@
     <h1></h1>
   </div>
 </div>
+<hr>
 <% if @location %>
-  <div class="well well-sm" id='location-display'>
-    <h2><strong><%= @location %></strong></h2>
-  </div>
+<div class="well well-sm" id='location-display'>
+  <h2><strong><%= @location %></strong></h2>
+</div>
 <% end %>
+<div class="container-fluid" id="filter-search">
+  <h3 id='filter-title'>Filter your search</h3>
+  <div class="col-lg-12" id='filter-search-bar'>
+    <div id="price-slider">
+      <div class="col-md-10 col-md-offset-4">
+        Filter by price: <b>$ 100</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b>
+      </div>
+    </div>
+  </div>
+  <%= render partial: "shared/searchbar_properties" %>
+</div>
 <div class="container">
     <div class="container text-center" id="location">
       <% @properties.each do |property| %>
@@ -32,42 +44,22 @@
               <span class="glyphicon glyphicon-user index-icon" aria-hidden="true"></span>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-2 col-sm-offset-2">
-            <h5 class="property-stat-description"><%= property.property_type.name if property.property_type %></h5  >
-            </div>
-            <div class="col-sm-2">
-            <h5 class="property-stat-description"><%= property.bedrooms %> Bedrooms</h5 >
-            </div>
-            <div class="col-sm-2">
-            <h5 class="property-stat-description"><%= property.bathrooms %> Bathrooms</h5 >
-            </div>
-            <div class="col-sm-2">
-            <h5 class="property-stat-description"><%= property.sleeps %> Guests</h5 >
-            </div>
+        <div class="row">
+          <div class="col-sm-2 col-sm-offset-2">
+          <h5 class="property-stat-description"><%= property.property_type.name if property.property_type %></h5  >
           </div>
-        <hr>
-<div class="container-fluid" id="filter-search">
-  <h3 id='filter-title'>Filter your search</h3>
-  <div class="col-lg-12" id='filter-search-bar'>
-    <div id="price-slider">
-      <div class="col-md-10 col-md-offset-4">
-      Filter by price: <b>$ 100</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b>
-      </div>
-    </div>
-      </div>
-    <%= render partial: "shared/searchbar_properties" %>
-    </div>
-
-<div class="container text-center" id="location">
-  <% @properties.each do |property| %>
-    <div class="col-sm-6">
-      <h2><%= property.title %></h2>
-      <div class="row property-price">
-        <span class="property-index-price">$<%= property.price %></span>
+          <div class="col-sm-2">
+          <h5 class="property-stat-description"><%= property.bedrooms %> Bedrooms</h5 >
+          </div>
+          <div class="col-sm-2">
+          <h5 class="property-stat-description"><%= property.bathrooms %> Bathrooms</h5 >
+          </div>
+          <div class="col-sm-2">
+          <h5 class="property-stat-description"><%= property.sleeps %> Guests</h5 >
+          </div>
+        </div>
       </div>
       <% end %>
-    </div>
 </div>
 <% if params[:destination] %>
   <div class="container map-container">
