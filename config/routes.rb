@@ -12,9 +12,6 @@ Rails.application.routes.draw do
     get "/dashboard", to: "/users#show"
     resources :properties, only: [:index, :show, :update]
     resources :reservations, only: [:index, :show]
-    # resources :products, only: [:new, :create, :index, :update]
-    # resources :orders, only: [:index, :show, :update]
-    # resources :comments, only: [:create]
   end
 
   namespace :user, path: ":user_name", as: :user do
