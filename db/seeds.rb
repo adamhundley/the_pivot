@@ -33,8 +33,7 @@ class Seed
   end
 
   def generate_users
-    #200
-    20.times do |i|
+    200.times do |i|
       fullname = Faker::Name.name
       first_name = fullname.split[0]
       last_name  = fullname.split[1]
@@ -69,11 +68,7 @@ class Seed
   end
 
   def generate_la_properties
-    # user_ids = User.pluck(:id).sample(10)
-    #50
-    # user = User.find(user_ids[-1])
-    # offset for user id
-    3.times do |i|
+    50.times do |i|
       user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
@@ -94,15 +89,11 @@ class Seed
         generate_past_reservations_for_property(property)
       end
       generate_images(property)
-      # user_ids.pop
     end
   end
 
   def generate_miami_properties
-    # user_ids = User.pluck(:id).sample(10)
-    # user = User.find(user_ids[-1])
-    #50
-    3.times do |i|
+    50.times do |i|
       user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
@@ -123,14 +114,11 @@ class Seed
         generate_past_reservations_for_property(property)
       end
       generate_images(property)
-      # user_ids.pop
     end
   end
 
   def generate_ny_properties
-    # user_ids = User.pluck(:id).sample(10)
-    #50
-    3.times do |i|
+    50.times do |i|
       user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
@@ -151,14 +139,11 @@ class Seed
         generate_past_reservations_for_property(property)
       end
       generate_images(property)
-      # user_ids.pop
     end
   end
 
   def generate_random_properties
-    #50
-    # user = User.find(user_ids[-1])
-    3.times do |i|
+    50.times do |i|
       user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
@@ -179,7 +164,6 @@ class Seed
         generate_past_reservations_for_property(property)
       end
       generate_images(property)
-      # user_ids.pop
     end
   end
 
@@ -208,8 +192,7 @@ class Seed
   end
 
   def generate_current_reservations_for_property(property)
-    #50
-    3.times do |i|
+    50.times do |i|
       customer = User.all.sample
       checkin = Faker::Date.between(Date.today, 1.year.from_now)
       checkout = checkin.next.next
@@ -225,8 +208,7 @@ class Seed
   end
 
   def generate_past_reservations_for_property(property)
-    # 50
-    3.times do |i|
+    50.times do |i|
       customer = User.all.sample
       checkin = Faker::Date.between(Date.today, 1.year.ago)
       checkout = checkin.next.next
