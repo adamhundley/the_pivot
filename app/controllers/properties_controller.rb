@@ -12,19 +12,21 @@ class PropertiesController < ApplicationController
     session[:checkout] = params[:checkout]
     session[:guests] = params[:guest]
 
+
     if params[:destination]
       @properties = Property.search(params)
-      @location = find_location(params)
+      location = find_location(params)
       @properties_geo_info = set_geo_info(@properties)
-      @geocoded_location = set_geo_location(@location)
-    elsif params[:location]
+      @geocoded_location = set_geo_location(location)
+    elsif params[location]
       @properties = Property.where(city: find_city(params))
-      @location = find_location(params)
+      location = find_location(params)
       @properties_geo_info = set_geo_info(@properties)
-      @geocoded_location = set_geo_location(@location)
+      @geocoded_location = set_geo_location(location)
     else
-      @properties = Property.limit(10)
+      @properties = Property.default
       @properties_geo_info = set_geo_info(@properties)
+      @geocoded_location = {"lat"=>39.7392358, "lng"=>-104.990251}
     end
   end
 
@@ -41,3 +43,19 @@ class PropertiesController < ApplicationController
       params[:property][:amenities]
     end
 end
+
+
+
+
+
+# "utf8"=>"✓", "destination"=>"Omaha, NE", "checkin"=>"2016-04-02", "checkout"=>"2016-04-04", "guest"=>"3 Guests", "controller"=>"properties", "action"=>"index"}
+
+#
+# > {"utf8"=>"✓",
+#  "destination"=>"Omaha, NE",
+#  "checkin"=>"2016-04-01",
+#  "checkout"=>"2016-04-04",
+#  "guest"=>"3 Guests",
+#  "radius"=>"1000",
+#  "controller"=>"properties",
+#  "action"=>"index"}

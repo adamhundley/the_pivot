@@ -3,16 +3,11 @@
 <div class="container" id="filter-search">
   <h2 id='filter-title'>Filter your search</h2>
     <div class="row search-filter">
-      <div class="col-sm-7 col-sm-offset-2" id='filter-search-bar'>
+      <div class="col-sm-8 col-sm-offset-4" id='filter-search-bar'>
         <div id="price-slider">
             Filter by price: <b>$ 100</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[<%= min_price(@properties) %> ,<%= max_price(@properties) %>]"/><b>$ 1000</b>
         </div>
       </div>
-      <div class="col-sm-2 col-sm-offset-1">
-      <div class="form-group">
-        <%= number_field :radius, {}, {class:"form-control form-control-success pull-left", value: 500} %>
-      </div>
-    </div>
   </div>
 </div>
 <div class="container">
@@ -71,12 +66,10 @@
 </div>
 <div class="col-sm-4">
 <br>
-<% if params[:destination] %>
   <div class="container map-container">
     <div class="row map-container">
       <%= render "shared/search_map" %>
     </div>
   </div>
-<% end %>
 </div>
 </div>

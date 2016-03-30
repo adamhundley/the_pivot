@@ -7,7 +7,7 @@
           <input type="text" name="destination" class="form-control" id="location" value="<%= params[:destination] %>" placeholder="Enter City, State" required=>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <div class="form-group">
           <label class="sr-only" for="checkin">Check in</label>
           <div class="input-group">
@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <div class="form-group">
           <label class="sr-only" for="checkout">Check out</label>
           <div class="input-group">
@@ -29,7 +29,7 @@
         <div class="form-group">
           <label class="sr-only" for="guest">Guest</label>
           <select id="guests" name="guest" class="form-control" placeholder="Select Guests" required>
-            <option default selected><% if session[:guests] %> <%= session[:guests] %><% end %></option>
+            <option default selected><% if session[:guests] %><%= session[:guests] %><% else %> 3 Guests <% end %> </option>
               <option value="1 Guest">1 Guest</option>
               <option value="2 Guests">2 Guests</option>
               <option value="3 Guests">3 Guests</option>
@@ -49,6 +49,11 @@
           </select>
         </div>
       </div>
+      <div class="col-sm-2">
+      <div class="form-group">
+        <%= number_field_tag "radius", value=session[:radius], class:"form-control form-control-success pull-left" %>
+      </div>
+    </div>
       <div class="col-sm-1">
         <button type="submit" class="btn btn-primary">Search</button>
       </div>
