@@ -17,18 +17,17 @@ RSpec.feature "UserVieswTheirProperty", type: :feature do
     click_link "My Listings"
 
     expect(current_path).to eq("/#{user.slug}/properties")
-    find_field('Title').value.should eq property.title
-    find_field('Description').value.should eq property.description
-    find_field('rental price per day').value.should eq property.price.to_s
-    find_field('Street').value.should eq property.street
-    find_field('City').value.should eq property.city
-    find_field('property[state]').value.should eq property.state
-    find_field('Zip').value.should eq property.zip
-    find_field('property[bedrooms]').value.should eq property.bedrooms.to_s
-    find_field('property[bathrooms]').value.should eq property.bathrooms.to_s
-    find_field('property[sleeps]').value.should eq property.sleeps.to_s
-
-    #click_on "Update my Pad!"
+    expect(find_field('property[title]').value).to  eq property.title
+    expect(find_field('property[description]').value).to  eq property.description
+    expect(find_field('property[price]').value).to  eq property.price.to_s
+    expect(find_field('property[street]').value).to  eq property.street
+    expect(find_field('property[city]').value).to  eq property.city
+    expect(find_field('property[state]').value).to  eq property.state
+    expect(find_field('property[state]').value).to  eq property.state
+    expect(find_field('property[zip]').value).to  eq property.zip
+    expect(find_field('property[bedrooms]').value).to  eq property.bedrooms.to_s
+    expect(find_field('property[bathrooms]').value).to  eq property.bathrooms.to_s
+    expect(find_field('property[sleeps]').value).to  eq property.sleeps.to_s
 
     #expect(current_path).to eq("/#{user.slug}/dashboard")
     #expect(page).to have_content("Congrats #{user.fullname}! Your new listing is pending approval.")

@@ -78,7 +78,7 @@ h2:after {
 
 .hero-container h1 {
   color: #fff;
-  position: relative; 
+  position: relative;
   z-index: 1;
   filter: blur(77px);
   transform: scale(1.47) translateY(60px);
@@ -102,7 +102,12 @@ h2:after {
   padding:0;
 }
 /* Static City Images/Hover Effects/ */
+.cities-home {
+  text: bold;
+  text: red;
+}
 .miami-landing {
+  color: #fff;
   background-image: url('http://cheapvacationholiday.com/wp-content/uploads/2015/04/Miami_photos_12.jpg');
 }
 .miami-landing:hover {
@@ -117,7 +122,7 @@ h2:after {
   text-decoration: none;
   text-transform: uppercase;
   /* 90% of the default size from the HTML element */
-  font-size: 90%;
+  /*font-size: 90%;*/
   /*  transparent means isn't visible until I hover over it  */
   border-bottom: 2px solid transparent;
   transition: border-bottom 0.2s;
@@ -133,7 +138,7 @@ h2:after {
 }
 
 .new-york-landing:hover {
-  text-decoration: underline;
+  text-decoration: underline;;
   color: #fff;
 }
 
@@ -144,8 +149,9 @@ h2:after {
 }
 
 .category-landing a {
+  font-size: 100%;
   text-decoration: none;
-  color: #000;
+  color: white;
   margin: 0;
 }
 
@@ -193,7 +199,7 @@ h2:after {
 
 /* SEARCH BAR FEATURE */
 .search {
-	margin-top: -75px;
+	margin-top: -60px;
 }
 .search .form-section{
   position: relative;
@@ -201,8 +207,6 @@ h2:after {
   filter: blur(77px);
   transform: scale(1.2) translateY(5px);
   background: rgba(255, 0, 0, 0.3);
-	border: 2px solid;
-	border-radius: 5px;
 	padding: 9px;
   height: 50px;
 }

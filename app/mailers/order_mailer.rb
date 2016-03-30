@@ -1,9 +1,9 @@
 class OrderMailer < ApplicationMailer
-  default from: "littleowlturing@gmail.com"
+  default from: "crashatmypad@gmail.com"
 
   def order_email(order)
     @order = order
-    @url = "http://littleowl.herokuapp.com"
-    mail(to: @order.email, subject: '🎉Alright, Alright, Alright.  Your joe is on the way!🎉')
+    @url = "http://crashatmypad.herokuapp.com"
+    mail(to: @order.email, subject: "You're about to C.A.M.P!")
   end
 end

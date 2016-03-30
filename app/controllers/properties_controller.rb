@@ -12,19 +12,23 @@ class PropertiesController < ApplicationController
     session[:checkout] = params[:checkout]
     session[:guests] = params[:guest]
 
+
     if params[:destination]
       @properties = Property.search(params)
-      @location = find_location(params)
-      @properties_geo_info = GeoProcessor.new(@properties).geo_info
-      @geocoded_location = Geocoder.search(@location).first.data["geometry"]["location"]
+      location = find_location(params)
+      @properties_geo_info = set_geo_info(@properties)
+      @geocoded_location = set_geo_location(location)
+    elsif params[:location]
+      @properties = Property.city_search(params)
+      location = find_location(params)
+      @properties_geo_info = set_geo_info(@properties)
+      @geocoded_location = set_geo_location(location)
     else
-      @properties = Property.limit(10)
-      @properties_geo_info = GeoProcessor.new(@properties).geo_info
+      @properties = Property.default
+      @properties_geo_info = set_geo_info(@properties)
+      @geocoded_location = {"lat"=>39.7392358, "lng"=>-104.990251}
     end
   end
-
-
-
 
   private
     def property_params
@@ -38,9 +42,4 @@ class PropertiesController < ApplicationController
     def amenity_params
       params[:property][:amenities]
     end
-
-    def find_location(params)
-      params[:destination]
-    end
-
 end

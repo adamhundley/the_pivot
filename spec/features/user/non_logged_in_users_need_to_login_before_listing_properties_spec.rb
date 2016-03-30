@@ -10,18 +10,27 @@ RSpec.feature "Non logged-in users need to login before listing property" do
     visit root_path
 
     within("nav") do
-      expect(page).to have_content("List my Pad")
+      expect(page).to_not have_content("List my Pad")
     end
 
-    click_link "List my Pad"
-    expect(current_path).to eq("/login")
+    visit '/login'
+
+    expect(current_path).to eq login_path
 
     find("input[placeholder='email']").set user.email
     find("input[placeholder='password']").set user.password
 
     click_button "login"
-    # expect(current_path).to eq("/properties/new")  #i dunno why this is failing?
+
+    expect(current_path).to eq("/#{user.slug}/dashboard")
     expect(page).to have_content("Hey #{user.first_name}, welcome to C.A.M.P")
+
+    within("nav") do
+      expect(page).to have_content("List my Pad")
+      click_on "List my Pad"
+    end
+
+    expect(current_path).to eq new_property_path
   end
 
   scenario "regular logins returns them to dashboard" do
