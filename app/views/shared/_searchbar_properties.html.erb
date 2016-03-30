@@ -1,69 +1,56 @@
-<div class="container-fluid">
   <div class="filter-search" id: "searchbar">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="form-section">
-            <div class="container-fluid row">
-                <form role="form" action='/properties' method="get">
-                  <input name="utf8" type="hidden" value="&#x2713;" />
-                  <div class="col-md-4">
-                    <div class="form-group" >
-                      <label class="sr-only" for="location">Location</label>
-                      <input type="text" name="destination" class="form-control" id="location" placeholder="<%= @location %>">
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label class="sr-only" for="checkin">Check in</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control" name="checkin" id="checkin"  selected="ok" placeholder=<%= set_checkin_placeholder %>>
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label class="sr-only" for="checkout">Check out</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control" name="checkout" id="checkout" placeholder=<%= set_checkout_placeholder %>>
-                        <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <div class="form-group">
-                      <label class="sr-only" for="guest">Guest</label>
-                      <select id="guests" name="guest" class="form-control">
-                        <option value="" default selected><%= set_guests_placeholder %></option>
-                          <option value="1 Guest">1 Guest</option>
-                          <option value="2 Guests">2 Guests</option>
-                          <option value="3 Guests">3 Guests</option>
-                          <option value="4 Guests">4 Guests</option>
-                          <option value="5 Guests">5 Guests</option>
-                          <option value="6 Guests">6 Guests</option>
-                          <option value="7 Guests">7 Guests</option>
-                          <option value="8 Guests">8 Guests</option>
-                          <option value="9 Guests">9 Guests</option>
-                          <option value="10 Guests">10 Guests</option>
-                          <option value="11 Guests">11 Guests</option>
-                          <option value="12 Guests">12 Guests</option>
-                          <option value="13 Guests">13 Guests</option>
-                          <option value="14 Guests">14 Guests</option>
-                          <option value="15 Guests">15 Guests</option>
-                          <option value="16 Guests">16+ Guests</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                  </div>
-                </form>
-            </div>
+    <form role="form" action='/properties' method="get">
+      <input name="utf8" type="hidden" value="&#x2713;" />
+      <div class="col-sm-3">
+        <div class="form-group" >
+          <label class="sr-only" for="location">Location</label>
+          <input type="text" name="destination" class="form-control" id="location" value="<%= params[:destination] %>" placeholder="Enter City, State" required=>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="sr-only" for="checkin">Check in</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="checkin" id="checkin" value="<%= session[:checkin] %>" placeholder="<%= set_checkin_placeholder %>" required>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           </div>
         </div>
       </div>
-    </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="sr-only" for="checkout">Check out</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="checkout" id="checkout" value="<%= session[:checkout] %>" placeholder="<%= set_checkout_placeholder %>" required>
+            <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group">
+          <label class="sr-only" for="guest">Guest</label>
+          <select id="guests" name="guest" class="form-control" placeholder="Select Guests" required>
+            <option default selected><% if session[:guests] %> <%= session[:guests] %><% end %></option>
+              <option value="1 Guest">1 Guest</option>
+              <option value="2 Guests">2 Guests</option>
+              <option value="3 Guests">3 Guests</option>
+              <option value="4 Guests">4 Guests</option>
+              <option value="5 Guests">5 Guests</option>
+              <option value="6 Guests">6 Guests</option>
+              <option value="7 Guests">7 Guests</option>
+              <option value="8 Guests">8 Guests</option>
+              <option value="9 Guests">9 Guests</option>
+              <option value="10 Guests">10 Guests</option>
+              <option value="11 Guests">11 Guests</option>
+              <option value="12 Guests">12 Guests</option>
+              <option value="13 Guests">13 Guests</option>
+              <option value="14 Guests">14 Guests</option>
+              <option value="15 Guests">15 Guests</option>
+              <option value="16 Guests">16+ Guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-1">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
   </div>
-</div>
-
