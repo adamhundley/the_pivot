@@ -14,19 +14,9 @@
         </li>
       </ul>
     </li>
-    <% if !@cart.contents.empty? %>
-      <li class="pull-right nav-icon">
-        <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
-      </li>
-    <% end %>
   <% else %>
     <li class="pull-right nav-icon">
       <a id="login" href="/login" style="color:#777; margin-top: 5px;"><i class="fa fa-sign-in fa-lg"></i></a>
     </li>
-    <% if !@cart.contents.empty? %>
-      <li class="pull-right nav-icon">
-        <a id="cart" href="/cart" style="color:#777; margin-top: 5px;"><i class="fa fa-shopping-cart fa-lg"></i> (<%= @cart.count %>) </a>
-      </li>
-    <% end %>
   <% end %>
 </ul>
