@@ -1,2 +1,62 @@
-<h1>Admin::Reservations#index</h1>
-<p>Find me in app/views/admin/reservations/index.html.erb</p>
+<h1 class="<%= reservation_status %> admin-reservations-index-header"><%= reservation_status %> reservations</h1><br>
+<div class="row">
+  <div class="col-sm-3">
+    <%= form_tag admin_reservations_path, method: 'get' do %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], placeholder: "search by owner's name", class: "form-control form-control-sm search-form"%>
+        <%= submit_tag "search by name", class:"btn btn-little-owl btn-sm"  %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-sm-3">
+    <%= form_tag admin_reservations_path, method: 'get' do %>
+    <div class="form-group">
+      <%= date_field_tag :date_search, params[:date_search], placeholder: "mm/dd/yy", class: "form-control form-control-sm search-form"%>
+      <%= submit_tag "search by date", class:"btn btn-little-owl btn-sm"  %>
+    </div>
+    <% end %>
+  </div>
+  <div class="col-sm-3">
+    <%= form_tag admin_reservations_path, method: 'get' do %>
+      <div class="form-group">
+        <%= text_field_tag :id_search, params[:id], placeholder: "search by property id", class: "form-control form-control-sm search-form"%>
+        <%= submit_tag "search by id", class:"btn btn-little-owl btn-sm"  %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="table-responsive">
+  <table class="table table-hover table-condensed table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>reservation date</th>
+        <th>reservation id</th>
+        <th>property owner</th>
+        <th>customer name</th>
+        <th>total price</th>
+      </tr>
+    </thead>
+    <% @reservations.each do |reservation| %>
+      <tr id="<%= reservation.id %>-reservation">
+        <td class="text-nowrap">
+           <%= display_checkin_date(reservation) %>
+           <br>
+           <%= display_checkout_date(reservation) %>
+        </td>
+        <td>
+          <%= link_to reservation.id, admin_reservation_path(reservation.id) %>
+        </td>
+        <td class="text-nowrap">
+            <%= reservation.property.user.fullname %>
+        </td>
+        <td>
+          <%= reservation.fullname %>
+        </td>
+        <td>
+          <%= "$#{reservation.order_total}" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -17,8 +17,9 @@ RSpec.feature "Platform Admin can view active reservations", type: :feature do
     customer = create(:user)
 
     reservation = create(:reservation)
-    reservation.update(user_id: customer.id)
+    reservation.update(user_id: property_owner.id)
     reservation.update(property_id: property.id)
+    reservation.update(fullname: customer.fullname)
 
     property.update(user_id: property_owner.id)
     property.update(status: "active")
@@ -27,13 +28,50 @@ RSpec.feature "Platform Admin can view active reservations", type: :feature do
     property.images.create!(image: image1)
     property.amenities << amenity
 
+    allow_any_instance_of(ApplicationController).to(
+    receive(:current_user).and_return(platform_admin))
+
+    visit admin_dashboard_path
+    expect(current_path).to eq('/admin/dashboard')
+
+    click_on "current reservations"
+    expect(current_path).to eq('/admin/reservations')
+
+    within(:css, "h1.current.admin-reservations-index-header") do
+      expect(page).to have_content("current reservations")
+    end
+
+    expect(page).to have_content("reservation date")
+    expect(page).to have_content("reservation id")
+    expect(page).to have_content("property owner")
+    expect(page).to have_content("customer name")
+    expect(page).to have_content("total price")
+
+    within(:css, "tr##{reservation.id}-reservation") do
+      expect(page).to have_content("Check-in")
+      expect(page).to have_content("Checkout")
+      expect(page).to have_content(property_owner.fullname)
+      expect(page).to have_content(customer.fullname)
+      expect(page).to have_content(reservation.formatted_total)
+    end
+
+    click_on reservation.id
+
+    expect(current_path).to eq("/admin/reservations/#{reservation.id}")
+
+    expect(page).to have_content("RESERVATION INFO")
+
+    within(:css, "div.reservation-info") do
+      expect(page).to have_content("Reservation ID: #{reservation.id}")
+      expect(page).to have_content("Property ID: #{property.id}")
+      expect(page).to have_content("Property Owner: #{property_owner.fullname}")
+      expect(page).to have_content("Customer Name: #{customer.fullname}")
+      expect(page).to have_content("Check-in")
+      expect(page).to have_content("Checkout")
+      expect(page).to have_content("Total Price #{reservation.formatted_total}")
+      click_link  reservation.property_id
+    end
+
+    expect(current_path).to eq("/admin/properties/#{reservation.property_id}")
   end
 end
-# As a platform admin,
-# When I visit '/admin/dashboard'
-# And I click on "current reservations",
-# I expect to see an index view of all active reservations within the website,
-# I expect to see columns titled:
-# date, reservation id, property owner's name, customer's name, and total price
-# And when I click on a reservation id,
-# I expect to be redirected to a Reservation show page that displays an invoice of that reservation

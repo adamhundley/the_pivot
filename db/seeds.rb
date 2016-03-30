@@ -5,23 +5,47 @@ class Seed
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458477215180193.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458490203467318.jpg"]
     generate_admin
+    generate_users
     generate_property_types
     generate_la_properties
     generate_ny_properties
     generate_miami_properties
+    generate_random_properties
     generate_amenities
     add_amenities_to_property
   end
 
   def generate_admin
-    fullname = Faker::Name.name
-    email = Faker::Internet.free_email(fullname.split[1])
-    200.times do |i|
-      User.create!(fullname: fullname,
-                      email:    "#{i}" + email,
-                      password: "password",
-                      role:     1,
-                      )
+      User.create(fullname: Faker::Name.name,
+                  email:    "admin@email.com",
+                  password: "password",
+                  role:     1,
+                  )
+  end
+
+  def user_status(i)
+    case
+    when i < 20
+      "inactive"
+    when i <= 200
+      "active"
+    end
+  end
+
+  def generate_users
+    #200
+    20.times do |i|
+      fullname = Faker::Name.name
+      first_name = fullname.split[0]
+      last_name  = fullname.split[1]
+      User.create(
+                  first_name: first_name,
+                  last_name:  last_name,
+                  fullname: fullname,
+                  email:    "#{i}" + Faker::Internet.free_email(fullname.split[1]),
+                  password: "password",
+                  status: user_status(i)
+                 )
     end
   end
 
@@ -33,59 +57,112 @@ class Seed
     end
   end
 
+  def status_type(i)
+    case
+    when i < 10
+      "inactive"
+    when i < 15
+      "pending"
+    when i < 50
+      "active"
+    end
+  end
+
   def generate_la_properties
-    user_ids = User.pluck(:id).sample(10)
-    10.times do |i|
-      user = User.find(user_ids[-1])
+    # user_ids = User.pluck(:id).sample(10)
+    #50
+    # user = User.find(user_ids[-1])
+    # offset for user id
+    3.times do |i|
+      user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
-                                  price:       rand(100..500),
+                                  price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
-                                  city:        Faker::Address.city,
-                                  state:       Faker::Address.state,
-                                  zip:         Faker::Address.zip,
+                                  city:        "Huntington Park",
+                                  state:       "CA",
+                                  zip:         "90255",
                                   bedrooms:    rand(1..16),
                                   bathrooms:    rand(1..6),
                                   sleeps:      rand(1..16),
-                                  user_id:     user.id,
-                                  status:    [true, false].sample)
+                                  user_id:     user_id,
+                                  status:      status_type(i)
+                                 )
       add_property_type_to_property(property)
-      generate_reservations_for_property(property)
+      if property.status == "active" || property.status == "inactive"
+        generate_current_reservations_for_property(property)
+        generate_past_reservations_for_property(property)
+      end
       generate_images(property)
-      user_ids.pop
+      # user_ids.pop
     end
   end
 
   def generate_miami_properties
-    user_ids = User.pluck(:id).sample(10)
-    10.times do |i|
-      user = User.find(user_ids[-1])
+    # user_ids = User.pluck(:id).sample(10)
+    # user = User.find(user_ids[-1])
+    #50
+    3.times do |i|
+      user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
-                                  price:       rand(100..500),
+                                  price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
-                                  city:        Faker::Address.city,
-                                  state:       Faker::Address.state,
-                                  zip:         Faker::Address.zip,
+                                  city:        "Miami",
+                                  state:       "FL",
+                                  zip:         "33156",
                                   bedrooms:    rand(1..16),
                                   bathrooms:    rand(1..6),
                                   sleeps:      rand(1..16),
-                                  user_id:     user.id,
-                                  status:    [true, false].sample)
+                                  user_id:     user_id,
+                                  status:      status_type(i)
+                                  )
       add_property_type_to_property(property)
-      generate_reservations_for_property(property)
+      if property.status == "active" || property.status == "inactive"
+        generate_current_reservations_for_property(property)
+        generate_past_reservations_for_property(property)
+      end
       generate_images(property)
-      user_ids.pop
+      # user_ids.pop
     end
   end
 
   def generate_ny_properties
-    user_ids = User.pluck(:id).sample(10)
-    10.times do |i|
-      user = User.find(user_ids[-1])
+    # user_ids = User.pluck(:id).sample(10)
+    #50
+    3.times do |i|
+      user_id = User.pluck(:id).sample
       property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(1..3)),
-                                  price:       rand(100..500),
+                                  price:       rand(100..1000),
+                                  street:      Faker::Address.street_address,
+                                  city:        "Brooklyn",
+                                  state:       "NY",
+                                  zip:         "11206",
+                                  bedrooms:    rand(1..16),
+                                  bathrooms:    rand(1..6),
+                                  sleeps:      rand(1..16),
+                                  user_id:     user_id,
+                                  status:    status_type(i)
+                                  )
+      add_property_type_to_property(property)
+      if property.status == "active" || property.status == "inactive"
+        generate_current_reservations_for_property(property)
+        generate_past_reservations_for_property(property)
+      end
+      generate_images(property)
+      # user_ids.pop
+    end
+  end
+
+  def generate_random_properties
+    #50
+    # user = User.find(user_ids[-1])
+    3.times do |i|
+      user_id = User.pluck(:id).sample
+      property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
+                                  description: Faker::Lorem.paragraph(rand(1..3)),
+                                  price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
                                   city:        Faker::Address.city,
                                   state:       Faker::Address.state,
@@ -93,12 +170,16 @@ class Seed
                                   bedrooms:    rand(1..16),
                                   bathrooms:    rand(1..6),
                                   sleeps:      rand(1..16),
-                                  user_id:     user.id,
-                                  status:    ["pending", "active", "disabled"].sample)
+                                  user_id:     user_id,
+                                  status:    status_type(i)
+                                  )
       add_property_type_to_property(property)
-      generate_reservations_for_property(property)
+      if property.status == "active" || property.status == "inactive"
+        generate_current_reservations_for_property(property)
+        generate_past_reservations_for_property(property)
+      end
       generate_images(property)
-      user_ids.pop
+      # user_ids.pop
     end
   end
 
@@ -113,7 +194,7 @@ class Seed
                  "cable", "kitchen", "pool", "Pets allowed",
                  "fireplace", "Free Parking", "Esentials"]
     10.times do |i|
-    Amenity.create!(name: amenities[i])
+      Amenity.create!(name: amenities[i])
     end
   end
 
@@ -126,15 +207,36 @@ class Seed
     end
   end
 
-  def generate_reservations_for_property(property)
-    user_ids = User.pluck(:id)
-    10.times do |i|
+  def generate_current_reservations_for_property(property)
+    #50
+    3.times do |i|
+      customer = User.all.sample
       checkin = Faker::Date.between(Date.today, 1.year.from_now)
       checkout = checkin.next.next
       reservation = Reservation.create!(property_id: property.id,
-                                        user_id: user_ids[rand(200)],
-                                        checkin: checkin,
-                                        checkout: checkout)
+                                        user_id:     customer.id,
+                                        fullname:    customer.fullname,
+                                        order_total: rand(100..1000),
+                                        checkin:     checkin,
+                                        checkout:    checkout
+                                        )
+      ReservationNight.book_nights(reservation)
+    end
+  end
+
+  def generate_past_reservations_for_property(property)
+    # 50
+    3.times do |i|
+      customer = User.all.sample
+      checkin = Faker::Date.between(Date.today, 1.year.ago)
+      checkout = checkin.next.next
+      reservation = Reservation.create!(user_id:     customer.id,
+                                        fullname:    customer.fullname,
+                                        order_total: rand(100..1000),
+                                        property_id: property.id,
+                                        checkin:     checkin,
+                                        checkout:    checkout
+                                        )
       ReservationNight.book_nights(reservation)
     end
   end
@@ -145,5 +247,4 @@ class Seed
       property_type.properties << property
     end
 end
-
 Seed.new

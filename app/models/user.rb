@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
-  enum role: %w(default platform_admin admin)
+  enum role: %w(default platform_admin)
 
   def build_name
     self.first_name = fullname.split[0]
