@@ -5,7 +5,6 @@ Selenium::WebDriver.for :chrome
 RSpec.feature "UserBooksReservation", type: :feature do
   scenario "user makes a reservation", js: true do
 
-
     property_owner = create(:user)
     property = create(:property, user_id: property_owner.id)
     amenity = create(:amenity)

@@ -44,12 +44,12 @@
       <tr id="<%= property.id %>-property">
         <td class="text-nowrap"><%= property.date %></td>
         <td><%= link_to property.id, admin_property_path(property.id) %></td>
-        <td class="text-nowrap"><%= link_to property.owner, admin_property_path(params[:search] = property.user_id) %></td>
+        <td class="text-nowrap"><%= property.owner %></td>
         <td><%= property.display_total %></td>
         <td><%= truncate(property.description) %></td>
 
         <%= form_for [:admin, property], url: admin_property_path(property.id) do |f| %>
-        <td><%= f.select(:status, options_for_select(%w(pending active disable), property.status), {prompt: property.status }) %></td>
+        <td><%= f.select(:status, options_for_select(%w(pending active inactive), property.status), {prompt: property.status }) %></td>
           <td><%= f.submit "update property", class:"btn btn-checkout btn-s"%></td>
         <% end %>
       </tr>
