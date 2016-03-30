@@ -66,8 +66,6 @@ class Property < ActiveRecord::Base
     @checkout = search[:checkout].delete('-').to_i
   end
 
-
-
   def nights_reserved
     reservation_nights.map do |res_night|
       res_night.night
@@ -77,7 +75,6 @@ class Property < ActiveRecord::Base
   def full_address
     "#{zip}"
   end
-
 
   def possible_nights(checkin, checkout)
     (checkin.to_date..checkout.to_date).count
