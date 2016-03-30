@@ -19,7 +19,7 @@ class User::PropertiesController < ApplicationController
   end
 
   def update
-    @property = Property.find(params[:id])
+    @property = current_user.properties.find(params[:id])
     if @property.update(property_params)
       PropertyAmenitizer.update(params[:property][:amenity_ids], @property)
       flash[:info] = "You have updated your listing."
