@@ -48,6 +48,10 @@ span.show-icon {
   text-content: center;
 }
 
+.property-title {
+  margin-bottom: 0px;
+  margin-top: 3px;
+}
 .property-price {
   font-weight: 200;
   text-align: left;
@@ -55,7 +59,20 @@ span.show-icon {
   margin-left: 12%;
   margin-bottom: -15%;
   z-index: 1; position:relative;
+}
+
+.property-index-price {
   color: white;
+}
+
+a.property-price-link {
+  color: white;
+  text-decoration: none;;;
+}
+
+a:hover.property-price-link {
+  color: white;
+  text-decoration: underline;
 }
 
 .property-divider {

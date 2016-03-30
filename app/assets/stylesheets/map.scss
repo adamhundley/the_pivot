@@ -6,5 +6,7 @@
 
 .map-container {
   align-items: center;
-  position: absolute;
+  position: fixed;
+    top: 20;
+  bottom: 20;
 }
