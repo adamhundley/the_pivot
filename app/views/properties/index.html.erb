@@ -22,7 +22,7 @@
 
 <div class="container text-center" id="location">
   <% @properties.each do |property| %>
-    <div class="col-sm-6">
+    <div class="col-sm-6" data-price='<%= property.price %>'>
       <h2><%= property.title %></h2>
       <div class="row property-price">
         <span class="property-index-price">$<%= property.price %></span>
