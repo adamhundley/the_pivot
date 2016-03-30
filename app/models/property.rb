@@ -19,16 +19,20 @@ class Property < ActiveRecord::Base
   validates :bathrooms, presence: true
   validates :sleeps, presence: true
 
+  geocoded_by :full_address
+  after_validation :geocode
+
   def self.search(search)
    properties = find_by_city_state_sleeps(parse_search(search))
    search_by_dates(properties)
   end
 
   def self.find_by_city_state_sleeps(search)
-    Property.where("city = ? and state = ? and sleeps >= ?",
-                   @city,
-                   @state,
-                   @guest)
+    Property.near("#{@city}, #{@state}, US", 3000)
+    # Property.where("city = ? and state = ? and sleeps >= ?",
+    #                @city,
+    #                @state,
+    #                @guest)
   end
 
   def self.search_by_name(search)
@@ -66,11 +70,17 @@ class Property < ActiveRecord::Base
     @checkout = search[:checkout].delete('-').to_i
   end
 
+
   def nights_reserved
     reservation_nights.map do |res_night|
       res_night.night
     end
   end
+
+  def full_address
+    "#{zip}"
+  end
+
 
   def possible_nights(checkin, checkout)
     (checkin.to_date..checkout.to_date).count
