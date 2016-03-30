@@ -1,17 +1,18 @@
   <div class="filter-search" id: "searchbar">
+<<<<<<< HEAD
     <form role="form" action='/properties' method="get">
       <input name="utf8" type="hidden" value="&#x2713;" />
       <div class="col-sm-3">
         <div class="form-group" >
           <label class="sr-only" for="location">Location</label>
-          <input type="text" name="destination" class="form-control" id="location" value="<%= @location %>" required="">
+          <input type="text" name="destination" class="form-control" id="location" value="<%= @location %>" placeholder="<%= @location %>" required=>
         </div>
       </div>
       <div class="col-sm-3">
         <div class="form-group">
           <label class="sr-only" for="checkin">Check in</label>
           <div class="input-group">
-            <input type="text" class="form-control" name="checkin" id="checkin"  selected="ok" value=<%= session[:checkin] %> required>
+            <input type="text" class="form-control" name="checkin" id="checkin" value="<%= session[:checkin] %>" placeholder="<%= set_checkin_placeholder %>" required>
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           </div>
         </div>
@@ -20,7 +21,7 @@
         <div class="form-group">
           <label class="sr-only" for="checkout">Check out</label>
           <div class="input-group">
-            <input type="text" class="form-control" name="checkout" id="checkout" value=<%= session[:checkout] %> required>
+            <input type="text" class="form-control" name="checkout" id="checkout" value="<%= session[:checkout] %>" placeholder="<%= set_checkout_placeholder %>" required>
             <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
           </div>
         </div>
@@ -29,7 +30,7 @@
         <div class="form-group">
           <label class="sr-only" for="guest">Guest</label>
           <select id="guests" name="guest" class="form-control">
-            <option value="" default selected><%= session[:guests] %></option>
+            <option value="<%= session[:guests] %>" default selected<%= set_guests_placeholder %>></option>
               <option value="1 Guest">1 Guest</option>
               <option value="2 Guests">2 Guests</option>
               <option value="3 Guests">3 Guests</option>
