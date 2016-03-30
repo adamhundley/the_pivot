@@ -17,7 +17,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="checkin">Check in</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="checkin" id="checkin"  selected="ok" placeholder=<%= session[:checkin] %>>
+                        <input type="text" class="form-control" name="checkin" id="checkin"  selected="ok" placeholder=<%= set_checkin_placeholder %>>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
@@ -26,7 +26,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="checkout">Check out</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="checkout" id="checkout" placeholder=<%= session[:checkout] %>>
+                        <input type="text" class="form-control" name="checkout" id="checkout" placeholder=<%= set_checkout_placeholder %>>
                         <span class="input-group-addon" style="padding-right: 8px"><i class="glyphicon glyphicon-calendar"></i></span>
                       </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="guest">Guest</label>
                       <select id="guests" name="guest" class="form-control">
-                        <option value="" default selected><%= session[:guests] %></option>
+                        <option value="" default selected><%= set_guests_placeholder %></option>
                           <option value="1 Guest">1 Guest</option>
                           <option value="2 Guests">2 Guests</option>
                           <option value="3 Guests">3 Guests</option>

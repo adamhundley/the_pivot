@@ -40,24 +40,4 @@ class PropertiesController < ApplicationController
     def amenity_params
       params[:property][:amenities]
     end
-
-    def find_location(params)
-      if params[:destination]
-        params[:destination]
-      else
-        params[:location]
-      end
-    end
-
-    def set_geo_info(properties)
-      GeoProcessor.new(properties).geo_info
-    end
-
-    def set_geo_location(location)
-      Geocoder.search(location).first.data["geometry"]["location"]
-    end
-
-    def find_city(params)
-      params[:location].split(',')[0]
-    end
 end
