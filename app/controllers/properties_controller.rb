@@ -28,11 +28,6 @@ class PropertiesController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
   private
     def property_params
       params.require(:property).permit(:title, :description, :street, :unit, :city, :state, :zip, :price, :bedrooms, :bathrooms, :sleeps, :property_type_id)
