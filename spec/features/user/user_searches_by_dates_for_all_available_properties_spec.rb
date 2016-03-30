@@ -44,7 +44,6 @@ RSpec.feature "UserSearchesForPropertiesByAvailableDates", type: :feature do
     click_on "Search"
 
     expect(current_path).to eq("/properties")
-    expect(page).to have_content("DENVER, CO")
     expect(page).to have_content("TURING DUNGEON")
     expect(page).to have_content("WARM AND COZY")
     expect(page).to have_content("THE GARDENS")

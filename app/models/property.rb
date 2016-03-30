@@ -28,7 +28,7 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_by_city_state_sleeps(search)
-    Property.order(:price).near("#{@city}, #{@state}, US", 3000).where('sleeps >= ?', @guest)
+    Property.order(:price).near("#{@city}, #{@state}, US", 300).where('sleeps >= ?', @guest)
   end
 
   def self.search_by_name(search)
