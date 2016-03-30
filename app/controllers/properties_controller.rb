@@ -43,19 +43,3 @@ class PropertiesController < ApplicationController
       params[:property][:amenities]
     end
 end
-
-
-
-
-
-# "utf8"=>"✓", "destination"=>"Omaha, NE", "checkin"=>"2016-04-02", "checkout"=>"2016-04-04", "guest"=>"3 Guests", "controller"=>"properties", "action"=>"index"}
-
-#
-# > {"utf8"=>"✓",
-#  "destination"=>"Omaha, NE",
-#  "checkin"=>"2016-04-01",
-#  "checkout"=>"2016-04-04",
-#  "guest"=>"3 Guests",
-#  "radius"=>"1000",
-#  "controller"=>"properties",
-#  "action"=>"index"}
