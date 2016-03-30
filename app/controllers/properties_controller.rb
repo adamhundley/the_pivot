@@ -14,10 +14,16 @@ class PropertiesController < ApplicationController
     if params[:destination]
       @properties = Property.search(params)
       @location = find_location(params)
+      @properties_geo_info = GeoProcessor.new(@properties).geo_info
+      @geocoded_location = Geocoder.search(@location).first.data["geometry"]["location"]
     else
-      @properties = Property.all
+      @properties = Property.limit(10)
+      @properties_geo_info = GeoProcessor.new(@properties).geo_info
     end
   end
+
+
+
 
   private
     def property_params
@@ -35,4 +41,5 @@ class PropertiesController < ApplicationController
     def find_location(params)
       params[:destination]
     end
+
 end

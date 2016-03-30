@@ -1,0 +1,44 @@
+<div id="map">
+  <script>
+     function initMap() {
+
+       var properties = <%= @properties_geo_info %>
+       var location = {lat: <%= @geocoded_location["lat"] %>, lng: <%= @geocoded_location["lng"] %>}
+
+       var mapDiv = document.getElementById('map');
+
+
+       var map = new google.maps.Map(mapDiv, {
+         center: location,
+         zoom: 7,
+         animation: google.maps.Animation.DROP
+       });
+
+       for (i = 0; i < properties.length; i++) {
+          var new_location = {lat: properties[i][0], lng: properties[i][1] };
+
+          let make_marker = new google.maps.Marker({
+             position: new_location,
+             map: map,
+             animation: google.maps.Animation.DROP
+           });
+
+         let infowindow = new google.maps.InfoWindow({
+           content: "something here"
+            });
+          make_marker.addListener('click', function() {
+            infowindow.open(map, make_marker);
+          });
+        }
+
+
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+        });
+     }
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9V4l2eNhRxXAWuE-5xKxGBIF5Lw9Dd40&callback=initMap&region=US" async defer></script>
+
+</div>
