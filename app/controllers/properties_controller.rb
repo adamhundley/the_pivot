@@ -18,8 +18,8 @@ class PropertiesController < ApplicationController
       location = find_location(params)
       @properties_geo_info = set_geo_info(@properties)
       @geocoded_location = set_geo_location(location)
-    elsif params[location]
-      @properties = Property.where(city: find_city(params))
+    elsif params[:location]
+      @properties = Property.city_search(params)
       location = find_location(params)
       @properties_geo_info = set_geo_info(@properties)
       @geocoded_location = set_geo_location(location)

@@ -31,6 +31,10 @@ class Property < ActiveRecord::Base
     Property.order(:price).near("#{@city}, #{@state}, US", @radius).where('sleeps >= ?', @guest)
   end
 
+  def self.city_search(params)
+    Property.order(:price).near("#{params[:location]}, US", params[:radius]).where('sleeps >= ?', 3)
+  end
+
   def self.default
     Property.order(:price).near("Denver, CO, US", 3000).where('sleeps >= ?', 3)
   end
