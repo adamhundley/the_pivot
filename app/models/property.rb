@@ -47,6 +47,10 @@ class Property < ActiveRecord::Base
     order(updated_at: :desc)
   end
 
+  def self.search_by_name(search)
+    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
+  end
+
   def owner
     user = User.find(self.user_id)
     user.fullname

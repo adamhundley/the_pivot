@@ -22,7 +22,6 @@ RSpec.feature "UserSearchesProperties", type: :feature do
 
      click_on "Search"
 
-  
      expect(page).to have_content("BEAUTIFUL HOME")
      expect(page).to have_content("TURING DUNGEON")
   end
