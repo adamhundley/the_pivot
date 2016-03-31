@@ -46,7 +46,6 @@ FactoryGirl.define do
     image_updated_at 20160314
   end
 
-
   factory :user do
     fullname
     email
@@ -60,5 +59,4 @@ FactoryGirl.define do
   sequence :email, ["a", "b", "c", "d"].cycle do |n|
     "#{n}@example.com"
   end
-
 end
