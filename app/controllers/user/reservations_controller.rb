@@ -4,7 +4,7 @@ class User::ReservationsController < ApplicationController
     @reservation = res_processor.reservation
     if @reservation.save
       @reservation.process_stripe_payment
-      # OrderMailer.order_email(@order).deliver_now
+      OrderMailer.order_email(@reservation).deliver_now
       flash[:info] = "Thanks for your order! :)"
       session[:cart] = nil
       redirect_to user_dashboard_path(current_user.slug)

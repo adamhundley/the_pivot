@@ -28,15 +28,15 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_by_city_state_sleeps(search)
-    Property.order(price: :desc).near("#{@city}, #{@state}, US", @radius).where('sleeps >= ?', @guest)
+    Property.order(price: :desc).near("#{@city}, #{@state}, US", @radius).where('sleeps >= ?', @guest).limit(20)
   end
 
   def self.city_search(params)
-    Property.order(price: :desc).near("#{params[:location]}, US", params[:radius]).where('sleeps >= ?', 3)
+    Property.order(price: :desc).near("#{params[:location]}, US", params[:radius]).where('sleeps >= ?', 3).limit(20)
   end
 
   def self.default
-    Property.order(price: :desc).near("Denver, CO, US", 3000).where('sleeps >= ?', 3)
+    Property.order(price: :desc).near("Denver, CO, US", 3000).where('sleeps >= ?', 3).limit(20)
   end
 
   def self.search_by_name(search)
