@@ -8,13 +8,9 @@ class Admin::PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
 
-    if @property.update(property_params)
-      flash[:info] = "Property ID: #{@property.id} from Owner #{@property.owner} has been updated."
-      redirect_to admin_properties_path(status: @property.status)
-    else
-      flash.now[:alert] = "Sorry, boss lolololololololol.  Something went wrong ;>(... Please try again."
-      render :new
-    end
+    @property.update(property_params)
+    flash[:info] = "Property ID: #{@property.id} from Owner #{@property.owner} has been updated."
+    redirect_to admin_properties_path(status: @property.status)
   end
 
   def show
