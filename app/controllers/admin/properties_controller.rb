@@ -13,6 +13,9 @@ class Admin::PropertiesController < ApplicationController
       end
     elsif params[:search]
       @properties = Property.search_by_name(params[:search])
+    else
+      flash.now[:alert] = "Property Owner doesn't exist!"
+      render :index
     elsif params[:date_search]
       @properties = Property.search_by_date(params[:date_search])
     end
