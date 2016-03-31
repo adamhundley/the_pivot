@@ -60,7 +60,6 @@ RSpec.feature "UserBooksReservation", type: :feature do
       click_on "Total $2,468.00"
       sleep 5
     end
-
     expect(current_path).to eq "/nate/dashboard"
     expect(page).to have_content "Thanks for your order! :)"
     expect(user.reservations.count).to eq 1
