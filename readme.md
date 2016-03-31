@@ -16,7 +16,7 @@ Production is hosted [here](http://crashatmypad.herokuapp.com/).
 ## Before Pivot
 
 ##### Admin Workflow
- ![admin workflow](app/assets/images/admin_workflow.gif)
+
 
 ##### User Workflow
- ![user workflow](app/assets/images/user_workflow.gif)
+
