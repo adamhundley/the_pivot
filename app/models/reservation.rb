@@ -20,7 +20,7 @@ class Reservation < ActiveRecord::Base
   def self.date_range(checkin, checkout)
     (checkin.to_s.to_date..checkout.to_s.to_date).to_a
   end
-
+  
   def self.by_date
     order(checkin: :asc)
   end

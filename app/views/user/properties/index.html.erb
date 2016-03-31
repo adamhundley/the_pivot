@@ -2,8 +2,16 @@
 <% if current_user.properties.count >= 1 %>
 <div class="container">
       <% @properties.each do |property| %>
+      <hr>
+      <div class="row">
+        <% property.images.each do |image| %>
+        <div class="col-sm-3">
+          <%= image_tag(image.image.url(:index)) %>
+        </div>
+        <% end %>
+      </div>
       <div class="row" id="edit-property-<%= property.id %>">
-      <div class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
+      <div class="form-group has success text-center form-div col-sm-6">
         <%= form_for [:user, property], url: user_property_path(current_user.slug, property.id) do |f| %>
         <h3>My Property's Information</h3>
         <div class="form-horizontal">
@@ -48,7 +56,7 @@
           </div>
         </div>
       </div>
-    <div id="new-property" class="form-group has success text-center form-div col-sm-5 col-sm-offset-1">
+    <div id="new-property" class="form-group has success text-center form-div col-sm-6">
         <h3>My Property's Details</h3>
         <div class="form-group">
           <div class="col-sm-4">
@@ -73,26 +81,25 @@
         <% end %>
 
         <br><br>
-        <%= f.label :image, class:"sr-only"  %>
-        <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
+        <!-- <h5>Upload up to 4 images less than 2mb</h5>
+        <%= f.label :images, class:"sr-only"  %>
+        <%= f.file_field :images, {multiple: true, required: true, id:"file_input1", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
         <div class="form-inline">
           <div class="form-group">
             <label class="file">
-            <input id="imageFormCover" class="form-control" type="text" readonly>
-            <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">upload image</a>
+            <input id="imageFormCover1" class="form-control" type="text" readonly>
+            <a class="btn btn-primary" onclick="$('input[id=file_input1]').click();">change images</a>
             </label>
-        </div>
-        <br>
-        </div>
-        <br>
+          </div>
+        </div> -->
+        <br><br>
         <div id="update-property">
           <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
         </div>
       </div>
     </div>
-    <hr>
       <% end %>
-      <% end %>
+    <% end %>
 </div>
 <% else %>
 <%= render partial: "shared/no_listings" %>
