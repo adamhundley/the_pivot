@@ -5,15 +5,10 @@ class Seed
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458477215180193.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458490203467318.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1450360558739668.jpg",
-               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458111967369849.jpg",
-               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458198336138334.jpg",
-               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458634494518404.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458645252559534.jpg",
-               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/images-1.jpg",
-               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/images-3.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/images.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/modular-houses-europe-mima-house-in-alentejo-dezeen-prefabricated-portuguese-home-images.jpg"]
-               
+
     generate_admin
     generate_users
     generate_property_types
@@ -80,7 +75,7 @@ class Seed
   def generate_la_properties
     20.times do |i|
       user_id = User.pluck(:id).sample
-      property = Property.create!(title:       Faker::Hipster.sentence(rand(3..5)),
+      property = Property.create!(title:       Faker::Hipster.sentence(rand(2..4)),
                                   description: Faker::Lorem.paragraph(rand(5..7)),
                                   price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
@@ -105,7 +100,7 @@ class Seed
   def generate_miami_properties
     15.times do |i|
       user_id = User.pluck(:id).sample
-      property = Property.create!(title:       Faker::Hipster.sentence(rand(3..5)),
+      property = Property.create!(title:       Faker::Hipster.words(rand(5..7)),
                                   description: Faker::Lorem.paragraph(rand(5..7)),
                                   price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
