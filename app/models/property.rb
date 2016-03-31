@@ -31,12 +31,12 @@ class Property < ActiveRecord::Base
     Property.order(:price).near("#{@city}, #{@state}, US", 300).where('sleeps >= ?', @guest)
   end
 
-  def self.search_by_name(search)
-    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
-  end
-
   def self.by_date
     order(updated_at: :desc)
+  end
+
+  def self.search_by_name(search)
+    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
   end
 
   def owner
