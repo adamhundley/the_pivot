@@ -5,8 +5,8 @@ Selenium::WebDriver.for :chrome
 RSpec.feature "UserBooksReservation", type: :feature do
   scenario "user makes a reservation", js: true do
 
-    property_owner = create(:user)
-    property = create(:property, user_id: property_owner.id)
+    user = create(:user)
+    property = create(:property, user_id: user.id)
     amenity = create(:amenity)
     type = create(:property_type)
     image1 = "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1457429804461041.jpg"
@@ -41,7 +41,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
       sleep 2
       page.execute_script(%Q{ $('input#email').val('bob@example.com'); })
       sleep 2
-      page.execute_script(%Q{ $('input#shipping-name').val('Sam'); })
+      page.execute_script(%Q{ $('input#shipping-name').val('Nate'); })
       sleep 2
       page.execute_script(%Q{ $('input#shipping-street').val('1510 Blake St'); })
       sleep 2
