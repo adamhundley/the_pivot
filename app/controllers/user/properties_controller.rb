@@ -19,12 +19,13 @@ class User::PropertiesController < ApplicationController
 
   def update
     @property = current_user.properties.find(params[:id])
+    PropertyAmenitizer.update(params[:property][:amenity_ids], @property)
+    ImageCreator.create_images(image_params, @property)
     if @property.update(property_params)
-      PropertyAmenitizer.update(params[:property][:amenity_ids], @property)
       flash[:info] = "You have updated your listing."
       redirect_to user_properties_path(current_user.slug)
     else
-      flash.now[:alert] = "Something went wrong :(... Please try again."
+      flash.now[:alert] = "Sorry! #{@property.errors.full_messages.join(',')}"
       render :new
     end
   end

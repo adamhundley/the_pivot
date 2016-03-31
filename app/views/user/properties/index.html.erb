@@ -1,7 +1,7 @@
 <%= render partial: "shared/user_dashboard_header" %>
 <% if current_user.properties.count >= 1 %>
 <div class="container">
-      <% @properties.each do |property| %>
+      <% @properties.each_with_index do |property, i| %>
       <hr>
       <div class="row">
         <% property.images.each do |image| %>
@@ -81,17 +81,22 @@
         <% end %>
 
         <br><br>
-        <!-- <h5>Upload up to 4 images less than 2mb</h5>
+        <h5>Upload up to 4 images less than 2mb</h5>
         <%= f.label :images, class:"sr-only"  %>
-        <%= f.file_field :images, {multiple: true, required: true, id:"file_input1", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
+        <%= f.file_field :images, {multiple: true, required: true, id:"file_input#{i}", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
         <div class="form-inline">
           <div class="form-group">
             <label class="file">
-            <input id="imageFormCover1" class="form-control" type="text" readonly>
-            <a class="btn btn-primary" onclick="$('input[id=file_input1]').click();">change images</a>
+            <input id="imageFormCover<%= i %>" class="form-control" type="text" readonly>
+            <a class="btn btn-primary" onclick="$('input[id=file_input<%= i %>]').click();">change images</a>
             </label>
+            <script type="text/javascript">
+              $('input[id=file_input]'+ i).change(function(i) {
+              $('#imageFormCover' + i).val($(this).val());
+              });
+            </script>
           </div>
-        </div> -->
+        </div>
         <br><br>
         <div id="update-property">
           <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>
