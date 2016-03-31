@@ -49,7 +49,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
       page.execute_script(%Q{ $('input#shipping-zip').val('80000'); })
       sleep 2
       page.execute_script(%Q{ $('input#shipping-city').val('Denver'); })
-      sleep 5
+      sleep 10
       click_on "Payment Info"
       page.execute_script(%Q{ $('input#card_number').val('4242 4242 4242 4242'); })
       sleep 1
@@ -58,7 +58,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
       page.execute_script(%Q{ $('input#cc-csc').val('222'); })
       sleep 3
       click_on "Total $2,468.00"
-      sleep 5
+      sleep 10
     end
 
     expect(current_path).to eq "/nate/dashboard"

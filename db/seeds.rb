@@ -168,7 +168,7 @@ class Seed
   end
 
   def generate_images(property)
-    @images.each do |image|
+    @images.shuffle.each do |image|
       property.images.create!(image: image)
     end
   end

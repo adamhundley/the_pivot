@@ -10,7 +10,7 @@ RSpec.feature "platform admin approves a property listing" do
                                 role: 1)
 
     user     = create(:user)
-    property = create(:property)
+    property = create(:property, status: "pending")
 
     property.update(user_id: user.id)
 

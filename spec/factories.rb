@@ -36,7 +36,7 @@ FactoryGirl.define do
     bedrooms 2
     bathrooms 2
     sleeps 4
-    status "pending"
+    status "active"
   end
 
   factory :image do

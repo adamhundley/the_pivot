@@ -10,7 +10,7 @@ RSpec.feature "platform admin can view individual properties" do
                                 role: 1)
 
     user     = create(:user)
-    property = create(:property)
+    property = create(:property, status: "pending")
     type     = create(:property_type)
     image    = create(:image)
     amenity  = create(:amenity)
