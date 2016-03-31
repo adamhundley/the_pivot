@@ -24,7 +24,9 @@ RSpec.feature "Platform Admin uses searchbar", type: :feature do
 
    fill_in "search", with: "#{user_one.fullname}"
    click_on "search by name"
-  #  save_and_open_page
+
+   expect(page).to_not have_content(property_two.title)
+   expect(page).to_not have_content(user_two.fullname)
   end
 
   scenario "searches non-existing property owner's name" do
