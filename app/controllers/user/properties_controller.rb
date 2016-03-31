@@ -2,14 +2,13 @@ class User::PropertiesController < ApplicationController
   def create
     @property = current_user.properties.create(property_params)
     PropertyAmenitizer.new(amenity_params, @property)
-    @image = Image.create(image: image_params)
+    ImageCreator.create_images(image_params, @property)
     if @property.save
-      @property.images << @image
       flash[:info] = "Congrats #{current_user.fullname}! Your new listing is pending approval."
       redirect_to user_dashboard_path(current_user.slug)
     else
-      flash[:alert] = "Something went wrong! Sorry."
-      redirect_to :new
+      flash[:alert] = "Sorry! #{@property.errors.full_messages.join(',')}"
+      redirect_to new_property_path(current_user.slug)
     end
   end
 
@@ -46,7 +45,7 @@ private
   end
 
   def image_params
-    params[:property][:image]
+    params[:property][:images]
   end
 
   def amenity_params

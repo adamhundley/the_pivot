@@ -73,17 +73,18 @@
           </div>
         <% end %>
         <br><br>
-        <%= f.label :image, class:"sr-only"  %>
-        <%= f.file_field :image, { id:"file_input", class:"form-control text-input", style:"display:none" } %>
-        <div class="form-inline">
-          <div class="form-group">
-            <label class="file">
-            <input id="imageFormCover" class="form-control" type="text" readonly>
-            <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">upload image</a>
-            </label>
-        </div>
-        <br>
-        </div>
+          <h5>Upload up to 4 images less than 2mb</h5>
+          <%= f.label :images, class:"sr-only"  %>
+          <%= f.file_field :images, {multiple: true, required: true, id:"file_input", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
+          <div class="form-inline">
+            <div class="form-group">
+              <label class="file">
+              <input id="imageFormCover" class="form-control" type="text" readonly>
+              <a class="btn btn-primary" onclick="$('input[id=file_input]').click();">upload images</a>
+              </label>
+            </div>
+          </div>
+      </div>
         <br>
         <div id="create-property">
           <%= f.submit "List my Pad!", class:"btn btn-little-owl" %>
@@ -93,4 +94,3 @@
     </div>
   </div>
 </div>
-<%= render partial: "shared/footer" %>
