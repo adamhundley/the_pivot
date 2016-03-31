@@ -1,6 +1,6 @@
 Geocoder.configure(
 
-  :api_key => "AIzaSyAK7xCTwpRe_i90IselfGEYr4ernu8fFAQ",
+  :api_key => "AIzaSyAl_jt_OiEmR9tIZeJ3MYhuCvxVQn7u-O4",
 
   :use_https => true
 
