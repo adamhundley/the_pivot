@@ -22,6 +22,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
 
     click_button "signup"
 
+    user = User.find_by(email: "nate@email.com")
 
     home_path = "Nav logo a5648f7d61d9358b9c6722d9307aeb08ab7e85e355e7817e566a9bc09c1361f3"
     find(:xpath, "//a/img[@alt='#{home_path}']/..").click
@@ -58,5 +59,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
       sleep 1
       click_on "Total $2,468.00"
     end
+
+    expect(current_page).to eq "/nate/reservations"
   end
 end
