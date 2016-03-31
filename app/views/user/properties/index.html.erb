@@ -83,7 +83,7 @@
         <br><br>
         <h5>Upload up to 4 images less than 2mb</h5>
         <%= f.label :images, class:"sr-only"  %>
-        <%= f.file_field :images, {multiple: true, required: true, id:"file_input#{i}", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
+        <%= f.file_field :images, {multiple: true, id:"file_input#{i}", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
         <div class="form-inline">
           <div class="form-group">
             <label class="file">
@@ -91,11 +91,7 @@
             <a class="btn btn-primary" onclick="$('input[id=file_input<%= i %>]').click();">change images</a>
             </label>
             <script type="text/javascript">
-<<<<<<< HEAD
-              $('input[id=file_input' + i ']').change(function() {
-=======
               $('input[id=file_input]'+ i).change(function(i) {
->>>>>>> master
               $('#imageFormCover' + i).val($(this).val());
               });
             </script>
