@@ -17,11 +17,12 @@
        for (i = 0; i < properties.length; i++) {
           var new_location = {lat: properties[i][0], lng: properties[i][1] };
 
+          var image = 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/tent.png';
           let make_marker = new google.maps.Marker({
              position: new_location,
              map: map,
-             icon: campground,
-             animation: google.maps.Animation.DROP
+             animation: google.maps.Animation.DROP,
+             icon: image
            });
 
          let infowindow = new google.maps.InfoWindow({
