@@ -91,7 +91,11 @@
             <a class="btn btn-primary" onclick="$('input[id=file_input<%= i %>]').click();">change images</a>
             </label>
             <script type="text/javascript">
+<<<<<<< HEAD
               $('input[id=file_input' + i ']').change(function() {
+=======
+              $('input[id=file_input]'+ i).change(function(i) {
+>>>>>>> master
               $('#imageFormCover' + i).val($(this).val());
               });
             </script>
