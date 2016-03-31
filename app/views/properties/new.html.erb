@@ -12,7 +12,7 @@
       <div class="form-horizontal">
         <div class="form-group">
           <%= f.label :title, class:"sr-only"  %>
-          <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success", required:true %>
+          <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success", required:true, maxlength: 65 %>
         </div>
         <div class="form-group">
           <%= f.label :description, class:"sr-only"  %>
@@ -73,7 +73,7 @@
           </div>
         <% end %>
         <br><br>
-          <h5>Upload up to 4 images less than 2mb</h5>
+          <h5>Upload at least 1 and up to 4 images less than 2mb</h5>
           <%= f.label :images, class:"sr-only"  %>
           <%= f.file_field :images, {multiple: true, required: true, id:"file_input", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
           <div class="form-inline">
