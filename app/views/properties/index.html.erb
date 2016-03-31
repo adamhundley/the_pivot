@@ -22,7 +22,7 @@
     <div class="text-center" id="location">
       <% @properties.each do |property| %>
         <div class="col-sm-6 ok" data-price='<%= property.price %>'>
-          <h3 class="property-title"><%= property.title %></h3>
+          <h3 class="property-title"><%= truncate(property.title, length: 30) %></h3>
           <%= link_to user_property_path(property.user.slug, property.id), class: "property-price-link" do %>
             <div class="row property-price">
                 <span class="property-index-price">$<%= property.price %></span>

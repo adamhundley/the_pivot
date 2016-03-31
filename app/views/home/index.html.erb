@@ -1,11 +1,12 @@
 <div class="hero-unit">
   <div class="container hero-container">
-    <a href="#">
+    <% if current_user.nil? || !current_user.platform_admin?  %>
         <h1 class="text-center"><span class="landing-span">Relax in paradise</span></h1>
-    </a>
+    <% end %>
   </div>
 </div>
-
-<%= render partial: "shared/searchbar" %>
+<% if current_user.nil? || !current_user.platform_admin? %>
+  <%= render partial: "shared/searchbar" %>
+<% end %>
 <%= render partial: "shared/city_imgs" %>
 <%= render partial: "shared/mailing_list" %>
