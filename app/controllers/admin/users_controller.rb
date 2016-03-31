@@ -6,13 +6,9 @@ class Admin::UsersController < Admin::BaseController
   def update
     @user = User.find(params[:id])
 
-    if @user.update(user_params)
-      flash[:info] = "User ID: #{@user.id} has been updated."
-      redirect_to admin_users_path(status: @user.status)
-    else
-      flash.now[:alert] = "Sorry, boss lolololololololol.  Something went wrong ;>(... Please try again."
-      render :new
-    end
+    @user.update(user_params)
+    flash[:info] = "User ID: #{@user.id} has been updated."
+    redirect_to admin_users_path(status: @user.status)
   end
 
   def show
