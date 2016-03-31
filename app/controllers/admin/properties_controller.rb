@@ -2,23 +2,7 @@ class Admin::PropertiesController < ApplicationController
 
   def index
     @properties = Property.by_date
-    if params[:status]
-      @properties = Property.where(status: params[:status]).by_date.limit(50)
-    elsif params[:id_search]
-      if Property.exists?(params[:id_search])
-        redirect_to admin_property_path(params[:id_search])
-      else
-        flash.now[:alert] = "Property #{params[:id_search]} doesn't exist!"
-        render :index
-      end
-    elsif params[:search]
-      @properties = Property.search_by_name(params[:search])
-    else
-      flash.now[:alert] = "Property Owner doesn't exist!"
-      render :index
-    elsif params[:date_search]
-      @properties = Property.search_by_date(params[:date_search])
-    end
+    @properties = Property.where(status: params[:status]).by_date.limit(50)
   end
 
   def update
