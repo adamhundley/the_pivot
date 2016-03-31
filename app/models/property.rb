@@ -39,16 +39,14 @@ class Property < ActiveRecord::Base
     Property.order(price: :desc).near("Denver, CO, US", 3000).where('sleeps >= ?', 3).limit(50)
   end
 
-  def self.search_by_name(search)
-    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
-  end
-
   def self.by_date
     order(updated_at: :desc)
   end
 
   def self.search_by_name(search)
-    where('first_name || last_name || fullname ILIKE ?', "%#{search}%").uniq
+    search = search.strip
+    user = User.find_by('first_name || last_name || fullname ILIKE ?', "%#{search}%").id
+    where(user_id: user)
   end
 
   def owner
