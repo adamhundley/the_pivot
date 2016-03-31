@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 text-center dashboard-rev-header" id="total-display-date">
+      <span class="number-header">$<%= number_with_delimiter(@reservations.total_revenue, delimiter: ',')%></span><span class="text-header"> total revenue</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center dashboard-rev-header" id="checkin-per-month">
+      <h2>check-in's per month</h2>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <%= line_chart Reservation.group_by_month(:checkin).count %>
+    </div>
+  </div>
+  <div class="row rev-data-row text-center" id="platform-diagnostics">
+    <div class="col-xs-1 text-center">
+    </div>
+    <div class="col-xs-2 rev-data text-center">
+      <h4 class="data-point-header"><small>daily avg</small></h4>
+      <p class="revenue-span">$<%= number_with_delimiter(@reservations.daily_average_revenue, delimiter: ',')%></p>
+    </div>
+    <div class="col-xs-3 rev-data text-center">
+      <h4 class="data-point-header"><small>weekly avg</small></h4>
+      <span class="revenue-span">$<%= number_with_delimiter(@reservations.weekly_average_revenue, delimiter: ',')%></span>
+    </div>
+    <div class="col-xs-2 rev-data text-center">
+      <h4 class="data-point-header"><small>orders</small></h4>
+      <span class="revenue-span"><%= Reservation.count %></span>
+    </div>
+    <div class="col-xs-2 rev-data text-center">
+      <h4 class="data-point-header"><small>users</small></h4>
+      <span class="revenue-span"><%= User.count %></span>
+    </div>
+    <div class="col-xs-2 text-center">
+    </div>
+  </div>
+  <hr>
+  <div class="row dashboard-second-row">
+    <div class="col-xs-12 text-center dashboard-rev-sub-header">
+      <span class="text-header">United States</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= geo_chart Reservation.group(:state).count, library: {region: 'US', resolution: 'provinces'} %>
+    </div>
+    <div class="col-xs-6">
+      <%= pie_chart Reservation.group(:city).count %>
+    </div>
+  </div>
+</div>

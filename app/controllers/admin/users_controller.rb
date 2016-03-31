@@ -15,8 +15,11 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  private
+  def show
+    @reservations = Reservation.all
+  end
 
+  private
   def user_params
     params.require(:user).permit(:status)
   end

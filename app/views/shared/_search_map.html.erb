@@ -20,6 +20,7 @@
           let make_marker = new google.maps.Marker({
              position: new_location,
              map: map,
+             icon: campground,
              animation: google.maps.Animation.DROP
            });
 
@@ -35,7 +36,6 @@
         var marker = new google.maps.Marker({
           position: location,
           label: "X",
-          icon: image,
           map: map,
         });
      }

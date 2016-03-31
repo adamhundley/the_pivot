@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
     self.last_name = fullname.split[1..-1].join(" ")
   end
 
-  def admin_message
-    ["Life is good, #{self.first_name}."]
-  end
-
   def name
     "#{first_name} #{last_name}"
   end

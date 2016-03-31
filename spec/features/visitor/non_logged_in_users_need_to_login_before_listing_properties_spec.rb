@@ -23,7 +23,7 @@ RSpec.feature "Non logged-in users need to login before listing property" do
     click_button "login"
 
     expect(current_path).to eq("/#{user.slug}/dashboard")
-    expect(page).to have_content("Hey #{user.first_name}, welcome to C.A.M.P")
+    expect(page).to have_content("Hey #{user.fullname}, welcome to C.A.M.P")
 
     within("nav") do
       expect(page).to have_content("List my Pad")
@@ -47,6 +47,11 @@ RSpec.feature "Non logged-in users need to login before listing property" do
 
     click_button "login"
     expect(current_path).to eq("/#{user.slug}/dashboard")
-    expect(page).to have_content("Hey #{user.first_name}, welcome to C.A.M.P")
+    expect(page).to have_content("Hey #{user.fullname}, welcome to C.A.M.P")
+
+    click_on "logout"
+    expect(current_path).to eq("/")
+    expect(page).to have_content("Sad to see you go #{user.fullname}. Come back again soon. 👋")
+
   end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   namespace :admin do
-    get "/dashboard", to: "/users#show"
+    get "/dashboard", to: "users#show"
     resources :properties, only: [:index, :show, :update]
     resources :reservations, only: [:index, :show]
     resources :users, only: [:index, :update]
