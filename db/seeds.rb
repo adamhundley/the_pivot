@@ -68,10 +68,10 @@ class Seed
   end
 
   def generate_la_properties
-    50.times do |i|
+    20.times do |i|
       user_id = User.pluck(:id).sample
-      property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
-                                  description: Faker::Lorem.paragraph(rand(1..3)),
+      property = Property.create!(title:       Faker::Hipster.sentence(rand(3..5)),
+                                  description: Faker::Lorem.paragraph(rand(5..7)),
                                   price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
                                   city:        "Huntington Park",
@@ -93,10 +93,10 @@ class Seed
   end
 
   def generate_miami_properties
-    50.times do |i|
+    15.times do |i|
       user_id = User.pluck(:id).sample
-      property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
-                                  description: Faker::Lorem.paragraph(rand(1..3)),
+      property = Property.create!(title:       Faker::Hipster.sentence(rand(3..5)),
+                                  description: Faker::Lorem.paragraph(rand(5..7)),
                                   price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
                                   city:        "Miami",
@@ -118,10 +118,10 @@ class Seed
   end
 
   def generate_ny_properties
-    50.times do |i|
+    20.times do |i|
       user_id = User.pluck(:id).sample
-      property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
-                                  description: Faker::Lorem.paragraph(rand(1..3)),
+      property = Property.create!(title:       Faker::Hipster.sentence(rand(3..5)),
+                                  description: Faker::Lorem.paragraph(rand(5..7)),
                                   price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
                                   city:        "Brooklyn",
@@ -143,10 +143,10 @@ class Seed
   end
 
   def generate_random_properties
-    50.times do |i|
+    150.times do |i|
       user_id = User.pluck(:id).sample
-      property = Property.create!(title:       Faker::Hipster.sentence(rand(5..7)),
-                                  description: Faker::Lorem.paragraph(rand(1..3)),
+      property = Property.create!(title:       Faker::Hipster.sentence(rand(3..5)),
+                                  description: Faker::Lorem.paragraph(rand(5..7)),
                                   price:       rand(100..1000),
                                   street:      Faker::Address.street_address,
                                   city:        Faker::Address.city,
@@ -192,7 +192,7 @@ class Seed
   end
 
   def generate_current_reservations_for_property(property)
-    50.times do |i|
+    5.times do |i|
       customer = User.all.sample
       checkin = Faker::Date.between(Date.today, 1.year.from_now)
       checkout = checkin.next.next
@@ -200,6 +200,8 @@ class Seed
                                         user_id:     customer.id,
                                         fullname:    customer.fullname,
                                         order_total: rand(100..1000),
+                                        state: property.state,
+                                        city:  property.city,
                                         checkin:     checkin,
                                         checkout:    checkout
                                         )
@@ -216,6 +218,8 @@ class Seed
                                         fullname:    customer.fullname,
                                         order_total: rand(100..1000),
                                         property_id: property.id,
+                                        state: property.state,
+                                        city:  property.city,
                                         checkin:     checkin,
                                         checkout:    checkout
                                         )

@@ -11,6 +11,21 @@ class Reservation < ActiveRecord::Base
     end.flatten.include?(true)
   end
 
+  def self.total_revenue
+    sum(:order_total)
+  end
+
+  def self.daily_average_revenue
+    return if Reservation.count == 0
+    total_revenue / group_by_day(:checkin).count.length
+  end
+
+  def self.weekly_average_revenue
+    return if Reservation.count == 0
+    total_revenue / group_by_week(:checkin).count.length
+  end
+
+
   def check_if_reserved(dates)
     reservation_nights.map do |night|
       dates.include?(night.night)
