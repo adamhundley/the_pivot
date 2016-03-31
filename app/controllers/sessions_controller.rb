@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       if user.platform_admin?
         redirect_to admin_dashboard_path
       else
-        flash[:info] = "Hey #{user.first_name}, welcome to C.A.M.P"
+        flash[:info] = "Hey #{user.fullname}, welcome to C.A.M.P"
         if session[:return_to]
           redirect_to session.delete(:return_to)
         else
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    flash[:bye] = "Sad to see you go #{current_user.first_name}. Come back again soon. 👋"
+    flash[:bye] = "Sad to see you go #{current_user.fullname}. Come back again soon. 👋"
     session.clear
     redirect_to root_path
   end

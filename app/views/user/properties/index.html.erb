@@ -1,7 +1,7 @@
 <%= render partial: "shared/user_dashboard_header" %>
 <% if current_user.properties.count >= 1 %>
 <div class="container">
-      <% @properties.each do |property| %>
+      <% @properties.each_with_index do |property, i| %>
       <hr>
       <div class="row">
         <% property.images.each do |image| %>
@@ -17,15 +17,15 @@
         <div class="form-horizontal">
           <div class="form-group">
             <%= f.label :title, class:"sr-only"  %>
-            <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success"%>
+            <%= f.text_field :title, placeholder: "property title", class:"form-control form-control-success", maxlength: 65, required: true%>
           </div>
           <div class="form-group">
             <%= f.label :description, class:"sr-only"  %>
-            <%= f.text_area :description, placeholder: "property description", class:"form-control text-input" %>
+            <%= f.text_area :description, placeholder: "property description", class:"form-control text-input", required: true %>
           </div>
           <div class="form-group">
             <%= f.label :price, class:"sr-only"  %>
-            <%= f.text_field :price, placeholder: "rental price per day", class:"form-control text-input", id: "#{property.id}-property-price" %>
+            <%= f.number_field :price, placeholder: "rental price per day", class:"form-control text-input", id: "#{property.id}-property-price", required: true %>
           </div>
           <div class="form-group">
             <%= f.collection_select(:property_type_id, PropertyType.all, :id, :name, {prompt:"property type"}, {id:"property-type", class:"form-control", required:true}) %>
@@ -34,7 +34,7 @@
           <div class="form-group">
             <div class="col-sm-8" id="<%= property.id %>-property-street">
               <%= f.label :street, class:"sr-only"  %>
-              <%= f.text_field :street, placeholder: "street", class:"form-control form-control-success" %>
+              <%= f.text_field :street, placeholder: "street", class:"form-control form-control-success", required: true %>
             </div>
             <div class="col-sm-4">
               <%= f.label :unit, class:"sr-only"  %>
@@ -44,14 +44,14 @@
           <div class="form-group">
               <div class="col-sm-6">
                 <%= f.label :city, class:"sr-only"  %>
-                <%= f.text_field :city, placeholder: "city", class:"form-control form-control-success" %>
+                <%= f.text_field :city, placeholder: "city", class:"form-control form-control-success", required: true %>
               </div>
               <div class="col-sm-3">
-                <%= f.select :state, options_for_select(us_states, property.state), {}, {class: "form-control"} %>
+                <%= f.select :state, options_for_select(us_states, property.state), {}, {class: "form-control", required: true } %>
                 <%= f.label :zip, class:"sr-only"  %>
               </div>
               <div class="col-sm-3">
-                <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success" %>
+                <%= f.text_field :zip, placeholder: "zip", class:"form-control form-control-success", required: true %>
             </div>
           </div>
         </div>
@@ -65,11 +65,11 @@
           </div>
           <div class="col-sm-4">
             <%= f.label :bathrooms %>
-            <%= f.select "bathrooms", options_for_select([*1..10], property.bathrooms), {}, {class: "form-control form-control"} %>
+            <%= f.select "bathrooms", options_for_select([*1..10], property.bathrooms), {}, {class: "form-control form-control",  required: true} %>
           </div>
           <div class="col-sm-4">
             <%= f.label :sleeps %>
-            <%= f.select "sleeps", options_for_select([*1..25], property.sleeps), {}, {class: "form-control form-control"} %>
+            <%= f.select "sleeps", options_for_select([*1..25], property.sleeps), {}, {required: true, class: "form-control form-control"} %>
           </div>
         </div>
         <br><br><br>
@@ -81,17 +81,22 @@
         <% end %>
 
         <br><br>
-        <!-- <h5>Upload up to 4 images less than 2mb</h5>
+        <h5>Upload up to 4 images less than 2mb</h5>
         <%= f.label :images, class:"sr-only"  %>
-        <%= f.file_field :images, {multiple: true, required: true, id:"file_input1", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
+        <%= f.file_field :images, {multiple: true, required: true, id:"file_input#{i}", class:"form-control text-input", style:"display:none", accept: 'image/png,image/gif,image/jpeg' } %>
         <div class="form-inline">
           <div class="form-group">
             <label class="file">
-            <input id="imageFormCover1" class="form-control" type="text" readonly>
-            <a class="btn btn-primary" onclick="$('input[id=file_input1]').click();">change images</a>
+            <input id="imageFormCover<%= i %>" class="form-control" type="text" readonly>
+            <a class="btn btn-primary" onclick="$('input[id=file_input<%= i %>]').click();">change images</a>
             </label>
+            <script type="text/javascript">
+              $('input[id=file_input' + i ']').change(function() {
+              $('#imageFormCover' + i).val($(this).val());
+              });
+            </script>
           </div>
-        </div> -->
+        </div>
         <br><br>
         <div id="update-property">
           <%= f.submit "Update my Pad!", class:"btn btn-checkout" %>

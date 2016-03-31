@@ -9,14 +9,18 @@ class PropertyAmenitizer
   end
 
   def find_amenity_objects
-    @params.map do |amenity|
-      Amenity.find_by(name: amenity)
+    if params.nil?
+      property.amenity_ids = []
+    else
+      params.map do |amenity|
+        Amenity.find_by(name: amenity)
+      end
     end
   end
 
   def create_property_amenities
-    @amenities.each do |amenity|
-      @property.amenities << amenity
+    amenities.each do |amenity|
+      property.amenities << amenity
     end
   end
 
