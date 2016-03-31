@@ -3,7 +3,7 @@
      function initMap() {
 
        var properties = <%= @properties_geo_info %>
-       var location = {lat: <%= @geocoded_location["lat"] %>, lng: <%= @geocoded_location["lng"] %>}
+       var location = {lat: <%= @geocoded_location["lat"] , lng: <%= @geocoded_location["lng"] %>}%>
 
        var mapDiv = document.getElementById('map');
 
@@ -43,5 +43,4 @@
   </script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9V4l2eNhRxXAWuE-5xKxGBIF5Lw9Dd40&callback=initMap&region=US" async defer></script>
-
 </div>

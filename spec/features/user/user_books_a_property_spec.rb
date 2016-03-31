@@ -22,6 +22,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
 
     click_button "signup"
 
+    user = User.find_by(email: "nate@email.com")
 
     home_path = "Nav logo a5648f7d61d9358b9c6722d9307aeb08ab7e85e355e7817e566a9bc09c1361f3"
     find(:xpath, "//a/img[@alt='#{home_path}']/..").click
@@ -39,7 +40,7 @@ RSpec.feature "UserBooksReservation", type: :feature do
     stripe_iframe = all('iframe[name=stripe_checkout_app]').last
     Capybara.within_frame stripe_iframe do
       sleep 2
-      page.execute_script(%Q{ $('input#email').val('bob@example.com'); })
+      page.execute_script(%Q{ $('input#email').val('nate@email.com'); })
       sleep 2
       page.execute_script(%Q{ $('input#shipping-name').val('Nate'); })
       sleep 2
@@ -55,8 +56,14 @@ RSpec.feature "UserBooksReservation", type: :feature do
       page.execute_script(%Q{ $('input#cc-exp').val('11 2020'); })
       sleep 1
       page.execute_script(%Q{ $('input#cc-csc').val('222'); })
-      sleep 1
+      sleep 3
       click_on "Total $2,468.00"
+      sleep 5
     end
+
+    expect(current_path).to eq "/nate/dashboard"
+    expect(page).to have_content "Thanks for your order! :)"
+    expect(user.reservations.count).to eq 1
+    expect(user.reservations.first.email).to eq "nate@email.com"
   end
 end
