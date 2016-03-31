@@ -12,7 +12,7 @@ class Admin::PropertiesController < ApplicationController
         render :index
       end
     elsif params[:search]
-      @properties = Property.search_by_name(params[:search]).by_date
+      @properties = Property.search_by_name(params[:search])
     elsif params[:date_search]
       @properties = Property.search_by_date(params[:date_search])
     end
