@@ -47,6 +47,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
   gem 'capybara-bootstrap-datepicker'
+  gem "rspec-mocks"
 end
 
 ruby "2.2.4"

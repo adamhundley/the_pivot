@@ -331,6 +331,7 @@ DEPENDENCIES
   rails_12factor
   rspec
   rspec-activemodel-mocks
+  rspec-mocks
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
