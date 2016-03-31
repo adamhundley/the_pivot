@@ -6,4 +6,8 @@ module SessionHelper
   def redirect_back_or_to(session_referrer = nil)
     session_referrer || user_dashboard_path(current_user.slug)
   end
+
+  def users_status
+    params[:status]
+  end
 end
