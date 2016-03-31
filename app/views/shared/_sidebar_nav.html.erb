@@ -23,9 +23,9 @@
     <%= link_to "past reservations", admin_reservations_path(status: "past") %>
   </li>
   <li>
-    <%= link_to "active users", "#" %>
+    <%= link_to "active users", admin_users_path(status: "active")%>
   </li>
   <li>
-    <%= link_to "inactive users", "#" %>
+    <%= link_to "inactive users", admin_users_path(status: "inactive") %>
   </li>
 </ul>

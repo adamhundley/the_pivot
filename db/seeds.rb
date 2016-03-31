@@ -208,7 +208,7 @@ class Seed
   end
 
   def generate_past_reservations_for_property(property)
-    50.times do |i|
+    2.times do |i|
       customer = User.all.sample
       checkin = Faker::Date.between(Date.today, 1.year.ago)
       checkout = checkin.next.next
