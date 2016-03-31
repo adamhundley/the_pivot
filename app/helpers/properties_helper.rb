@@ -23,6 +23,7 @@ module PropertiesHelper
   end
 
   def set_geo_location(location)
+    require "pry"; binding.pry
     Geocoder.search(location).first.data["geometry"]["location"]
   end
 

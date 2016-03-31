@@ -92,17 +92,24 @@
         <div class="row text-center price-container">
             <% if session[:checkin] && session[:checkout] %>
               <h3 class="location-info">$<%= @property.price %> @ <%= @property.possible_nights(session[:checkin], session[:checkout]) %> nights = $<%= @property.cost(session[:checkin], session[:checkout]) %></h3>
+
             <% else %>
-              $<%= @property.price  %>
+              <h3 class="no-date-price">$<%= @property.price  %> per night</h3>
             <% end %>
             <hr>
         </div>
+        <div class="row">
             <% if current_user && session[:checkin] != nil && session[:checkout] %>
             <%= render partial: "shared/checkout_form", locals: {amount: @property.cost(session[:checkin], session[:checkout]) } %>
+            <% elsif current_user %>
+              <h3 class="no-date-price">Select some dates silly!</h3>
             <% else %>
             <br>
-            <%= link_to "Login & Book Now!", login_path, method: :get, class:"btn btn-info btn-md" %>
+            <div class="col-sm-4 col-sm-offset-4">
+              <%= link_to "Login & Book Now!", login_path, method: :get, class:"btn btn-info btn-md" %>
+            </div>
             <% end %>
+        </div>
       </div>
     </div>
       <hr>
