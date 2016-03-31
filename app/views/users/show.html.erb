@@ -1,3 +1,12 @@
 <% if !current_user.platform_admin? %>
   <%= render partial: "shared/user_dashboard_header" %>
+
 <% end %>
+
+<div class="container text-center">
+  <hr><br>
+  <h1 class=dashboard-info>Your currently have <strong><%= current_user.properties.count %></strong> properties listed</h1>
+  <h1 class=dashboard-info>You currently have <strong><%= current_user.reservations.count %></strong> reservations</h1>
+  <br><br><hr>
+  <h1 class=dashboard-info>Click above to view more information!</h1>
+</div>

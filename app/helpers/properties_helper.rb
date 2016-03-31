@@ -6,6 +6,13 @@ module PropertiesHelper
     end
   end
 
+  def set_sessions
+    session[:checkin] = params[:checkin]
+    session[:checkout] = params[:checkout]
+    session[:guests] = params[:guest]
+    session[:radius] = params[:radius]
+  end
+
   def property_status
     params[:status]
   end
@@ -23,7 +30,6 @@ module PropertiesHelper
   end
 
   def set_geo_location(location)
-    require "pry"; binding.pry
     Geocoder.search(location).first.data["geometry"]["location"]
   end
 
