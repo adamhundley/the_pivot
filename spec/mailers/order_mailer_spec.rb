@@ -28,7 +28,7 @@ RSpec.describe OrderMailer do
     end
 
     it 'renders the sender email' do
-      expect(mail.from).to eql(['adamhundley@gmail.com'])
+      expect(mail.from).to eql(['crashatmypad@gmail.com'])
     end
 
     it 'assigns @order.fullname' do
