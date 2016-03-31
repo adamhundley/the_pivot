@@ -11,8 +11,8 @@ RSpec.feature "platform admin disables a property listing" do
 
     user = create(:user)
 
-    property     = create(:property)
-    property_two = create(:property)
+    property     = create(:property, status: "pending")
+    property_two = create(:property, status: "pending")
 
     property.update(user_id: user.id)
     property.update(title: "THIS PROPERTY WILL BE DELETED!")
