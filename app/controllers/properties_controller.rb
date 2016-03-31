@@ -21,8 +21,8 @@ class PropertiesController < ApplicationController
       @geocoded_location = set_geo_location(location)
     else
       @properties = Property.default
-      #@properties_geo_info = set_geo_info(@properties)
-      #@geocoded_location = {"lat"=>39.7392358, "lng"=>-104.990251}
+      @properties_geo_info = set_geo_info(@properties)
+      @geocoded_location = {"lat"=>39.7392358, "lng"=>-104.990251}
     end
   end
 
