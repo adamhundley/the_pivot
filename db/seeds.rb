@@ -3,7 +3,17 @@ class Seed
     @images = ["https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1457429804461041.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458645252559534.jpg",
                "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458477215180193.jpg",
-               "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458490203467318.jpg"]
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/modern/1458490203467318.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1450360558739668.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458111967369849.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458198336138334.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458634494518404.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/1458645252559534.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/images-1.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/images-3.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/images.jpg",
+               "https://s3.amazonaws.com/crashatmypad/pad+pictures/outdside/modular-houses-europe-mima-house-in-alentejo-dezeen-prefabricated-portuguese-home-images.jpg"]
+               
     generate_admin
     generate_users
     generate_property_types
@@ -168,7 +178,7 @@ class Seed
   end
 
   def generate_images(property)
-    @images.shuffle.each do |image|
+    @images.shuffle.take(4).each do |image|
       property.images.create!(image: image)
     end
   end

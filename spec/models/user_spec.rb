@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
     user = User.create(email: "nate@example.com", fullname: "Nate Venn", password: "password")
     user.build_name
 
-    expect(user.name).to eq "Nate Venn"
+    expect(user.fullname).to eq "Nate Venn"
   end
 
   it "creates a user seperated hyphen for displaying in the url" do

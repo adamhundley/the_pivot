@@ -25,8 +25,8 @@ class User::PropertiesController < ApplicationController
       flash[:info] = "You have updated your listing."
       redirect_to user_properties_path(current_user.slug)
     else
-      flash.now[:alert] = "Sorry! #{@property.errors.full_messages.join(',')}"
-      render :new
+      flash[:alert] = "Sorry! #{@property.errors.full_messages.join(',')}"
+      redirect_to user_properties_path(current_user.slug)
     end
   end
 
