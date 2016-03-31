@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "/users#show"
     resources :properties, only: [:index, :show, :update]
+    resources :reservations, only: [:index, :show]
+    resources :users, only: [:index, :update]
   end
 
   namespace :user, path: ":user_name", as: :user do

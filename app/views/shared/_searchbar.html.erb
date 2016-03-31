@@ -7,13 +7,13 @@
             <div class="container-fluid row">
                 <form role="form" action='/properties' method="get">
                   <input name="utf8" type="hidden" value="&#x2713;" />
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <div class="form-group" >
                       <label class="sr-only" for="location">Location</label>
                       <input type="text" name="destination" class="form-control" id="location" placeholder="Enter City, State" required>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label class="sr-only" for="checkin">Check in</label>
                       <div class="input-group">
@@ -22,7 +22,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label class="sr-only" for="checkout">Check out</label>
                       <div class="input-group">
@@ -54,7 +54,8 @@
                       </select>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <input type="hidden" name="radius" value="1000">
+                  <div class="col-md-1">
                     <button type="submit" class="btn btn-primary">Search</button>
                   </div>
                 </form>

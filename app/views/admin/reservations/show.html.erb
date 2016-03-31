@@ -1,0 +1,39 @@
+<div>
+  <h2 id="reservation-title">RESERVATION INFO</h2>
+</div>
+
+<div class="container">
+  <div class="reservation-info">
+    <div class="col-md-8">
+      Reservation ID: <%= @reservation.id %>
+    </div>
+    <div class="col-md-4">
+      <%= display_checkin_date(@reservation) %>
+    </div>
+    <div class="col-md-8">
+      Property ID: <%= link_to @reservation.property.id, admin_property_path(@reservation.property.id) %>
+    </div>
+    <div class="col-md-4">
+      <%= display_checkout_date(@reservation) %>
+    </div>
+    <hr>
+    <div class="col-lg-12">
+      Property Owner: <%=@reservation.property.user.fullname  %>
+    </div>
+    <div class="col-lg-12">
+      Customer Name: <%=@reservation.fullname %>
+    </div>
+    <hr>
+    <div class="col-lg-8">
+    </div>
+    <div class="col-lg-4" id="formatting-total">
+      Total Price
+    </div>
+    <hr>
+    <div class="col-lg-8">
+    </div>
+    <div class="col-lg-4">
+      <%= @reservation.formatted_total %>
+    </div>
+  </div>
+</div>
