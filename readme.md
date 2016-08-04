@@ -13,10 +13,17 @@ Crash At My Pad (CAMP) is an eCommerce Rails application that was built upon [Li
 
 Production is hosted [here](http://crashatmypad.herokuapp.com/).
 
-## Before Pivot
+### Homepage
+![](http://i.imgur.com/ca5lGsl.jpg)
 
-##### Admin Workflow
+### Properties Listed
+![](http://i.imgur.com/ccvufqo.jpg)
 
+### Property Listed
+![](http://i.imgur.com/ZLMjCyP.jpg)
 
-##### User Workflow
+### User View
+![](http://i.imgur.com/N6Wes8L.jpg)
 
+### Admin View
+![](http://i.imgur.com/dSOuvdV.png)
