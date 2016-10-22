@@ -1,7 +1,7 @@
 require 'simplecov'
 require "paperclip/matchers"
 require 'rspec/active_model/mocks'
-require 'factory_girl_rails'
+require 'support/factory_girl'
 require 'database_cleaner'
 
 SimpleCov.start("rails")
